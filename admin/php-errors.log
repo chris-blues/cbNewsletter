@@ -1,6 +1,0 @@
-[20-Oct-2017 23:35:39 Europe/Berlin] PHP Fatal error:  Uncaught Error: Call to undefined function assembleGetString() in /var/www/vhosts/tonverein.net/baustelle/newsletter/admin/views/header.php:24
-Stack trace:
-#0 /var/www/vhosts/tonverein.net/baustelle/newsletter/admin/lib/bootstrap.php(6): include_once()
-#1 /var/www/vhosts/tonverein.net/baustelle/newsletter/admin/index.php(23): include_once('/var/www/vhosts...')
-#2 {main}
-  thrown in /var/www/vhosts/tonverein.net/baustelle/newsletter/admin/views/header.php on line 24
