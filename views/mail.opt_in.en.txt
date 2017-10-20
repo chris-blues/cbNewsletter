@@ -1,0 +1,18 @@
+Hello %name%,
+
+You have subscribed to our newsletter at %server% .
+
+To make certain, that you really want to subscribe to our newsletter click on the following link:
+
+%link_process%
+
+If you didn't subscribe for our newsletter or have changed your mind about this, then just do nothing. In that case your subscription will automatically be removed after 30 days. You will not receive any newsletters until you have verified this email account.
+
+You will find an unsubscribe link at the bottom of each newsletter you'll receive.
+
+Also, you can manage your subscription here:
+
+%link_manage%
+
+Best regards,
+Your webcrew at %server%

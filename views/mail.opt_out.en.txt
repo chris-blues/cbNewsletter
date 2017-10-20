@@ -1,0 +1,16 @@
+Hello %name%,
+
+You want to unsubscribe from our newsletter at %server% .
+
+To make certain, that it is really you who wants to unsubscribe, click on the following link:
+
+%link_process%
+
+If you didn't unsubscribe from our newsletter or have changed your mind about this, then just do nothing. In that case your subscription will simply remain untouched.
+
+You can manage your subscription here:
+
+%link_manage%
+
+Best regards,
+Your webcrew at %server%

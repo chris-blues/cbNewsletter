@@ -1,0 +1,71 @@
+.shadow {
+  margin: 15px;
+  padding: 15px;
+  box-shadow: 0px 0px 5px 1px #888;
+  border-radius: 6px;
+}
+
+.center {
+  text-align: center;
+}
+
+.green {
+  color: green;
+}
+
+.notes {
+  font-size: 0.8em;
+}
+
+.cbNewsletter_errors, .errors {
+  margin: 15px;
+  padding: 15px;
+  border-radius: 6px;
+  box-shadow: 0px 0px 5px 1px #888;
+  background-color: #EF9898;
+}
+
+pre {
+  margin: 15px;
+  padding: 15px;
+  background-color: #CCC;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  height: 30px;
+}
+
+th {
+  background-color: #CCC;
+}
+
+tr:nth-child(odd) {
+  background-color: #EEE;
+}
+
+table, th, td {
+  border: 1px solid #888;
+}
+
+.cbNewsletter_info {
+  background-color: #EEE;
+}
+
+div.cbNewsletter_info.notes {
+  padding: 5px;
+}
+
+input#cbNewsletter_email, label#cbNewsletter_email_label {
+  display: none;
+}
+
+a.active {
+  color: #ffff11;
+  text-shadow: 0px 0px 4px #424242;
+  font-weight: 900;
+}
