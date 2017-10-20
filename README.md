@@ -9,3 +9,4 @@ User interface is working for now, admin interface is not...
 * Admin area:
   * add "create newsletter" routine
   * add possibility to edit subscribers data (JS / XHTTPrequest?)
+  * add translations (at least "de_DE")
