@@ -7,7 +7,9 @@ This still is a work in progress. Don't use it yet!
 User interface is working for now, admin interface is not...
 
 ### ToDo:
-* add translations (at least "de_DE")
+* gettext
+  * add po file(s)
+  * add translations (at least "de_DE")
 * Admin area:
   * add database credentials mask
   * add "create newsletter" routine
