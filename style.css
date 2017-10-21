@@ -17,6 +17,10 @@
   font-size: 0.8em;
 }
 
+.inline {
+  display: inline;
+}
+
 .cbNewsletter_errors, .errors {
   margin: 15px;
   padding: 15px;

@@ -25,3 +25,17 @@
       •
       <a href="<?php echo assembleGetString("string", array("view" => "create_newsletter")); ?>"><?php echo gettext("send newsletter") ?></a>
     </div>
+
+    <div class="jobs shadow">
+
+      <form action="<?php echo assembleGetString("string"); ?>" method="POST" accept-charset="utf-8" class="inline">
+        <input type="hidden" name="job" value="init_tables">
+        <button type="submit"><?php echo gettext("initialize database tables"); ?></button>
+      </form>
+
+      <form action="<?php echo assembleGetString("string"); ?>" method="POST" accept-charset="utf-8" class="inline">
+        <input type="hidden" name="job" value="optimize_tables">
+        <button type="submit"><?php echo gettext("optimize database tables"); ?></button>
+      </form>
+
+    </div>

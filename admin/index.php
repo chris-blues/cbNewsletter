@@ -8,18 +8,18 @@
 
 
 
-// override debug_level for php error messages [off|warn|full] (default: off)
-//   $cbNewsletter["config"]["debug_level"] = "full";
-
-// override debug messages by cbNewsletter
-  $debug = true;
-
-
+  //load config
   $cbNewsletter["config"]["error_reporting"] = $cbNewsletter["config"]["debug_levels"][$cbNewsletter["config"]["debug_level"]];
 
   include_once(realpath($cbNewsletter["config"]["basedir"] . "/../lib/error-reporting.php"));
 
   $debug = $cbNewsletter["config"]["debug"];
+
+  // override debug_level for php error messages [off|warn|full] (default: off)
+  //   $cbNewsletter["config"]["debug_level"] = "full";
+
+  // override debug messages by cbNewsletter
+  $debug = true;
 
 
   include_once(realpath(dirname(__FILE__) . "/lib/bootstrap.php"));

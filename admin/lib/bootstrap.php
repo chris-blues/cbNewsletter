@@ -36,7 +36,30 @@
 
   }
 
-  $result = $query->init_tables();
-  if ($debug) dump_var($result);
+
+
+
+  if (isset($_POST["job"]) and $_POST["job"] == "optimize_tables") {
+
+    $result = $query->optimize_tables("cbNewsletter_subscribers");
+    if ($debug) {
+      echo "OPTIMIZE TABLE `cbNewsletter_subscribers` ;<br>\n";
+      dump_var($result);
+    }
+
+    $result = $query->optimize_tables("cbNewsletter_archive");
+    if ($debug) {
+      echo "OPTIMIZE TABLE `cbNewsletter_archive` ;<br>\n";
+      dump_var($result);
+    }
+
+  }
+
+  if (isset($_POST["job"]) and $_POST["job"] == "init_tables") {
+
+    $result = $query->init_tables();
+    if ($debug) dump_var($result);
+
+  }
 
 ?>

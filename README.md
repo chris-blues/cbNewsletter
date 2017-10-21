@@ -8,6 +8,7 @@ User interface is working for now, admin interface is not...
 
 ### ToDo:
 * Admin area:
+  * add database credentials mask
   * add "create newsletter" routine
   * add possibility to edit subscribers data (JS / XHTTPrequest?)
   * add translations (at least "de_DE")

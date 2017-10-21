@@ -47,6 +47,15 @@ class QueryBuilderAdmin extends QueryBuilder {
   }
 
 
+  public function optimize_tables($table) {
+
+    $statement = $this->Database->prepare("OPTIMIZE TABLE `$table`;");
+
+    return $this->callExecution($statement);
+
+  }
+
+
   public function init_tables() {
 
     $result["init_cbNewsletter"] = $this->init_cbNewsletter();
