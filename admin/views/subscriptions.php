@@ -24,20 +24,34 @@
 
 ?>
 
-    <form
-      action="index.php<?php echo $link; ?>"
-      method="POST"
-      accept-charset="utf-8"
-      class="center shadow">
+    <div class="center shadow">
 
-      <input
-        type="text"
-        name="search"
-        value="<?php if (strlen($search) > 0) echo $search; ?>">
+      <form
+        action="index.php<?php echo $link; ?>"
+        method="POST"
+        accept-charset="utf-8"
+        class="inline">
 
-      <button type="submit"><?php echo gettext("Search"); ?></button>
+        <input
+          type="text"
+          name="search"
+          value="<?php if (strlen($search) > 0) echo $search; ?>">
 
-    </form>
+        <button type="submit"><?php echo gettext("Search"); ?></button>
+
+      </form>
+
+      <form
+        action="index.php<?php echo assembleGetString("string", array("view" => "subscriptions", "order" => "id")); ?>"
+        method="POST"
+        accept-charset="utf-8"
+        class="inline">
+
+        <button type="submit"><?php echo gettext("Clear search"); ?></button>
+
+      </form>
+
+    </div>
 
 
 

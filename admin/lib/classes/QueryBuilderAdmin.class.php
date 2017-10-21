@@ -47,20 +47,28 @@ class QueryBuilderAdmin extends QueryBuilder {
   }
 
 
-  public function optimize_tables($table) {
+  public function optimize_tables() {
 
-    $statement = $this->Database->prepare("OPTIMIZE TABLE `$table`;");
+    $statement = $this->Database->prepare("OPTIMIZE TABLE `cbNewsletter_subscribers`;");
 
-    return $this->callExecution($statement);
+    $result["optimize_cbNewsletter_subscribers"] = $this->callExecution($statement);
+
+
+
+    $statement = $this->Database->prepare("OPTIMIZE TABLE `cbNewsletter_archiv`;");
+
+    $result["optimize_cbNewsletter_archiv"] = $this->callExecution($statement);
+
+    return $result;
 
   }
 
 
   public function init_tables() {
 
-    $result["init_cbNewsletter"] = $this->init_cbNewsletter();
+    $result["init_cbNewsletter_subscribers"] = $this->init_cbNewsletter();
 
-    $result["init_cbNewsletter_archive"] = $this->init_cbNewsletter_archive();
+    $result["init_cbNewsletter_archiv"] = $this->init_cbNewsletter_archive();
 
     return $result;
 

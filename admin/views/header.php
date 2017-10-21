@@ -21,19 +21,23 @@
     <h1 class="center"><?php echo gettext("Newsletter") ?></h1>
 
     <div class="navigation center shadow">
-      <a href="<?php echo assembleGetString("string", array("view" => "subscriptions")); ?>"><?php echo gettext("subscriptions") ?></a>
+      <a href="index.php<?php echo assembleGetString("string", array("view" => "subscriptions")); ?>">
+        <?php echo gettext("subscriptions") ?>
+      </a>
       •
-      <a href="<?php echo assembleGetString("string", array("view" => "create_newsletter")); ?>"><?php echo gettext("send newsletter") ?></a>
+      <a href="index.php<?php echo assembleGetString("string", array("view" => "create_newsletter")); ?>">
+        <?php echo gettext("send newsletter") ?>
+      </a>
     </div>
 
     <div class="jobs shadow">
 
-      <form action="<?php echo assembleGetString("string"); ?>" method="POST" accept-charset="utf-8" class="inline">
+      <form action="index.php<?php echo assembleGetString("string"); ?>" method="POST" accept-charset="utf-8" class="inline">
         <input type="hidden" name="job" value="init_tables">
         <button type="submit"><?php echo gettext("initialize database tables"); ?></button>
       </form>
 
-      <form action="<?php echo assembleGetString("string"); ?>" method="POST" accept-charset="utf-8" class="inline">
+      <form action="index.php<?php echo assembleGetString("string"); ?>" method="POST" accept-charset="utf-8" class="inline">
         <input type="hidden" name="job" value="optimize_tables">
         <button type="submit"><?php echo gettext("optimize database tables"); ?></button>
       </form>
