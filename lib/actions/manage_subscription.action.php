@@ -35,7 +35,7 @@
     !isset($data["hash"])
   ) {
 
-    $HTML->infobox(
+    echo $HTML->infobox(
       "<p>" .
       gettext("Sorry! This subscription cannot be found. The following possibilities may help:") . "</p>\n" .
       "<ul>\n<li>" .
@@ -127,11 +127,11 @@
 
               if (!$optin->send_mail()) {
 
-                $HTML->errorbox(gettext("Error! Could not send verification mail!"));
+                echo $HTML->errorbox(gettext("Error! Could not send verification mail!"));
 
               } else {
 
-                $HTML->infobox(gettext("<p>A verification mail has been sent to your inbox. Please click the link, to verify that:</p>\n<ul><li>this mailbox actually belongs to you</li>\n<li>you really want to get our newsletter</li></ul>\n<p>Thanks!</p>"));
+                echo $HTML->infobox(gettext("<p>A verification mail has been sent to your inbox. Please click the link, to verify that:</p>\n<ul><li>this mailbox actually belongs to you</li>\n<li>you really want to get our newsletter</li></ul>\n<p>Thanks!</p>"));
 
               }
 
@@ -167,11 +167,11 @@
 
             if (!$optout->send_mail()) {
 
-              $HTML->errorbox(gettext("Error! Could not send verification mail!<br>\n"));
+              echo $HTML->errorbox(gettext("Error! Could not send verification mail!<br>\n"));
 
             } else {
 
-              $HTML->infobox(
+              echo $HTML->infobox(
                 gettext(
                   "A verification mail has been sent to your inbox. Please click the link, to verify that you really want to unsubscribe from our newsletters!\n"
 		)

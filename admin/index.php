@@ -35,7 +35,7 @@
 
   $cbNewsletter_endTime = microtime();
 
-  $HTML->infobox(
+  echo $HTML->infobox(
     sprintf(
       gettext("processing needed %s"),
       prettyTime($cbNewsletter_endTime - $cbNewsletter_startTime)

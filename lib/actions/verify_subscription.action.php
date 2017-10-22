@@ -23,7 +23,7 @@
       $already_verified = $query->check_already_verified($data["id"], $data["hash"]);
       if ($already_verified) {
 
-        $HTML->errorbox(gettext("This email has already been verified. No need to do it again. Aborting!") . "<br>\n");
+        echo $HTML->errorbox(gettext("This email has already been verified. No need to do it again. Aborting!") . "<br>\n");
 
       } else {
 
@@ -40,7 +40,7 @@
 
         if ($result) {
 
-          $HTML->infobox(gettext("Thank you very much! Your subscription is now verified and active.") . "<br>\n");
+          echo $HTML->infobox(gettext("Thank you very much! Your subscription is now verified and active.") . "<br>\n");
 
         } else {
 

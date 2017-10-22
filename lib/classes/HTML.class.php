@@ -7,21 +7,47 @@ class HTML {
     if (strlen($class) > 0) $class = "cbNewsletter_info shadow " . $class;
     else $class = "cbNewsletter_info shadow";
 
-    echo "      <div class=\"" . $class . "\">\n";
+    $result = "      <div class=\"" . $class . "\">\n";
 
-    echo "        " . $content . "\n";
+    $result .= "        " . $content . "\n";
 
-    echo "      </div>\n";
+    $result .= "      </div>\n";
+
+    return $result;
 
   }
 
   public function errorbox ($content) {
 
-    echo "      <div class=\"cbNewsletter_errors shadow\">\n";
+    $result = "      <div class=\"cbNewsletter_errors shadow\">\n";
 
-    echo "        " . $content . "\n";
+    $result .= "        " . $content . "\n";
 
-    echo "      </div>\n";
+    $result .= "      </div>\n";
+
+    return $result;
+
+  }
+
+  public function ul($list) {
+
+    if (!is_array($list)) {
+      return $this->errorbox("\$HTML->ul(): " . gettext("This is not an array!"));
+    } else {
+
+      $result = "    <ul>\n";
+
+      foreach ($list as $value) {
+
+        $result .= "      <li>" . $value . "</li>\n";
+
+      }
+
+      $result .= "    </ul>\n";
+
+    }
+
+    return $result;
 
   }
 

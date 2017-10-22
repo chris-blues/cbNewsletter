@@ -64,17 +64,42 @@ class QueryBuilderAdmin extends QueryBuilder {
   }
 
 
-  public function init_tables() {
+  public function check_for_tables() {
 
-    $result["init_cbNewsletter_subscribers"] = $this->init_cbNewsletter();
+    $statement = $this->Database->prepare("SHOW TABLES LIKE 'cbNewsletter_%' ;");
 
-    $result["init_cbNewsletter_archiv"] = $this->init_cbNewsletter_archive();
+    $result = $this->callExecution($statement);
 
-    return $result;
+    $result = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+
+
+
+    if (count($result) < 2) {
+
+      $tablenames = array("cbNewsletter_subscribers", "cbNewsletter_archiv");
+
+      foreach($tablenames as $name) {
+
+        if (strlen($name) < 1) continue;
+
+        if (!in_array($name, $result)) {
+
+          $list[] = $name;
+          $this->{"init_$name"}();
+
+        }
+
+      }
+
+      $HTML = new HTML;
+
+      echo $HTML->infobox(gettext("Creating database tables:") . "\n" . $HTML->ul($list));
+
+    }
 
   }
 
-  private function init_cbNewsletter() {
+  private function init_cbNewsletter_subscribers() {
 
     $statement = $this->Database->prepare(
       "CREATE TABLE IF NOT EXISTS `cbNewsletter_subscribers` (
@@ -97,7 +122,7 @@ class QueryBuilderAdmin extends QueryBuilder {
   }
 
 
-  private function init_cbNewsletter_archive () {
+  private function init_cbNewsletter_archiv () {
 
     $statement = $this->Database->prepare(
       "CREATE TABLE IF NOT EXISTS `cbNewsletter_archiv` (

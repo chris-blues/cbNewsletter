@@ -62,11 +62,11 @@
 
       if (!$optin->send_mail()) {
 
-        $HTML->errorbox(gettext("Error! Could not send verification mail!\n"));
+        echo $HTML->errorbox(gettext("Error! Could not send verification mail!\n"));
 
       } else {
 
-        $HTML->infobox(gettext("<p>A verification mail has been sent to your inbox. Please click the link, to verify that:</p>\n<ul><li>this mailbox actually belongs to you</li>\n<li>you really want to get our newsletter</li></ul>\n<p>Thanks!</p>\n"));
+        echo $HTML->infobox(gettext("<p>A verification mail has been sent to your inbox. Please click the link, to verify that:</p>\n<ul><li>this mailbox actually belongs to you</li>\n<li>you really want to get our newsletter</li></ul>\n<p>Thanks!</p>\n"));
       }
 
 // =============  send verification email  =============
@@ -76,7 +76,7 @@
       $error["verification"]["database"]["error"] = true;
       $error["verification"]["database"]["data"] = "This email is already subscribed.";
 
-      $HTML->infobox(gettext("Sorry! This email is already subscribed. Surely you don't want to receive our newsletters twice!") . " 😉");
+      echo $HTML->infobox(gettext("Sorry! This email is already subscribed. Surely you don't want to receive our newsletters twice!") . " 😉");
 
     }
 

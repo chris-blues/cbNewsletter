@@ -29,9 +29,11 @@
 
     $query = new QueryBuilderAdmin($connect);
 
+    $initTables = $query->check_for_tables();
+
   } else {
 
-    $HTML->errorbox(gettext("Error! Could not connect to database!"));
+    echo $HTML->errorbox(gettext("Error! Could not connect to database!"));
     $error["database"]["connect"] = true;
 
   }
@@ -42,13 +44,6 @@
   if (isset($_POST["job"]) and $_POST["job"] == "optimize_tables") {
 
     $result = $query->optimize_tables();
-    if ($debug) dump_var($result);
-
-  }
-
-  if (isset($_POST["job"]) and $_POST["job"] == "init_tables") {
-
-    $result = $query->init_tables();
     if ($debug) dump_var($result);
 
   }

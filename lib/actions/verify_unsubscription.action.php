@@ -36,7 +36,7 @@
 
       if ($result) {
 
-        $HTML->infobox(
+        echo $HTML->infobox(
           sprintf(
             gettext("Removing subscription for %s"), $db_data["email"]
 	  ) . " : <span class=\"green\">✔</span>"
@@ -47,7 +47,7 @@
         $error["database"]["removeSubscription"]["error"] = true;
         $error["database"]["removeSubscription"]["data"] = $result;
 
-        $HTML->errorbox(sprintf(gettext("Removing subscription for %s failed!"), $db_data["email"]) . "<br>\n" . $result);
+        echo $HTML->errorbox(sprintf(gettext("Removing subscription for %s failed!"), $db_data["email"]) . "<br>\n" . $result);
 
       }
 
@@ -56,7 +56,7 @@
       $error["database"]["error"] = true;
       $error["database"]["subscriber_not_exists"] = "This subscription can not be found!";
 
-      $HTML->errorbox(gettext("Sorry! The link seems to be broken! Please try again - and make sure you have the complete link!<br>\n"));
+      echo $HTML->errorbox(gettext("Sorry! The link seems to be broken! Please try again - and make sure you have the complete link!<br>\n"));
 
     }
 
