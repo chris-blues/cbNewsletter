@@ -20,17 +20,30 @@
 
     <h1 class="center"><?php echo gettext("Newsletter") ?></h1>
 
-    <div class="navigation center shadow">
-      <a href="index.php<?php echo assembleGetString("string", array("view" => "subscriptions")); ?>">
-        <?php echo gettext("subscriptions") ?>
-      </a>
-      •
-      <a href="index.php<?php echo assembleGetString("string", array("view" => "create_newsletter")); ?>">
-        <?php echo gettext("send newsletter") ?>
-      </a>
-    </div>
+    <nav class="navigation center shadow">
+
+
+      <form action="index.php" method="GET" accept-charset="utf-8" class="inline">
+<?php foreach (assembleGetString("array", array("view" => "subscriptions")) as $key => $value) { ?>
+        <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>">
+<?php } ?>
+        <button type="submit"><?php echo gettext("view subscriptions") ?></button>
+      </form>
+
+
+      <form action="index.php" method="GET" accept-charset="utf-8" class="inline">
+<?php foreach (assembleGetString("array", array("view" => "create_newsletter")) as $key => $value) { ?>
+        <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>">
+<?php } ?>
+        <button type="submit"><?php echo gettext("send newsletter") ?></button>
+      </form>
+
+
+    </nav>
 
     <div class="jobs shadow">
+
+      <h2 class="inline"><?php echo gettext("Maintenance tasks") ?></h2> &nbsp;
 
       <form action="index.php<?php echo assembleGetString("string"); ?>" method="POST" accept-charset="utf-8" class="inline">
         <input type="hidden" name="job" value="optimize_tables">

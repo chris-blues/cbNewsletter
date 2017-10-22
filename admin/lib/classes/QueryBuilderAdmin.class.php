@@ -46,25 +46,36 @@ class QueryBuilderAdmin extends QueryBuilder {
 
   }
 
+  public function get_maintenance_data() {
 
-  public function optimize_tables() {
+    $statement = $this->Database->prepare(
+      "SELECT * FROM `cbNewsletter_maintenance`;"
+    );
 
-    $statement = $this->Database->prepare("OPTIMIZE TABLE `cbNewsletter_subscribers`;");
+    $result = $this->callExecution($statement);
 
-    $result["optimize_cbNewsletter_subscribers"] = $this->callExecution($statement);
+    return $statement->fetchAll(PDO::FETCH_CLASS, "Maintenance");
+
+  }
 
 
+  public function optimize_table($name) {
 
-    $statement = $this->Database->prepare("OPTIMIZE TABLE `cbNewsletter_archiv`;");
+    $statement = $this->Database->prepare("OPTIMIZE TABLE `$name`;");
 
-    $result["optimize_cbNewsletter_archiv"] = $this->callExecution($statement);
+    $result = $this->callExecution($statement);
+
+    if ($result) $this->update_maintenance_table($name);
+
+    $HTML = new HTML;
+    $HTML->infobox(sprintf(gettext("Database table %s has been optimized."), $name));
 
     return $result;
 
   }
 
 
-  public function check_for_tables() {
+  public function create_missing_tables() {
 
     $statement = $this->Database->prepare("SHOW TABLES LIKE 'cbNewsletter_%' ;");
 
@@ -74,9 +85,9 @@ class QueryBuilderAdmin extends QueryBuilder {
 
 
 
-    if (count($result) < 2) {
+    if (count($result) < 3) {
 
-      $tablenames = array("cbNewsletter_subscribers", "cbNewsletter_archiv");
+      $tablenames = array("cbNewsletter_subscribers", "cbNewsletter_archiv", "cbNewsletter_maintenance");
 
       foreach($tablenames as $name) {
 
@@ -85,7 +96,7 @@ class QueryBuilderAdmin extends QueryBuilder {
         if (!in_array($name, $result)) {
 
           $list[] = $name;
-          $this->{"init_$name"}();
+          $init[$name] = $this->{"init_$name"}();
 
         }
 
@@ -93,9 +104,84 @@ class QueryBuilderAdmin extends QueryBuilder {
 
       $HTML = new HTML;
 
-      echo $HTML->infobox(gettext("Creating database tables:") . "\n" . $HTML->ul($list));
+      echo $HTML->infobox(gettext("Created database tables:") . "\n" . $HTML->ul($list));
+
+      return $init;
 
     }
+
+  }
+
+  public function get_table_names() {
+
+    $statement = $this->Database->prepare(
+        "SHOW TABLES LIKE 'cbNewsletter_%' ;"
+      );
+
+    $result = $this->callExecution($statement);
+
+    return $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+
+  }
+
+  private function update_maintenance_table($name) {
+
+    $statement = $this->Database->prepare(
+      " UPDATE `cbNewsletter_maintenance`
+        SET `optimized` = :optimized
+        WHERE `name` = :name ;"
+    );
+
+    $statement->bindParam(':optimized', time());
+    $statement->bindParam(':name', $name);
+
+    $result = $this->callExecution($statement);
+
+    return $result;
+
+  }
+
+  private function populate_cbNewsletter_maintenance() {
+
+    $time = time();
+
+    $tables = $this->get_table_names();
+
+    foreach ($tables as $name) {
+      $statement = $this->Database->prepare(
+       "INSERT INTO `cbNewsletter_maintenance`
+          (`name`, `ctime`, `optimized`)
+        VALUES
+          (:name, :time, :time) ;"
+      );
+
+      $statement->bindParam(':name', $name);
+      $statement->bindParam(':time', $time);
+
+      $result[$name] = $this->callExecution($statement);
+
+    }
+
+    return $result;
+
+  }
+
+  private function init_cbNewsletter_maintenance() {
+
+    $statement = $this->Database->prepare(
+      "CREATE TABLE IF NOT EXISTS `cbNewsletter_maintenance` (
+        `name` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+        `ctime` INT UNSIGNED NOT NULL,
+        `optimized` INT UNSIGNED NOT NULL
+      )
+      ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci ;"
+    );
+
+    $result["createTable"] = $this->callExecution($statement);
+
+    $result["populateTable"] = $this->populate_cbNewsletter_maintenance();
+
+    return $result;
 
   }
 
@@ -120,7 +206,6 @@ class QueryBuilderAdmin extends QueryBuilder {
     return $result;
 
   }
-
 
   private function init_cbNewsletter_archiv () {
 

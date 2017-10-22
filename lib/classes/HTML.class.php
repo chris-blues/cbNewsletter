@@ -51,6 +51,18 @@ class HTML {
 
   }
 
+  public function pre($string) {
+
+    return "      <pre>" . $string . "</pre>\n";
+
+  }
+
+  public function code($string) {
+
+    return "<code>" . $string . "</code>";
+
+  }
+
 }
 
 ?>

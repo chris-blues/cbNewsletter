@@ -34,7 +34,7 @@
 
   } else {
 
-    include_once("views/subscriptions.php");
+    include_once("views/subscriptions.action.php");
 
   }
 

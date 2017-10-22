@@ -12,7 +12,6 @@
 
   // Database related
   $cbNewsletter["config"]["database"] = include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/dbcredentials.php"));
-  $cbNewsletter["config"]["database"]["tablename"] = "cbNewsletter";
 
   include_once(realpath($cbNewsletter["config"]["basedir"] . "/../lib/classes/Connection.class.php"));
   include_once(realpath($cbNewsletter["config"]["basedir"] . "/../lib/classes/QueryBuilder.class.php"));
@@ -21,6 +20,7 @@
 
   // Other classes
   include_once(realpath($cbNewsletter["config"]["basedir"] . "/../lib/classes/Subscriber.class.php"));
+  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Maintenance.class.php"));
 
 
 
@@ -29,7 +29,9 @@
 
     $query = new QueryBuilderAdmin($connect);
 
-    $initTables = $query->check_for_tables();
+    $initTables = $query->create_missing_tables();
+
+    $cbNewsletter["config"]["database"]["tables"] = $query->get_table_names();
 
   } else {
 
@@ -39,12 +41,24 @@
   }
 
 
+  $tables_maintenance = $query->get_maintenance_data();
 
+  $maintenance_info = "";
+  foreach ($tables_maintenance as $key => $table) {
+
+    $maintenance_info .= $table->get_last_optimization();
+
+    if ($table->needs_maintenance()) $query->optimize_table($table->get_name());
+
+  }
+
+  if ($debug) echo $HTML->infobox($maintenance_info, "debug");
 
   if (isset($_POST["job"]) and $_POST["job"] == "optimize_tables") {
 
-    $result = $query->optimize_tables();
-    if ($debug) dump_var($result);
+    foreach ($cbNewsletter["config"]["database"]["tables"] as $name) {
+      $result = $query->optimize_table($name);
+    }
 
   }
 

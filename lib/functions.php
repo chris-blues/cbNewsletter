@@ -1,5 +1,23 @@
 <?php
 
+function findData($var) {
+
+  if (isset($_GET[$var])) {
+
+    return $_GET[$var];
+
+  } elseif (isset($_POST[$var])) {
+
+    return $_POST[$var];
+
+  } else {
+
+    return false;
+
+  }
+
+}
+
 // accepted $method is either "array" or "string". An emtpy string defaults to "string"
 function assembleGetString($method = "", $newVars = array()) {
   if (isset($_GET)) {
@@ -124,6 +142,7 @@ function cbNewsletter_showErrors($errors, $bubble = false) {
 }
 
 function prettyTime ($input) {
+
   // expects seconds (float) as input
 
   $newTime = round($input, 9);
@@ -147,12 +166,9 @@ function prettyTime ($input) {
     } else {
       return sprintf("%5.3f ms", $newTime);
     }
-  } else {
-    return sprintf("%5.3f s", $newTime);
-  }
 
-  // input is more than seconds
-  if ($input > 60) {
+  } elseif ($input > 60) {
+
     $minutes = floor($input / 60);
     $seconds = $input - ($minutes * 60);
 
@@ -160,10 +176,21 @@ function prettyTime ($input) {
       $hours = floor($minutes / 60);
       $minutes = $minutes - ($hours * 60);
 
-      return sprintf("%2d:%2d:%2d", $hours, $minutes, $seconds);
+      if ($hours > 24) {
+        $days = floor($hours / 24);
+        $hours = $hours - ($days * 24);
+
+        return sprintf("%2dd %02dh %02dm %02ds", $days, $hours, $minutes, $seconds);
+      }
+
+      return sprintf("%2dh %02dm %02ds", $hours, $minutes, $seconds);
     }
 
-    return sprintf("%2d:%2d", $minutes, $seconds);
+    return sprintf("%2dm %02ds", $minutes, $seconds);
+
+  } else {
+
+    return sprintf("%5.3f s", $newTime);
   }
 }
 
