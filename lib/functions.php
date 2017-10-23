@@ -167,16 +167,16 @@ function prettyTime ($input) {
       return sprintf("%5.3f ms", $newTime);
     }
 
-  } elseif ($input > 60) {
+  } elseif ($input >= 60) {
 
     $minutes = floor($input / 60);
     $seconds = $input - ($minutes * 60);
 
-    if ($minutes > 60) {
+    if ($minutes >= 60) {
       $hours = floor($minutes / 60);
       $minutes = $minutes - ($hours * 60);
 
-      if ($hours > 24) {
+      if ($hours >= 24) {
         $days = floor($hours / 24);
         $hours = $hours - ($days * 24);
 

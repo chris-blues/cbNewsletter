@@ -5,6 +5,7 @@ class Subscriber {
   protected $id;
   protected $name;
   protected $email;
+  protected $locale;
   protected $hash;
   protected $verified;
 
@@ -14,6 +15,7 @@ class Subscriber {
       "id"       => $this->id,
       "name"     => $this->name,
       "email"    => $this->email,
+      "locale"   => $this->locale,
       "hash"     => $this->hash,
     );
 
@@ -49,6 +51,15 @@ class Subscriber {
 
 
   public function setData($name, $email) {
+
+    $locale = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+    switch ($locale) {
+
+      case "de": $this->locale = "de_DE"; break;
+      case "en": $this->locale = "en_GB"; break;
+      default:   $this->locale = "en_GB"; break;
+
+    }
 
     $this->id       = null;
     $this->name     = $name;

@@ -1,3 +1,4 @@
+    <div id="cbNewsletter_mainBox">
 <?php
 
   //include HTML header, if we're called directly
@@ -26,7 +27,7 @@
 //   $debug = true;
 
 
-
+  $cbNewsletter["config"]["debug"] = $debug;
 
   $cbNewsletter["config"]["error_reporting"] = $cbNewsletter["config"]["debug_levels"][$cbNewsletter["config"]["debug_level"]];
 
@@ -57,7 +58,7 @@
 
     } else {
 
-      echo "<pre>No errors detected</pre>";
+      echo $HTML->infobox("No errors detected...", "debug");
 
     }
 
@@ -77,6 +78,12 @@
     );
 
   }
+
+?>
+
+    </div>
+
+<?php
 
   if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     echo "\n  </body>\n</html>\n";

@@ -9,6 +9,8 @@
 
   include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/functions.php"));
 
+  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/initGettext.php"));
+
 
 
   if ($debug) {

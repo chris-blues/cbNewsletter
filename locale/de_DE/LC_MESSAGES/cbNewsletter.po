@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-10-23 11:27+0200\n"
-"PO-Revision-Date: 2017-10-23 11:27+0200\n"
+"POT-Creation-Date: 2017-10-24 01:02+0200\n"
+"PO-Revision-Date: 2017-10-24 01:02+0200\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -14,12 +14,12 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/index.php:40 index.php:73
+#: admin/index.php:41 index.php:74
 #, php-format
 msgid "processing needed %s"
 msgstr "Verarbeitung dauerte %s"
 
-#: admin/lib/bootstrap.php:38
+#: admin/lib/bootstrap.php:40
 msgid "Error! Could not connect to database!"
 msgstr "Fehler! Konnte keine Verbindung zur Datenbank herstellen!"
 
@@ -27,50 +27,54 @@ msgstr "Fehler! Konnte keine Verbindung zur Datenbank herstellen!"
 msgid "The PDO call returned an error: "
 msgstr "Der PDO Aufruf gab einen Fehler zurück: "
 
-#: admin/lib/classes/QueryBuilderAdmin.class.php:71
+#: admin/lib/classes/QueryBuilderAdmin.class.php:98
 #, php-format
 msgid "Database table %s has been optimized."
 msgstr "Datenbanktabelle %s wurde optimiert."
 
-#: admin/lib/classes/QueryBuilderAdmin.class.php:107
+#: admin/lib/classes/QueryBuilderAdmin.class.php:134
 msgid "Created database tables:"
 msgstr "Datenbanktabellen wurden erstellt:"
 
-#: admin/views/create_newsletter.action.php:15
-#: admin/views/create_newsletter.action.php:16
+#: admin/views/create_newsletter.action.php:26
+#: admin/views/create_newsletter.action.php:31
 msgid "subject"
 msgstr "Betreff"
 
-#: admin/views/create_newsletter.action.php:18
-#: admin/views/create_newsletter.action.php:19
+#: admin/views/create_newsletter.action.php:35
+#: admin/views/create_newsletter.action.php:39
 msgid "newsletter text"
 msgstr "Newsletter Text"
 
-#: admin/views/create_newsletter.action.php:21 admin/views/header.php:38
+#: admin/views/create_newsletter.action.php:43
 msgid "send newsletter"
 msgstr "Newsletter abschicken"
 
-#: admin/views/create_newsletter.action.php:22
+#: admin/views/create_newsletter.action.php:44
 msgid "preview"
 msgstr "Vorschau"
 
-#: admin/views/create_newsletter.action.php:23 views/manage_subscription.php:32
+#: admin/views/create_newsletter.action.php:45 views/manage_subscription.php:32
 msgid "reset"
 msgstr "Zurücksetzen"
 
-#: admin/views/header.php:21
+#: admin/views/header.php:22
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: admin/views/header.php:30
+#: admin/views/header.php:31
 msgid "view subscriptions"
 msgstr "Abos anzeigen"
 
-#: admin/views/header.php:46
+#: admin/views/header.php:39
+msgid "create newsletter"
+msgstr "Newsletter schreiben"
+
+#: admin/views/header.php:47
 msgid "Maintenance tasks"
 msgstr "Wartungsaufgaben"
 
-#: admin/views/header.php:50
+#: admin/views/header.php:51
 msgid "optimize database tables"
 msgstr "Datenbanktabellen optimieren"
 
@@ -86,12 +90,12 @@ msgstr "Suche leeren"
 msgid "ID"
 msgstr "ID"
 
-#: admin/views/subscriptions.action.php:78 views/subscription.form.php:9
-#: views/subscription.form.php:14
+#: admin/views/subscriptions.action.php:78 views/subscription.form.php:10
+#: views/subscription.form.php:15
 msgid "Name"
 msgstr "Name"
 
-#: admin/views/subscriptions.action.php:85 views/subscription.form.php:20
+#: admin/views/subscriptions.action.php:85 views/subscription.form.php:21
 msgid "Email"
 msgstr "Email"
 
@@ -120,7 +124,7 @@ msgid ""
 "<p>Thanks!</p>\n"
 msgstr ""
 "<p>Es wurde eine Bestätigungsmail an ihre Emailadresse gesendet. Bitte "
-"klicken Sie auf den Link, um sicherzustellen daß:</p>\n"
+"klicken Sie auf den Link um sicherzustellen, daß:</p>\n"
 "<ul><li>diese Adresse tatsächlich Ihnen gehört</li>\n"
 "<li>Sie wirklich unseren Newsletter bekommen wollen</li></ul>\n"
 "<p>Vielen Dank!</p>\n"
@@ -167,11 +171,15 @@ msgstr ""
 "unwiderruflich gelöscht ist. Wenn Sie unseren Newsletter wieder erhalten "
 "wollen, tragen Sie sich einfach wieder ein!"
 
-#: lib/actions/manage_subscription.action.php:130
+#: lib/actions/manage_subscription.action.php:122
+msgid "Your email address has been updated."
+msgstr "Ihre neue Emailadresse wurde eingetragen."
+
+#: lib/actions/manage_subscription.action.php:136
 msgid "Error! Could not send verification mail!"
 msgstr "Fehler! Bestätigungsmail konnte nicht versendet werden!"
 
-#: lib/actions/manage_subscription.action.php:134
+#: lib/actions/manage_subscription.action.php:140
 msgid ""
 "<p>A verification mail has been sent to your inbox. Please click the link, "
 "to verify that:</p>\n"
@@ -185,18 +193,29 @@ msgstr ""
 "<li>Sie wirklich unseren Newsletter bekommen wollen</li></ul>\n"
 "<p>Vielen Dank!</p>"
 
-#: lib/actions/manage_subscription.action.php:170
+#: lib/actions/manage_subscription.action.php:154
+msgid "Your name has been updated."
+msgstr "Ihr neuer Name wurde eingetragen."
+
+#: lib/actions/manage_subscription.action.php:186
 msgid "Error! Could not send verification mail!<br>\n"
 msgstr "Fehler! Bestätigungsmail konnte nicht versendet werden!<br>\n"
 
-#: lib/actions/manage_subscription.action.php:176
+#: lib/actions/manage_subscription.action.php:191
 msgid ""
 "A verification mail has been sent to your inbox. Please click the link, to "
 "verify that you really want to unsubscribe from our newsletters!\n"
 msgstr ""
 "Es wurde eine Bestätigungsmail an Ihre Adresse geschickt. Bitte klicken Sie "
-"auf den Link, um sicherzustellen, daß Sie sich wirklich aus unserem "
+"auf den Link um sicherzustellen, daß Sie sich wirklich aus unserem "
 "Newsletter austragen wollen!\n"
+
+#: lib/actions/manage_subscription.action.php:241
+msgid ""
+"This email has not been verified yet. Access to this data has been denied."
+msgstr ""
+"Diese Emailadresse wurde noch nicht bestätigt. Zugriff auf diese Daten wurde "
+"verweigert."
 
 #: lib/actions/verify_subscription.action.php:1
 msgid "Verify subscription"
@@ -267,7 +286,7 @@ msgstr "Ihr Name"
 msgid "Your email address:"
 msgstr "Ihre Emailadresse:"
 
-#: views/manage_subscription.php:19 views/subscription.form.php:25
+#: views/manage_subscription.php:19 views/subscription.form.php:26
 msgid "you@example.com"
 msgstr "ich@example.com"
 
@@ -280,21 +299,24 @@ msgid "Unsubscribe"
 msgstr "Abmelden"
 
 #: views/manage_subscription.php:44
-msgid "Unsubscribe me"
-msgstr "Mich abmelden"
+msgid "Really unsubscribe me"
+msgstr "Wirklich abmelden"
 
-#: views/manage_subscription.php:57
-msgid "unsubscribe now!"
-msgstr "Jetzt abmelden!"
+#: views/manage_subscription.php:58
+msgid "OK"
+msgstr "OK"
 
 #: views/subscription.form.php:1
 msgid "Subscribe to our newsletter:"
-msgstr "Abonnieren Sie unsern Newsletter:"
+msgstr "Abonnieren Sie unseren Newsletter:"
 
-#: views/subscription.form.php:29
+#: views/subscription.form.php:30
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: views/subscription.form.php:30
+#: views/subscription.form.php:31
 msgid "Submit"
-msgstr "Abschicken"
+msgstr "Eintragen"
+
+#~ msgid "unsubscribe now!"
+#~ msgstr "Jetzt abmelden!"

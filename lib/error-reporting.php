@@ -2,6 +2,10 @@
 
 // ================= php error reporting =================
 
+if (isset($_GET["debug"]) and ($_GET["debug"] == "TRUE" or $_GET["debug"] == "true")) $cbNewsletter["config"]["debug"] = true;
+if (isset($_POST["debug"]) and ($_POST["debug"] == "TRUE" or $_POST["debug"] == "true")) $cbNewsletter["config"]["debug"] = true;
+
+
 
 if (isset($cbNewsletter["config"]["debug"]) and $cbNewsletter["config"]["debug"]) {
 

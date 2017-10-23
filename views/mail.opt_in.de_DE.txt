@@ -1,0 +1,18 @@
+Hallo %name%,
+
+Sie haben unseren Newsletter auf %server% abonniert. Willkommen!
+
+Um sicherzugehen, daß Sie wirklich unseren Newsletter erhalten wollen, klicken Sie bitte auf den folgenden Link:
+
+%link_process%
+
+Falls Sie sich nicht selbst eingetragen haben, oder Ihre Meinung geändert haben, brauchen Sie nichts zu tun. In diesem Falle wird Ihr Abonnement nach 30 Tagen automatisch ausgetragen. Solange Sie nicht Ihr Abonnement bestätigen, werden Sie auch keinen Newsletter auf diese Emailadresse erhalten.
+
+Unter jedem Newsletter finden Sie einen Link, mit dem Sie sich wieder austragen können.
+
+Hier können Sie Ihr Abonnement bearbeiten:
+
+%link_manage%
+
+Mit freundlichen Grüßen,
+Ihre Webcrew von %server%

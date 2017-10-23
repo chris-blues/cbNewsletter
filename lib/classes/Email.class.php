@@ -9,7 +9,7 @@ class Email {
   protected $subject;
   protected $body;
 
-  public function __construct($job, $data) {
+  public function __construct($job, $data, $locale) {
 
     if(is_object($data)) $subscriber = $data->getdata();
     elseif(is_array($data)) $subscriber = $data;
@@ -20,7 +20,7 @@ class Email {
 
     $this->subject = $this->assemble_subject($job);
     $this->header  = $this->assemble_header();
-    $this->body    = $this->assemble_body($job, $subscriber);
+    $this->body    = $this->assemble_body($job, $subscriber, $locale);
 
   }
 
@@ -60,7 +60,7 @@ class Email {
 
   }
 
-  private function assemble_body($job, $subscriber) {
+  private function assemble_body($job, $subscriber, $locale) {
 
     $link_url = "";
     if ($_SERVER["HTTPS"] == "on") $link_url .= "https://";
@@ -78,6 +78,7 @@ class Email {
 	"job" => "",
       )
     );
+    $link_manage .= "#cbNewsletter_mainBox";
     $link_manage = str_replace("&amp;", "&", $link_manage);
 
 
@@ -102,13 +103,14 @@ class Email {
 	    "job" => "",
 	  )
 	);
+	$link_process .= "#cbNewsletter_mainBox";
         $link_process = str_replace("&amp;", "&", $link_process);
 
         $body = str_replace(
           $search,
           $replace,
           file_get_contents(
-            realpath(dirname(__FILE__) . "/../../views/mail.opt_in.en.txt")
+            realpath(dirname(__FILE__) . "/../../views/mail.opt_in." . $locale . ".txt")
 	  )
 	);
         break;
@@ -127,6 +129,7 @@ class Email {
 	    "job" => "",
 	  )
 	);
+	$link_process .= "#cbNewsletter_mainBox";
         $link_process = str_replace("&amp;", "&", $link_process);
 
         $body = str_replace(

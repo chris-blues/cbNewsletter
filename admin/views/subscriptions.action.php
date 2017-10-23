@@ -92,7 +92,7 @@
 <?php
   foreach ($subscribers as $key => $value) {
     $subscriber = $value->getdata();
-    include("views/subscriber.php");
+    include(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/subscriber.php"));
   } ?>
 
     </table>

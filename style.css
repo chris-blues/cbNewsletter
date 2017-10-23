@@ -91,3 +91,7 @@ a.active {
 textarea.createNewsletter {
   height: 300px;
 }
+
+div#preview {
+  display: none;
+}

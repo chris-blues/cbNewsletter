@@ -7,6 +7,7 @@
     <meta name="robots" content="noindex,nofollow">
 
     <link rel="stylesheet" href="../style.css" type="text/css">
+    <script type="text/javascript" src="scripts.js"></script>
 
     <title><?php echo $_SERVER["SERVER_NAME"]; ?> - cbNewsletter - admin-area</title>
 
@@ -35,7 +36,7 @@
 <?php foreach (assembleGetString("array", array("view" => "create_newsletter")) as $key => $value) { ?>
         <input type="hidden" name="<?php echo $key; ?>" value="<?php echo $value; ?>">
 <?php } ?>
-        <button type="submit"><?php echo gettext("send newsletter") ?></button>
+        <button type="submit"><?php echo gettext("create newsletter") ?></button>
       </form>
 
 

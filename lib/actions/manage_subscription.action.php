@@ -117,13 +117,19 @@
 
 	      $result = $query->updateSubscribersEmail($db_data["id"], $data["new_email"]);
 
+	      if ($result !== false) {
+
+	        echo $HTML->infobox(gettext("Your email address has been updated."));
+
+	      }
+
 	      $subscriber = $query->getSubscriberData($data["id"]);
 	      $subscriber[0]->correctTypes();
               $db_data = $subscriber[0]->getdata();
 
               // =============  send verification email  =============
 
-              $optin = new Email("opt_in", $db_data);
+              $optin = new Email("opt_in", $db_data, $cbNewsletter["config"]["locale"]);
 
               if (!$optin->send_mail()) {
 
@@ -143,6 +149,12 @@
 
 	      $result = $query->updateSubscribersName($db_data["id"], $data["name"]);
 
+	      if ($result !== false) {
+
+	        echo $HTML->infobox(gettext("Your name has been updated."));
+
+	      }
+
 	      $subscriber = $query->getSubscriberData($data["id"]);
 	      $subscriber[0]->correctTypes();
               $db_data = $subscriber[0]->getdata();
@@ -161,9 +173,13 @@
 
         case "unsubscribe": {
 
-          if (isset($_POST["agree"]) and $_POST["agree"] == "agree") {
+          if (
+            (isset($_POST["agree"]) and $_POST["agree"] == "agree")
+            or
+            (isset($_GET["agree"]) and $_GET["agree"] == "agree")
+	  ) {
 
-            $optout = new Email("opt_out", $db_data);
+            $optout = new Email("opt_out", $db_data, $cbNewsletter["config"]["locale"]);
 
             if (!$optout->send_mail()) {
 
@@ -172,9 +188,7 @@
             } else {
 
               echo $HTML->infobox(
-                gettext(
-                  "A verification mail has been sent to your inbox. Please click the link, to verify that you really want to unsubscribe from our newsletters!\n"
-		)
+                gettext("A verification mail has been sent to your inbox. Please click the link, to verify that you really want to unsubscribe from our newsletters!\n")
 	      );
 
             }
@@ -219,6 +233,12 @@
                 "standalone" => "",
               )
     );
+
+  }
+
+  if (!isset($db_data["verified"]) or $db_data["verified"] !== true) {
+
+    echo $HTML->infobox(gettext("This email has not been verified yet. Access to this data has been denied."));
 
   }
 

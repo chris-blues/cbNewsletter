@@ -1,0 +1,11 @@
+
+
+----
+
+Newsletter @ %server%
+
+Manage your subscription here:
+%link_manage%
+
+Unsubscribe from newsletter here:
+%link_unsubscribe%

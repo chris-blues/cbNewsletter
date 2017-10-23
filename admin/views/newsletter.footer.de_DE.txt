@@ -1,0 +1,11 @@
+
+
+----
+
+Newsletter @ %server%
+
+Abonnement verwalten:
+%link_manage%
+
+Vom Newsletter austragen:
+%link_unsubscribe%

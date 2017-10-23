@@ -12,7 +12,7 @@ class Maintenance {
 
     $HTML = new HTML;
 
-    return $this->name . " has been optimized " . $HTML->code(prettyTime($timespan)) . " ago.<br>\n";
+    return "Database table " . $HTML->code($this->name) . " has been optimized " . $HTML->code(prettyTime($timespan)) . " ago.<br>\n";
 
   }
 

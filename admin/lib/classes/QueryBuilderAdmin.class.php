@@ -17,6 +17,18 @@ class QueryBuilderAdmin extends QueryBuilder {
     return $result;
   }
 
+  public function get_verified_subscribers() {
+
+    $statement = $this->Database->prepare(
+      "SELECT * FROM `cbNewsletter_subscribers`
+        WHERE `verified` = '1' ;"
+    );
+
+    $result = $this->callExecution($statement);
+
+    return $statement->fetchAll(PDO::FETCH_CLASS, "Subscriber");
+
+  }
 
   public function get_subscribers($filter = "", $order = "email") {
 
@@ -39,6 +51,21 @@ class QueryBuilderAdmin extends QueryBuilder {
       $statement->bindParam(':filter', $filter);
 
     }
+
+    $result = $this->callExecution($statement);
+
+    return $statement->fetchAll(PDO::FETCH_CLASS, "Subscriber");
+
+  }
+
+  public function get_subscriber($email) {
+
+    $statement = $this->Database->prepare(
+      "SELECT * FROM `cbNewsletter_subscribers`
+        WHERE `email` = :email ;"
+    );
+
+    $statement->bindParam(':email', $email);
 
     $result = $this->callExecution($statement);
 
@@ -192,8 +219,9 @@ class QueryBuilderAdmin extends QueryBuilder {
         `id` INT UNSIGNED NULL AUTO_INCREMENT ,
         `name` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
         `email` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
+        `locale` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
         `verified` BOOLEAN NOT NULL,
-        `hash` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL,
+        `hash` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
         PRIMARY KEY (`id`)
       )
       ENGINE = InnoDB CHARSET=utf8mb4 COLLATE utf8mb4_general_ci;

@@ -4,14 +4,15 @@
 
   $cbNewsletter["config"] = include_once(realpath(dirname(__FILE__) . "/lib/config.php"));
 
-  $cbNewsletter["config"]["basedir"] = dirname(__FILE__);
+  // set basedir to /path/to/newsletter/ , not /path/to/newsletter/admin
+  $cbNewsletter["config"]["basedir"] = realpath(dirname(__FILE__) . "/../");
 
 
 
   //load config
   $cbNewsletter["config"]["error_reporting"] = $cbNewsletter["config"]["debug_levels"][$cbNewsletter["config"]["debug_level"]];
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/../lib/error-reporting.php"));
+  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/error-reporting.php"));
 
   $debug = $cbNewsletter["config"]["debug"];
 
@@ -22,10 +23,10 @@
   $debug = true;
 
 
-  include_once(realpath(dirname(__FILE__) . "/lib/bootstrap.php"));
+  include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/bootstrap.php"));
 
 
-  include_once("lib/routing.php");
+  include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/routing.php"));
 
   if (isset($error)) {
     cbNewsletter_showErrors($error);

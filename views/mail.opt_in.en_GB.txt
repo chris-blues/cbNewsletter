@@ -1,6 +1,6 @@
 Hello %name%,
 
-You have subscribed to our newsletter at %server% .
+You have subscribed to our newsletter at %server% . Welcome!
 
 To make certain, that you really want to subscribe to our newsletter click on the following link:
 

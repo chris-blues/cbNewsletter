@@ -1,11 +1,12 @@
       <h3><?php echo gettext("Subscribe to our newsletter:"); ?></h3>
 
       <form
-        action="<?php echo assembleGetString("string", array("view" => "enter_subscription")); ?>"
+        action="<?php echo assembleGetString("string", array("view" => "enter_subscription")); ?>#cbNewsletter_mainBox"
         id="cbNewsletter_subscription"
         accept-charset="utf-8"
         method="POST"
       >
+        <input type="hidden" name="locale" value="<?php echo $locale; ?>">
         <label for="name"><?php echo gettext("Name"); ?></label><br>
           <input
             type="text"

@@ -1,7 +1,7 @@
 
     <div class="shadow">
       <h4><?php echo gettext("Change your subscription"); ?></h4>
-      <form action="<?php echo $link; ?>&amp;job=update" method="POST" accept-charset="utf-8">
+      <form action="<?php echo $link; ?>&amp;job=update#cbNewsletter_mainBox" method="POST" accept-charset="utf-8">
         <label for="username"><?php echo gettext("Your name:"); ?></label><br>
         <input
           id="username"
@@ -40,9 +40,10 @@
 
     <div class="shadow">
       <h4><?php echo gettext("Unsubscribe"); ?></h4>
-      <form action="<?php echo $link; ?>&amp;job=unsubscribe" method="POST" accept-charset="utf-8">
-        <label for="unsubscribe"><?php echo gettext("Unsubscribe me") ?></label>
-        <input type="checkbox" id="unsubscribe" name="agree" value="agree" required>
+      <form action="<?php echo $link; ?>&amp;job=unsubscribe#cbNewsletter_mainBox" method="POST" accept-charset="utf-8">
+        <label><?php echo gettext("Really unsubscribe me") ?>
+          <input type="checkbox" id="unsubscribe" name="agree" value="agree" required>
+	</label>
 <?php
 
   foreach ($post as $key => $value) {
@@ -54,6 +55,6 @@
   }
 
 ?>
-        <button type="submit"><?php echo gettext("unsubscribe now!"); ?></button>
+        <button type="submit"><?php echo gettext("OK"); ?></button>
       </form>
     </div>

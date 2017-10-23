@@ -58,7 +58,7 @@
 
 // =============  send verification email  =============
 
-      $optin = new Email("opt_in", $new_subscription);
+      $optin = new Email("opt_in", $new_subscription, $cbNewsletter["config"]["locale"]);
 
       if (!$optin->send_mail()) {
 
@@ -87,7 +87,9 @@
 
 // After processing show the subscription form again!
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/views/subscription.form.php"));
+  if (isset($error)) {
+    include_once(realpath($cbNewsletter["config"]["basedir"] . "/views/subscription.form.php"));
+  }
 
 
 ?>

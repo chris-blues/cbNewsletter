@@ -1,0 +1,16 @@
+Hallo %name%,
+
+Sie wollen unseren Newsletter auf %server% nicht mehr bekommen?
+
+Um zu bestätigen, daß Sie sich wirklich aus unserem Newsletter austragen wollen, klicken Sie bitte auf den folgenden Link:
+
+%link_process%
+
+Falls Sie sich nicht selbst ausgetragen haben, oder Ihre Meinung geändert haben, brauchen Sie nichts zu tun. In diesem Falle wird Ihr Abonnement nicht verändert.
+
+Hier können Sie Ihr Abonnement bearbeiten:
+
+%link_manage%
+
+Mit freundlichen Grüßen,
+Ihre Webcrew von %server%
