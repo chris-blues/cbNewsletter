@@ -11,6 +11,6 @@ User interface is working for now, admin interface is not...
   * add po file(s)
   * add translations (at least "de_DE")
 * Admin area:
-  * add database credentials mask
+  * add config mask
   * add "create newsletter" routine
   * add possibility to edit subscribers data (JS / XHTTPrequest?)
