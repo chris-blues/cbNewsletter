@@ -117,11 +117,11 @@ class Newsletter {
 
     if (!mail($to, $this->subject, $text, $header)) {
 
-      echo $HTML->errorbox("Error! Could not send newsletter to " . $this->subscriber["name"] . " <" . $this->subscriber["email"] . ">");
+      return false;
 
     } else {
 
-      echo $HTML->infobox("Newsletter sent to " . $this->subscriber["name"] . " <" . $this->subscriber["email"] . ">");
+      return true;
 
     }
 

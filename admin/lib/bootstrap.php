@@ -13,7 +13,7 @@
 
 
   // Database related
-  $cbNewsletter["config"]["database"] = include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/dbcredentials.php"));
+  $cbNewsletter["config"]["database"] = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/dbcredentials.php"));
 
   include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Connection.class.php"));
   include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/QueryBuilder.class.php"));
@@ -50,7 +50,29 @@
 
     $maintenance_info .= $table->get_last_optimization();
 
-    if ($table->needs_maintenance()) $query->optimize_table($table->get_name());
+    if ($table->needs_maintenance()) {
+
+      $tablename = $table->get_name();
+
+      if ($debug) {
+
+        $maintenance_info .= "Table " . $tablename . " maintenance cycle has passed! Optimizing table...";
+
+      }
+
+      if ($query->optimize_table($tablename)) {
+
+        $maintenance_info .= " <span class=\"green\">✔</span>";
+
+      } else {
+
+        $maintenance_info .= " ERROR!";
+
+      }
+
+      $maintenance_info .= "<br>\n";
+
+    }
 
   }
 

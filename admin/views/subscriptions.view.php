@@ -1,28 +1,3 @@
-<?php
-
-  if (isset($_POST["search"])) {
-    $search = $_POST["search"];
-  } elseif (isset($_GET["search"])) {
-    $search = $_GET["search"];
-  } else {
-    $search = "";
-  }
-
-  if (isset($_POST["order"])) {
-    $order = $_POST["order"];
-  } elseif (isset($_GET["order"])) {
-    $order = $_GET["order"];
-  } else {
-    $order = "email";
-  }
-
-  $link = assembleGetString(
-    "string", array(
-      "view" => "subscriptions",
-    )
-  );
-
-?>
 
     <div class="center shadow">
 
@@ -54,12 +29,6 @@
     </div>
 
 
-
-<?php
-
-  $subscribers = $query->get_subscribers($search, $order);
-
-?>
 
     <table id="subscribers">
 

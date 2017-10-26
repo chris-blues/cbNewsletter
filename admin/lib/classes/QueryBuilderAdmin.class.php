@@ -30,7 +30,7 @@ class QueryBuilderAdmin extends QueryBuilder {
 
   }
 
-  public function get_subscribers($filter = "", $order = "email") {
+  public function get_subscribers($filter = "", $order = "name") {
 
     if ($filter == "") {
 

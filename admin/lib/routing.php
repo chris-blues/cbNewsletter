@@ -30,11 +30,11 @@
 
   if (isset($_GET["view"]) and strlen($_GET["view"]) > 1 and $_GET["view"] != "subscriptions") {
 
-    include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/" . $_GET["view"] . ".action.php"));
+    include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/actions/" . $_GET["view"] . ".action.php"));
 
   } else {
 
-    include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/subscriptions.action.php"));
+    include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/actions/subscriptions.action.php"));
 
   }
 

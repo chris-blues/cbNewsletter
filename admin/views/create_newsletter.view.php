@@ -1,21 +1,4 @@
-<?php
 
-  $subject = findData("subject");
-  if ($subject === false) unset($subject);
-
-  $text = findData("text");
-  if ($text === false) unset($text);
-
-  if ($debug) {
-
-    $debugMessage = "<pre>findData(\"subject\") -> " . $subject . " (" . gettype($subject) . "(" . strlen($subject) . "))\n";
-    $debugMessage .= "findData(\"text\") -> " . $text . " (" . gettype($text) . "(" . strlen($text) . "))</pre>\n";
-
-    echo $HTML->infobox($debugMessage, "debug");
-
-  }
-
-?>
     <div id="preview" class="shadow">
       <h3 id="preview_subject"></h3>
       <pre id="preview_text"></pre>

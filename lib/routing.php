@@ -11,8 +11,8 @@
 
   if (isset($cbNewsletter["config"]["view"]) and strlen($cbNewsletter["config"]["view"]) > 1) {
 
-    if ($debug) echo "<b>[ routing -&gt; " . $cbNewsletter["config"]["view"] . " ]</b> -&gt; " . realpath($cbNewsletter["config"]["basedir"] . "/lib/actions/" . $cbNewsletter["config"]["view"] . ".action.php") . "<br>\n";
-    include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/actions/" . $cbNewsletter["config"]["view"] . ".action.php"));
+    if ($debug) echo "<b>[ routing -&gt; " . $cbNewsletter["config"]["view"] . " ]</b> -&gt; " . realpath($cbNewsletter["config"]["basedir"] . "/actions/" . $cbNewsletter["config"]["view"] . ".action.php") . "<br>\n";
+    include_once(realpath($cbNewsletter["config"]["basedir"] . "/actions/" . $cbNewsletter["config"]["view"] . ".action.php"));
 
   } else {
 
