@@ -20,10 +20,7 @@ class Maintenance {
 
     $timespan = time() - $this->optimized;
 
-    $timespan_needsMaintenance = 14 * 86400;
-
-    // development override...
-    $timespan_needsMaintenance = 600;
+    $timespan_needsMaintenance = 30 * 86400;
 
     if ($timespan > $timespan_needsMaintenance) return true;
     else return false;
