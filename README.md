@@ -10,6 +10,7 @@ This still is a work in progress. Don't use it yet!
   * unsubscribe from subscription.form somehow
 
 * admin UI:
+  * protect admin dir with .htaccess/.htpasswd + add UI accordingly
   * templates support
 
 * support HTML newsletter
