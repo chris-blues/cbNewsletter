@@ -8,9 +8,8 @@ This still is a work in progress. Don't use it yet!
 ### ToDo:
 * public UI:
   * unsubscribe from subscription.form somehow
-
 * admin UI:
   * protect admin dir with .htaccess/.htpasswd + add UI accordingly
   * templates support
-
+* refactor $debugout to OOP
 * support HTML newsletter
