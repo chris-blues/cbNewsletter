@@ -23,14 +23,16 @@ class QueryBuilder {
 
     $statement = $this->Database->prepare(
       "INSERT INTO `cbNewsletter_subscribers`
-        (`name`, `email`, `hash`, `verified`)
+        (`name`, `email`, `hash`, `subscribed`, `verified`, `locale`)
         VALUES
-        (:name, :email, :hash, 0) ;"
+        (:name, :email, :hash, :subscribed, 0, :locale) ;"
     );
 
     $statement->bindParam(':name', $subscriber["name"]);
     $statement->bindParam(':email', $subscriber["email"]);
     $statement->bindParam(':hash', $subscriber["hash"]);
+    $statement->bindParam(':subscribed', $subscriber["subscribed"]);
+    $statement->bindParam(':locale', $subscriber["locale"]);
 
     $result = $this->callExecution($statement);
 
@@ -48,12 +50,26 @@ class QueryBuilder {
 
     $statement->bindParam(':id', $id);
 
-    $result = $this->callExecution($statement);
-
-    return $result;
+    return $this->callExecution($statement);
 
   }
 
+  public function remove_unverified_subsciptions() {
+
+    $timespan = time() - (30 * 24 * 60 * 60); // 30 days in seconds
+
+    $statement = $this->Database->prepare(
+      "DELETE FROM `cbNewsletter_subscribers`
+       WHERE `subscribed` < :timespan AND `verified` = '0';"
+    );
+
+    $statement->bindParam(':timespan', $timespan, PDO::PARAM_INT);
+
+    $result = $this->callExecution($statement);
+
+    return $statement->rowCount();
+
+  }
 
   public function check_existing($email) {
 
@@ -185,6 +201,63 @@ class QueryBuilder {
 
     $statement->bindParam(':name', $name);
     $statement->bindParam(':id', $id);
+
+    $result = $this->callExecution($statement);
+
+    return $result;
+
+  }
+
+  public function get_maintenance_data() {
+
+    $statement = $this->Database->prepare(
+      "SELECT * FROM `cbNewsletter_maintenance`;"
+    );
+
+    $result = $this->callExecution($statement);
+
+    return $statement->fetchAll(PDO::FETCH_CLASS, "Maintenance");
+
+  }
+
+
+  public function optimize_table($name) {
+
+    $statement = $this->Database->prepare("OPTIMIZE TABLE `$name`;");
+
+    $result = $this->callExecution($statement);
+
+    if ($result) $this->update_maintenance_table($name);
+
+    $HTML = new HTML;
+    $HTML->infobox(sprintf(gettext("Database table %s has been optimized."), $name));
+
+    return $result;
+
+  }
+
+  public function get_table_names() {
+
+    $statement = $this->Database->prepare(
+        "SHOW TABLES LIKE 'cbNewsletter_%' ;"
+      );
+
+    $result = $this->callExecution($statement);
+
+    return $statement->fetchAll(PDO::FETCH_COLUMN, 0);
+
+  }
+
+  private function update_maintenance_table($name) {
+
+    $statement = $this->Database->prepare(
+      " UPDATE `cbNewsletter_maintenance`
+        SET `optimized` = :optimized
+        WHERE `name` = :name ;"
+    );
+
+    $statement->bindParam(':optimized', time());
+    $statement->bindParam(':name', $name);
 
     $result = $this->callExecution($statement);
 

@@ -51,6 +51,28 @@ class HTML {
 
   }
 
+  public function ol($list) {
+
+    if (!is_array($list)) {
+      return $this->errorbox("\$HTML->ul(): " . gettext("This is not an array!"));
+    } else {
+
+      $result = "    <ol>\n";
+
+      foreach ($list as $value) {
+
+        $result .= "      <li>" . $value . "</li>\n";
+
+      }
+
+      $result .= "    </ol>\n";
+
+    }
+
+    return $result;
+
+  }
+
   public function pre($string) {
 
     return "      <pre>" . $string . "</pre>\n";

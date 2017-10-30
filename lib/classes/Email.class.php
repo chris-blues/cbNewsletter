@@ -136,7 +136,7 @@ class Email {
           $search,
           $replace,
           file_get_contents(
-            realpath(dirname(__FILE__) . "/../../views/mail.opt_out.en.txt")
+            realpath(dirname(__FILE__) . "/../../views/mail.opt_out." . $locale . ".txt")
 	  )
 	);
         break;

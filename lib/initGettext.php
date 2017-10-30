@@ -1,35 +1,61 @@
 <?php
 
+  $debugout .= "<pre><b>[ initGettext ]</b>\n";
+
 $locales = scandir(realpath($cbNewsletter["config"]["basedir"] . "/locale"));
 foreach ($locales as $key => $language) {
   if ($language == "." or $language == ".." or !is_dir($language)) unset($locales[$key]);
 }
 
-// $cbNewsletter["config"]["language"] overrides everything
-if ($cbNewsletter["config"]["language"] != "") $locale = $cbNewsletter["config"]["language"];
-else {
+$debugout .= str_pad("Got locale from",90);
+
+// $cbNewsletter["config"]["general"]["language"] overrides everything
+if ($cbNewsletter["config"]["general"]["language"] != "") {
+
+  $locale = $cbNewsletter["config"]["general"]["language"];
+  $debugout .= "/admin/config/general.php\n";
+
+} else {
+
   // if we have some user-setting from the URI then use this
-  if (isset($_GET["lang"])) $locale = $_GET["lang"];
-  else {
+  if (isset($_GET["lang"])) {
+
+    $locale = $_GET["lang"];
+    $debugout .= "\$_GET\n";
+
+  } else {
+
     if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
+
       // if still nothing, try browser preference
       $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
       switch ($lang) {
+
         case "de": $locale = "de_DE"; break;
         case "en": $locale = "en_GB"; break;
+
+        default:   $locale = "en_GB"; break;
+
       }
+
+      $debugout .= "HTTP_ACCEPT_LANGUAGE\n";
+
     }
+
   }
+
 }
+
 // if all fails, use "en_GB"! (actually use inline gettext strings)
 if (!isset($locale) or $locale == "") $locale = "en_GB";
+
 
 if ($locale == "de") $locale = "de_DE";
 if ($locale == "en") $locale = "en_GB";
 
 $directory = realpath($cbNewsletter["config"]["basedir"] . "/locale");
 $textdomain = "cbNewsletter";
-$cbNewsletter["config"]["locale"] = $locale;
+$cbNewsletter["config"]["general"]["locale"] = $locale;
 $localeName = $locale . ".utf8";
 
 $bindtextdomain = bindtextdomain($textdomain, $directory);
@@ -37,11 +63,14 @@ $localeString = setlocale(LC_MESSAGES, $localeName) . " -> ";
 $settextdomain = textdomain($textdomain);
 $localeString .= bind_textdomain_codeset($textdomain, 'UTF-8');
 
-if ($debug) {
-  echo $HTML->infobox(
-    "bind_textdomain: " . $bindtextdomain . "<br>\ntextdomain: " . $settextdomain . "<br>\nlocale: " . $localeString,
-    "debug"
-  );
-}
+
+
+
+$debugout .= str_pad("bind_textdomain", 90) . $bindtextdomain . "\n";
+$debugout .= str_pad("textdomain", 90) . $settextdomain . "\n";
+$debugout .= str_pad("locale", 90) . $localeString . "\n";
+
+
+$debugout .= "</pre>";
 
 ?>

@@ -38,12 +38,14 @@ class Data {
       $result = $this->findData($name);
       if ($result !== false) {
 
-	if ($type == "id") $result = intval($result);
+        if ($type == "id") $result = intval($result);
 
-	$validated = $this->validate($name, $result);
-	if ($validated !== false) {
-	  $this->$name = $validated;
-	}
+        $validated = $this->validate($name, $result);
+        if ($validated !== false) {
+
+          $this->$name = $validated;
+
+        }
 
       }
 

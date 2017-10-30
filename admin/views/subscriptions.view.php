@@ -17,7 +17,7 @@
       </form>
 
       <form
-        action="index.php<?php echo assembleGetString("string", array("view" => "subscriptions", "order" => "id")); ?>"
+        action="index.php<?php echo assembleGetString("string", array("view" => "subscriptions", "order" => $order)); ?>"
         method="POST"
         accept-charset="utf-8"
         class="inline">
@@ -54,6 +54,7 @@
             <?php echo gettext("Email"); ?>
 	  </a>
         </th>
+        <th><?php echo gettext("Subscribed"); ?></th>
         <th><?php echo gettext("Verified"); ?></th>
         <th><?php echo gettext("Delete"); ?></th>
       </tr>

@@ -1,19 +1,20 @@
 <?php
 
   $subject = findData("subject");
-  if ($subject === false) unset($subject);
+  $text    = findData("text");
 
-  $text = findData("text");
-  if ($text === false) unset($text);
+  if ($subject === false) $subject = "false";
+  if ($text    === false) $text    = "false";
 
-  if ($debug) {
 
-    $debugMessage = "<pre>findData(\"subject\") -> " . $subject . " (" . gettype($subject) . "(" . strlen($subject) . "))\n";
-    $debugMessage .= "findData(\"text\") -> " . $text . " (" . gettype($text) . "(" . strlen($text) . "))</pre>\n";
+  $debugout .= "<pre><b>[ create_newsletter.action ]</b>\n";
+  $debugout .= "findData(\"subject\") -> " . $subject . "\n";
+  $debugout .= "findData(\"text\")    -> " . $text . "\n";
+  $debugout .= "</pre>\n";
 
-    echo $HTML->infobox($debugMessage, "debug");
 
-  }
+  if ($subject == "false") unset($subject);
+  if ($text    == "false") unset($text);
 
   include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/create_newsletter.view.php"));
 

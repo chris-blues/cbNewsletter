@@ -2,6 +2,7 @@
 
 class Newsletter {
 
+  protected $to;
   protected $from;
   protected $subject;
   protected $text;
@@ -34,6 +35,8 @@ class Newsletter {
 
     }
 
+    $this->to = $this->subscriber["name"] . " <" . $this->subscriber["email"] . ">";
+
   }
 
   private function assemble_link_list() {
@@ -53,7 +56,7 @@ class Newsletter {
                                               "id"    => $this->subscriber["id"],
                                               "hash"  => $this->subscriber["hash"],
                                               "agree" => "agree",
-					  )
+                                          )
     );
     return str_replace("&amp;", "&", $link);
 
@@ -61,12 +64,9 @@ class Newsletter {
 
   private function assemble_header() {
 
-    $to = $this->subscriber["name"] . " <" . $this->subscriber["email"] . ">";
-
     $header  = "Content-Type: text/plain; charset = \"UTF-8\";\r\n";
     $header .= "Content-Transfer-Encoding: 8bit\r\n";
     $header .= "From: " . $this->from . "\r\n";
-    $header .= "To: " . $to . "\r\n";
     $header .= "Return-Path: <>\r\n";
     $header .= "Precedence: list\r\n";
     $header .= "List-Id: " . $this->from . " <" . $this->assemble_link_list() . ">\r\n";
@@ -107,15 +107,16 @@ class Newsletter {
 
     $text  = wordwrap($this->text, 70);
     $text .= str_replace(
-	      $search,
-	      $replace,
-	      file_get_contents(
-		realpath(dirname(__FILE__) . "/../../views/newsletter.footer." . $this->subscriber["locale"] . ".txt")
-	      )
-	    );
+              $search,
+              $replace,
+              file_get_contents(
+                realpath(dirname(__FILE__) . "/../../views/newsletter.footer." . $this->subscriber["locale"] . ".txt")
+              )
+            );
 
 
-    if (!mail($to, $this->subject, $text, $header)) {
+
+    if (!mail($this->to, $this->subject, $text, $header)) {
 
       return false;
 

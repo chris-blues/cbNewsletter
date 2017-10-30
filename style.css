@@ -13,12 +13,25 @@
   color: green;
 }
 
+.red {
+  color: red;
+  font-weight: bold;
+}
+
 .notes {
   font-size: 0.8em;
 }
 
 .inline {
   display: inline;
+}
+
+.clear {
+  clear: both;
+}
+
+.hidden {
+  display: none;
 }
 
 .cbNewsletter_errors, .errors {
@@ -35,6 +48,22 @@ pre {
   background-color: #CCC;
 }
 
+pre pre {
+  background-color: #DDD;
+}
+
+pre pre pre {
+  background-color: #CCC;
+}
+
+pre pre pre pre {
+  background-color: #DDD;
+}
+
+pre pre pre pre pre {
+  background-color: #CCC;
+}
+
 table {
   border-collapse: collapse;
   width: 100%;
@@ -42,6 +71,7 @@ table {
 
 th, td {
   height: 30px;
+  text-align: center;
 }
 
 th {
@@ -81,7 +111,7 @@ a.active {
   background-color: #EEE;
   background-image: url('debug.png');
   background-repeat: no-repeat;
-  background-position: 5px;
+  background-position: 5px 5px;
 }
 
 .createNewsletter {
@@ -94,4 +124,18 @@ textarea.createNewsletter {
 
 div#preview {
   display: none;
+}
+
+.config {
+  max-width: 400px;
+  min-width: 220px;
+  float: left;
+}
+
+td.input {
+  width: 150px;
+}
+
+td.input input {
+/*   width: 100%; */
 }

@@ -1,2 +1,2 @@
 **/php?errors.log
-admin/lib/dbcredentials.php
+admin/config/dbcredentials.php

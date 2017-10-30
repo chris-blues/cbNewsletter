@@ -7,6 +7,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   }
 
+  // the config page will need reloading after something was saved
+  var needReload = document.getElementById("needReload");
+
+  if (needReload != null) {
+
+    var timer = 3;
+    countDown(timer);
+
+  }
+
 });
 
 
@@ -23,3 +33,19 @@ function showPreview() {
 
 }
 
+function countDown(timer) {
+
+  var link = needReload.getAttribute("data-link");
+  var spanTimer = document.getElementById("timer");
+
+  spanTimer.innerHTML = timer;
+
+  if (timer == 0) {
+    window.location = link;
+  }
+
+  timer = timer - 1;
+
+  setTimeout(function(){ countDown(timer); }, 1000);
+
+}

@@ -4,6 +4,12 @@
       <pre id="preview_text"></pre>
     </div>
 
+<?php
+
+  if (!isset($subject)) $subject = $_SERVER["SERVER_NAME"] . " " . gettext("Newsletter");
+  if (!isset($text))    $text = gettext("Hello %name%,\n\nthis is a newsletter from %server% .\n\nBest regards,\nyour newsletter team\n\nYou will find an unsubscription link below:\n");
+
+?>
 
     <form action="index.php<?php echo assembleGetString("string", array("view" => "send_newsletter")) ?>" method="POST" accept-charset="utf-8" class="center shadow">
       <label><?php echo gettext("subject"); ?><br>

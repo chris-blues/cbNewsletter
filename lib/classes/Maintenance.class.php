@@ -6,13 +6,16 @@ class Maintenance {
   protected $ctime;
   protected $optimized;
 
-  public function get_last_optimization() {
+  public function get_last_optimization($pretty = false) {
 
     $timespan = time() - $this->optimized;
 
     $HTML = new HTML;
 
-    return "Database table " . $HTML->code($this->name) . " has been optimized " . $HTML->code(prettyTime($timespan)) . " ago.<br>\n";
+    if ($pretty === true)
+      return "Database table " . $HTML->code($this->name) . " has been optimized " . $HTML->code(prettyTime($timespan)) . " ago.<br>\n";
+    else
+      return $timespan;
 
   }
 

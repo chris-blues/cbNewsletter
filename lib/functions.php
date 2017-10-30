@@ -84,54 +84,37 @@ if (!function_exists("dump_var")) {
 
 
 
-function cleanupErrors($errors, $bubble = false) {
 
-  if (isset($errors) and $errors != "empty") {
-    foreach ($errors as $key => $value) {
-      if (is_array($value)) {
-        $errors = cleanupErrors($value, true);
-        if ($errors == "empty") {
-          unset($errors);
-        }
-      } else {
-        if ($value == false or $value == "") {
-          unset($errors[$key]);
-        }
-      }
-    }
-  }
-
-  if (isset($errors) and count($errors) < 1) unset($errors);
-
-  if (isset($errors)) return $errors;
-  else return "empty";
-
-}
 
 function cbNewsletter_showErrors($errors, $bubble = false) {
 
   if (!$bubble) {
 
-    // cleanup false positives first! Exit function if nothing is left.
-    $errors = cleanupErrors($errors);
-    if ($errors == "empty") return;
-
     echo "<div class=\"errors shadow\">\n";
     echo "  <b>Errors:</b>\n";
+
   }
+
   echo "  <ul>\n";
 
   foreach ($errors as $key => $error) {
-    if (!is_bool($error)) { echo "    <li>"; }
+
+    echo "    <li>";
+
     if (is_array($error)) {
-      echo "<b>{$key}</b>";
+
+      echo "      <b>{$key}:</b>";
       cbNewsletter_showErrors($error, true);
+
     } else {
-      if (!is_bool($error)) {
-        echo "<b>{$key}:</b> $error";
-      }
+
+      if (is_bool($error)) { $error = ($error) ? "true" : "false"; }
+      echo "      <b>{$key}:</b> $error";
+
     }
-    if (!is_bool($error)) { echo "</li>\n"; }
+
+    echo "    </li>\n";
+
   }
 
   echo "  </ul>\n";

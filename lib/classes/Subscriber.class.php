@@ -7,16 +7,18 @@ class Subscriber {
   protected $email;
   protected $locale;
   protected $hash;
+  protected $subscribed;
   protected $verified;
 
   public function getdata() {
 
     $data = array(
-      "id"       => $this->id,
-      "name"     => $this->name,
-      "email"    => $this->email,
-      "locale"   => $this->locale,
-      "hash"     => $this->hash,
+      "id"         => $this->id,
+      "name"       => $this->name,
+      "email"      => $this->email,
+      "locale"     => $this->locale,
+      "hash"       => $this->hash,
+      "subscribed" => $this->subscribed,
     );
 
     switch (intval($this->verified)) {
@@ -61,11 +63,12 @@ class Subscriber {
 
     }
 
-    $this->id       = null;
-    $this->name     = $name;
-    $this->email    = $email;
-    $this->hash     = $this->generate_hash($email);
-    $this->verified = false;
+    $this->id         = null;
+    $this->name       = $name;
+    $this->email      = $email;
+    $this->hash       = $this->generate_hash($email);
+    $this->subscribed = time();
+    $this->verified   = false;
 
   }
 
@@ -73,6 +76,12 @@ class Subscriber {
   private function generate_hash($string) {
 
     return hash('sha256', time() . $string);
+
+  }
+
+  public function getIdAndSubscribed() {
+
+    return array("id" => $this->id, "subscribed" => $this->subscribed);
 
   }
 

@@ -1,89 +1,53 @@
 <?php
+
+  $debugout .= "<pre><b>[ bootstrap ]</b>\n";
+
   date_default_timezone_set('Europe/Berlin');
+  $debugout .= str_pad("date_default_timezone set to: ", 90) . date_default_timezone_get() . "\n";
 
   // General functions
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/functions.php"));
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/HTML.class.php"));
+  $debugout .= str_pad("including /lib/functions.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/functions.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
+
+  $debugout .= str_pad("including /lib/classes/HTML.class.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/HTML.class.php"))) ? $debugout .= "OK\n" :  $debugout .= "FAILED\n";
+
   $HTML = new HTML;
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/initGettext.php"));
+  $debugout .= str_pad("including /lib/initGettext.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/initGettext.php"))) ? : $debugout .= "FAILED\n";
 
   // HTML header
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/header.php"));
+  $debugout .= str_pad("including /admin/views/header.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/header.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
 
 
-  // Database related
-  $cbNewsletter["config"]["database"] = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/dbcredentials.php"));
+  if (!isset($_GET["view"]) or $_GET["view"] != "config") {
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Connection.class.php"));
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/QueryBuilder.class.php"));
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/classes/QueryBuilderAdmin.class.php"));
+    // Other classes
+    $debugout .= str_pad("including /lib/classes/Subscriber.class.php ", 90);
+    (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Subscriber.class.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
 
+    // Database related
+    $debugout .= str_pad("including /lib/bootstrap.database.common.php", 90);
+    (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/bootstrap.database.common.php"))) ? : $debugout .= "FAILED\n";
 
-  // Other classes
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Subscriber.class.php"));
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/classes/Maintenance.class.php"));
+    $debugout .= str_pad("including /admin/lib/bootstrap.database.php", 90);
+    (include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/bootstrap.database.php"))) ? : $debugout .= "FAILED\n";
 
-
-
-  $connect = Connection::make($cbNewsletter["config"]["database"]);
-  if (is_object($connect)) {
-
-    $query = new QueryBuilderAdmin($connect);
-
-    $initTables = $query->create_missing_tables();
-
-    $cbNewsletter["config"]["database"]["tables"] = $query->get_table_names();
+    $debugout .= str_pad("including /lib/bootstrap.maintenance.php", 90);
+    (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/bootstrap.maintenance.php"))) ? : $debugout .= "FAILED\n";
 
   } else {
 
-    echo $HTML->errorbox(gettext("Error! Could not connect to database!"));
-    $error["database"]["connect"] = true;
+    $debugout .= "skipping database bootstrapping...\n";
 
   }
 
 
-  $tables_maintenance = $query->get_maintenance_data();
 
-  $maintenance_info = "";
-  foreach ($tables_maintenance as $key => $table) {
 
-    $maintenance_info .= $table->get_last_optimization();
+  $debugout .= "</pre>";
 
-    if ($table->needs_maintenance()) {
-
-      $tablename = $table->get_name();
-
-      if ($debug) {
-
-        $maintenance_info .= "Table " . $tablename . " maintenance cycle has passed! Optimizing table...";
-
-      }
-
-      if ($query->optimize_table($tablename)) {
-
-        $maintenance_info .= " <span class=\"green\">✔</span>";
-
-      } else {
-
-        $maintenance_info .= " ERROR!";
-
-      }
-
-      $maintenance_info .= "<br>\n";
-
-    }
-
-  }
-
-  if ($debug) echo $HTML->infobox($maintenance_info, "debug");
-
-  if (isset($_POST["job"]) and $_POST["job"] == "optimize_tables") {
-
-    foreach ($cbNewsletter["config"]["database"]["tables"] as $name) {
-      $result = $query->optimize_table($name);
-    }
-
-  }
 
 ?>

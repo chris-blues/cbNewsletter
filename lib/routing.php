@@ -1,27 +1,45 @@
 <?php
 
-  if ($debug) {
-    echo "<b>[ routing ] [ view ]</b>: ";
-    if (isset($cbNewsletter["config"]["view"])) echo $cbNewsletter["config"]["view"];
-    else echo "&lt; none &gt;";
-    echo "<br>\n";
-  }
+  $debugout .= "<pre><b>[ routing ]</b>\n";
 
 // =================== Routing ===================
 
+// ================  pre display  ================
+
+
+
+
+
+// ================  pre display  ================
+
+
+
+
+
   if (isset($cbNewsletter["config"]["view"]) and strlen($cbNewsletter["config"]["view"]) > 1) {
 
-    if ($debug) echo "<b>[ routing -&gt; " . $cbNewsletter["config"]["view"] . " ]</b> -&gt; " . realpath($cbNewsletter["config"]["basedir"] . "/actions/" . $cbNewsletter["config"]["view"] . ".action.php") . "<br>\n";
-    include_once(realpath($cbNewsletter["config"]["basedir"] . "/actions/" . $cbNewsletter["config"]["view"] . ".action.php"));
+    $debugout .= str_pad("including /actions/" . $_GET["view"] . ".action.php ", 90);
+    (include_once(realpath($cbNewsletter["config"]["basedir"] . "/actions/" . $_GET["view"] . ".action.php"))) ? : $debugout .= "FAILED\n";
 
   } else {
 
-    if ($debug) echo "<b>[ routing -&gt; &lt; none &gt; ]</b> -&gt; " . realpath($cbNewsletter["config"]["basedir"] . "/views/subscription.form.php") . "<br>\n";
-    include_once(realpath($cbNewsletter["config"]["basedir"] . "/views/subscription.form.php"));
+    $debugout .= str_pad("including /admin/actions/subscription.form.php ", 90);
+    (include_once(realpath($cbNewsletter["config"]["basedir"] . "/views/subscription.form.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
 
   }
 
 
+
+
+
+// ===============  post display  ================
+
+
+
+
+
+
+// ===============  post display  ================
 
 // =================== Routing ===================
 

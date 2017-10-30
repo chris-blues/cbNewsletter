@@ -2,7 +2,10 @@
 
 <?php
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/verify.transmitted_data.php"));
+  $debugout .= "<pre><b>[ verify_unsubscription ]</b>\n";
+
+  $debugout .= str_pad("including /lib/verify.transmitted_data.php", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/verify.transmitted_data.php"))) ? : $debugout .= "FAILED\n";
 
 
 
@@ -10,30 +13,23 @@
 
   if (!isset($error["verification"]["error"]) or !$error["verification"]["error"]) {
 
-    if ($debug) echo "<b>[ verify_subscription.action ]</b> Transferred data seems fine so far! Checking against the database!<br>\n";
-
     $result = $query->check_subscription($data["id"], $data["hash"]);
 
-    if ($debug) {
-      echo "<b>[ verify_subscription.action ]</b> $result entry found which matches this data.<br>\n";
-    }
+    $debugout .= str_pad("verifying data against the database", 90);
 
     if (intval($result) === 1) {
 
 // ============  verify data against database  ============
 
+      $debugout .= "passed\n";
+
       $subscriber = $query->getSubscriberData($data["id"]);
       $subscriber[0]->correctTypes();
       $db_data = $subscriber[0]->getdata();
 
-
-      if ($debug) {
-        echo "\$db_data:";
-        dump_var($db_data);
-      }
-
       $result = $query->removeSubscription($data["id"]);
 
+      $debugout .= str_pad("removing subscription for " . $db_data["email"], 90);
       if ($result) {
 
         echo $HTML->infobox(
@@ -41,6 +37,7 @@
             gettext("Removing subscription for %s"), $db_data["email"]
 	  ) . " : <span class=\"green\">✔</span>"
 	);
+	$debugout .= "OK\n";
 
       } else {
 
@@ -48,6 +45,8 @@
         $error["database"]["removeSubscription"]["data"] = $result;
 
         echo $HTML->errorbox(sprintf(gettext("Removing subscription for %s failed!"), $db_data["email"]) . "<br>\n" . $result);
+
+        $debugout .= "FAILED\n";
 
       }
 
@@ -57,6 +56,8 @@
       $error["database"]["subscriber_not_exists"] = "This subscription can not be found!";
 
       echo $HTML->errorbox(gettext("Sorry! The link seems to be broken! Please try again - and make sure you have the complete link!<br>\n"));
+
+      $debugout .= "FAILED\n";
 
     }
 

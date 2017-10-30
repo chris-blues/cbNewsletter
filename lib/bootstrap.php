@@ -1,40 +1,50 @@
 <?php
 
+  $debugout .= "<pre><b>[ bootstrap ]</b>\n";
+
   if (isset($_GET["view"])) {
     $cbNewsletter["config"]["view"] = $_GET["view"];
   }
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/HTML.class.php"));
+  // general functions
+  $debugout .= str_pad("including /lib/functions.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/functions.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
+
+  // OOP based HTML output
+  $debugout .= str_pad("including /lib/classes/HTML.class.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/HTML.class.php"))) ? $debugout .= "OK\n" :  $debugout .= "FAILED\n";
+
   $HTML = new HTML;
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/functions.php"));
-
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/initGettext.php"));
 
 
+  // Other classes
+  $debugout .= str_pad("including /lib/classes/Subscriber.class.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Subscriber.class.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
 
-  if ($debug) {
-    echo "\$cbNewsletter:";
-    dump_var($cbNewsletter);
-  }
+  $debugout .= str_pad("including /lib/classes/Email.class.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Email.class.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
 
 
 
-  $cbNewsletter["config"]["database"] = include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/dbcredentials.php"));
-
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Connection.class.php"));
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/QueryBuilder.class.php"));
-
-  $connect = Connection::make($cbNewsletter["config"]["database"]);
-  if (is_object($connect)) {
-    $query = new QueryBuilder($connect);
-  }
-
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Subscriber.class.php"));
-
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Email.class.php"));
+  // init gettext()
+  $debugout .= str_pad("including /lib/initGettext.php ", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/initGettext.php"))) ? : $debugout .= "FAILED\n";
 
 
 
+  // Database related
+  $debugout .= str_pad("including /lib/bootstrap.database.common.php", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/bootstrap.database.common.php"))) ? : $debugout .= "FAILED\n";
+
+  $debugout .= str_pad("including /lib/bootstrap.database.php", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/bootstrap.database.php"))) ? : $debugout .= "FAILED\n";
+
+  // Database maintenance
+  $debugout .= str_pad("including /lib/bootstrap.maintenance.php", 90);
+  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/bootstrap.maintenance.php"))) ? : $debugout .= "FAILED\n";
+
+
+  $debugout .= "</pre>\n";
 
 ?>

@@ -1,5 +1,7 @@
 <?php
 
+  $debugout .= "<pre><b>[ subscriptions.action ]</b>\n";
+
   if (isset($_POST["search"])) {
     $search = $_POST["search"];
   } elseif (isset($_GET["search"])) {
@@ -23,9 +25,12 @@
   );
 
 
+  $debugout .= str_pad("getting subscribers", 90);
   $subscribers = $query->get_subscribers($search, $order);
+  $debugout .= count($subscribers) . " subscriber(s) found\n";
 
+  $debugout .= str_pad("including /admin/views/subscriptions.view.php", 90);
+  $debugout .= (include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/subscriptions.view.php"))) ? "OK\n" : "FAILED\n";
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/subscriptions.view.php"));
-
+  $debugout .= "</pre>\n";
 ?>

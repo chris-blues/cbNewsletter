@@ -12,6 +12,7 @@
         <td><?php echo $subscriber["id"]; ?></td>
         <td><?php echo $subscriber["name"]; ?></td>
         <td><?php echo $subscriber["email"]; ?></td>
+        <td><?php echo date("Y-m-d H:i:s", $subscriber["subscribed"]); ?></td>
         <td>
           <div class="center">
             <?php
