@@ -2,6 +2,7 @@
 
   $cbNewsletter_startTime = microtime();
 
+  $cbNewsletter["calldir"] = __DIR__;
   $debugout = "";
 
   if (isset($_GET) and count($_GET) > 0) {

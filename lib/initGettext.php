@@ -17,13 +17,15 @@ if ($cbNewsletter["config"]["general"]["language"] != "") {
 
 } else {
 
-  // if we have some user-setting from the URI then use this
+  // if we have some user-setting from $_GET then use this
   if (isset($_GET["lang"])) {
 
     $locale = $_GET["lang"];
     $debugout .= "\$_GET\n";
 
-  } else {
+  }
+
+  if (!isset($locale)) {
 
     if (isset($_SERVER['HTTP_ACCEPT_LANGUAGE'])) {
 
@@ -33,8 +35,6 @@ if ($cbNewsletter["config"]["general"]["language"] != "") {
 
         case "de": $locale = "de_DE"; break;
         case "en": $locale = "en_GB"; break;
-
-        default:   $locale = "en_GB"; break;
 
       }
 
@@ -47,11 +47,17 @@ if ($cbNewsletter["config"]["general"]["language"] != "") {
 }
 
 // if all fails, use "en_GB"! (actually use inline gettext strings)
-if (!isset($locale) or $locale == "") $locale = "en_GB";
+switch ($locale) {
 
+  case "de":    $locale = "de_DE"; break;
+  case "de_DE": $locale = "de_DE"; break;
 
-if ($locale == "de") $locale = "de_DE";
-if ($locale == "en") $locale = "en_GB";
+  case "en":    $locale = "en_GB"; break;
+  case "en_GB": $locale = "en_GB"; break;
+
+  default:      $locale = "en_GB"; break;
+
+}
 
 $directory = realpath($cbNewsletter["config"]["basedir"] . "/locale");
 $textdomain = "cbNewsletter";
