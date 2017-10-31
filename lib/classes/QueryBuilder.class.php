@@ -159,6 +159,21 @@ class QueryBuilder {
 
   }
 
+  public function getSubscriberByEmail($email) {
+
+    $statement = $this->Database->prepare(
+      "SELECT * FROM `cbNewsletter_subscribers`
+       WHERE `email` = :email ;"
+    );
+
+    $statement->bindParam(':email', $email);
+
+    $result = $this->callExecution($statement);
+
+    return $statement->fetchAll(PDO::FETCH_CLASS, "Subscriber");
+
+  }
+
   public function getSubscribersId($hash) {
 
     $statement = $this->Database->prepare(

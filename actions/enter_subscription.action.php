@@ -88,12 +88,14 @@
 
     } else {
 
-      $Debugout->add("\$query->check_existing(" . $data["address"] . ")", "already exists. Aborting...");
+      $Debugout->add("\$query->check_existing(" . $data["address"] . ")", "already exists.");
 
       $error["verification"]["database"]["error"] = true;
       $error["verification"]["database"]["data"] = "This email is already subscribed.";
 
-      echo $HTML->infobox(gettext("Sorry! This email is already subscribed. Surely you don't want to receive our newsletters twice!") . " 😉");
+      echo $HTML->infobox(gettext("Sorry! This email is already subscribed. Surely you don't want to receive our newsletters twice!"));
+
+      include_once(checkout("/views/unsubscribe.view.php"));
 
     }
 

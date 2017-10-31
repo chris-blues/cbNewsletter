@@ -213,6 +213,7 @@
               $Debugout->add("sending verification mail", "OK");
 
             }
+
           } else {
 
             $error["verification"]["agreement"] = "Subscriber did not check the agree-field";

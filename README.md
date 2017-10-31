@@ -2,14 +2,12 @@
 A simple newsletter system written in PHP &amp; SQL
 
 ## Work in progress
-This still is a work in progress. Don't use it yet!
+This still is a work in progress, slowly approaching testing stage. Don't use it yet!<br>
+You're welcome for contributing or testing though! :o)<br>
 
 
 ### ToDo:
-* public UI:
-  * unsubscribe from subscription.form somehow
 * admin UI:
   * protect admin dir with .htaccess/.htpasswd + add UI accordingly
   * templates support
-* refactor $debugout to OOP
 * support HTML newsletter
