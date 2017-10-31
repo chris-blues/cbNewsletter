@@ -1,21 +1,21 @@
 <?php
 
-  $debugout .= "<pre><b>[ bootstrap.database.common ]</b>\n";
+  $Debugout->add("<pre><b>[ bootstrap.database.common ]</b>");
 
-  $debugout .= str_pad("loading \$cbNewsletter[\"config\"][\"database\"] from /admin/config/dbcredentials.php: ", 90);
+
   $cbNewsletter["config"]["database"] = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/config/dbcredentials.php"));
   if (count($cbNewsletter["config"]["database"]) > 0)
-       $debugout .= "OK\n";
-  else $debugout .= "FAILED\n";
+       $result = "OK";
+  else $result = "FAILED";
+
+  $Debugout->add("loading \$cbNewsletter[\"config\"][\"database\"] from /admin/config/dbcredentials.php: ", $result);
 
 
-  $debugout .= str_pad("including /lib/classes/Connection.class.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Connection.class.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
+  include_once(checkout("/lib/classes/Connection.class.php"));
 
-  $debugout .= str_pad("including /lib/classes/QueryBuilder.class.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/QueryBuilder.class.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
+  include_once(checkout("/lib/classes/QueryBuilder.class.php"));
 
 
-  $debugout .= "</pre>\n";
+  $Debugout->add("</pre>");
 
 ?>

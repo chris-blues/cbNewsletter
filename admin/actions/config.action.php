@@ -1,6 +1,6 @@
 <?php
 
-  $debugout .= "<pre><b>[ config.action ]</b>\n";
+  $Debugout->add("<pre><b>[ config.action ]</b>");
 
   $needReload = false;
 
@@ -10,15 +10,12 @@
 
     unset($config["job"]);
 
-    $debugout .= str_pad("including /admin/lib/classes/Config.class.php ", 90);
-    $debugout .= (include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/classes/Config.class.php"))) ? "OK\n" : "FAILED\n";
+    include_once(checkout("/admin/lib/classes/Config.class.php"));
 
 
     switch ($_POST["job"]) {
 
       case "update_dbSettings": {
-
-        $debugout .= str_pad("Updating database settings...", 90);
 
         $ConfigFile = new Config("dbcredentials", $config);
 
@@ -26,11 +23,13 @@
 
         if ($result === true) {
 
-          $debugout .= "OK\n";
+          $result = "OK";
           $needReload = true;
 
         }
-        else $debugout .= "FAILED\n";
+        else $result = "FAILED";
+
+        $Debugout->add("Updating database settings...", $result);
 
         break;
 
@@ -38,31 +37,26 @@
 
       case "update_generalSettings": {
 
-        $debugout .= str_pad("Updating general settings...", 90);
-
         $configFile = new Config("general", $config);
 
         $result = $configFile->save_generalSettings();
 
-        usleep(250000);
-
-        while (@ob_end_flush());
-        flush();
-
         if ($result === true) {
 
-          $debugout .= "OK\n";
+          $Debugout->add("Updating general settings...", "OK");
           $needReload = true;
 
           // reload config file
           unset($cbNewsletter["config"]["general"]);
 
-          $debugout .= str_pad("reloading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php", 90);
           $cbNewsletter["config"]["general"]  = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/config/general.php"));
-          $debugout .= (count($cbNewsletter["config"]["general"]) > 0) ? "OK\n" : "FAILED\n";
+          $Debugout->add(
+            "reloading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php",
+            (count($cbNewsletter["config"]["general"]) > 0) ? "OK" : "FAILED"
+          );
 
         }
-        else $debugout .= "FAILED\n";
+        else $Debugout->add("Updating general settings...", "FAILED");
 
         break;
 
@@ -71,17 +65,21 @@
     }
 
     if ($result !== true) {
+
       $error["saveConfig"] = $result;
-      $debugout .= "Errors:" . print_r($result, true) . "\n";
+      $Debugout->add("Errors:" . print_r($result, true));
+
     }
 
   }
 
 
   // load database settings
-  $debugout .= str_pad("loading \$cbNewsletter[\"config\"][\"database\"] from /admin/config/dbcredentials.php", 90);
   $cbNewsletter["config"]["database"] = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/config/dbcredentials.php"));
-  $debugout .= (count($cbNewsletter["config"]["database"]) > 0) ? "OK\n" : "FAILED\n";
+  $Debugout->add(
+    "loading \$cbNewsletter[\"config\"][\"database\"] from /admin/config/dbcredentials.php",
+    (count($cbNewsletter["config"]["database"]) > 0) ? "OK" : "FAILED"
+  );
 
 
   if ($needReload) {
@@ -93,9 +91,8 @@
   }
 
 
-  $debugout .= str_pad("including /admin/views/config.view.php ", 90);
-  $debugout .= (include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/config.view.php"))) ? "OK\n" : "FAILED\n";
+  include_once(checkout("/admin/views/config.view.php"));
 
-  $debugout .= "</pre>\n";
+  $Debugout->add("</pre>");
 
 ?>

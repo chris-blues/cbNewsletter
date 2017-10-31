@@ -1,17 +1,15 @@
 <?php
 
-  $debugout .= "<pre><b>[ bootstrap.database ]</b>:\n";
+  $Debugout->add("<pre><b>[ bootstrap.database ]</b>");
 
-  $debugout .= str_pad("including /admin/lib/classes/QueryBuilderAdmin.class.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/classes/QueryBuilderAdmin.class.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
+  include_once(checkout("/admin/lib/classes/QueryBuilderAdmin.class.php"));
 
 
-  $debugout .= str_pad("connecting to database: ", 90);
   $connect = Connection::make($cbNewsletter["config"]["database"]);
 
   if (is_object($connect)) {
 
-    $debugout .= "OK\n";
+    $Debugout->add("connecting to database",  "OK");
 
     $query = new QueryBuilderAdmin($connect);
 
@@ -21,7 +19,7 @@
 
   } else {
 
-    $debugout .= "FAILED\n";
+    $Debugout->add("connecting to database", "FAILED");
 
     echo $HTML->errorbox(gettext("Error! Could not connect to database!"));
     $error["database"]["connect"] = true;
@@ -29,6 +27,8 @@
   }
 
 
-  $debugout .= "</pre>";
+
+
+  $Debugout->add("</pre>");
 
 ?>

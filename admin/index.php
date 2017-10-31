@@ -3,33 +3,33 @@
   $cbNewsletter_startTime = microtime();
 
   $cbNewsletter["calldir"] = __DIR__;
-  $debugout = "";
 
-  if (isset($_GET) and count($_GET) > 0) {
-    $debugout .= "<pre><b>\$_GET</b> ";
-    $debugout .= print_r($_GET, true) . "</pre>\n";
-  }
-  if (isset($_POST) and count($_POST) > 0) {
-    $debugout .= "<pre><b>\$_POST</b> ";
-    $debugout .= print_r($_POST, true) . "</pre>\n";
-  }
+  include_once(__DIR__ . "/../lib/classes/Debugout.class.php");
+  $Debugout = new Debugout;
 
-  $debugout .= "<pre><b>[ index ]</b>\n";
+  include_once(__DIR__ . "/../lib/checkout.function.php");
 
-  $debugout .= str_pad("setting \$cbNewsletter[\"config\"][\"basedir\"] to ", 90) . realpath(dirname(__FILE__) . "/../") . "\n";
+
+
+  $Debugout->add("<pre><b>[ index ]</b>");
+
   // set basedir to /path/to/newsletter/ , not /path/to/newsletter/admin
+  $Debugout->add("setting \$cbNewsletter[\"config\"][\"basedir\"] to ", realpath(dirname(__FILE__) . "/../"));
   $cbNewsletter["config"]["basedir"] = realpath(dirname(__FILE__) . "/../");
 
 
   //load config
-  $debugout .= str_pad("loading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php: ", 90);
   $cbNewsletter["config"]["general"] = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/config/general.php"));
   if (count($cbNewsletter["config"]["general"]) > 0)
-       $debugout .= "OK\n";
-  else $debugout .= "FAILED\n";
+       $result = "OK";
+  else $result = "FAILED";
+  $Debugout->add("loading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php: ", $result);
 
-  $debugout .= str_pad("including /lib/error-reporting.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/error-reporting.php"))) ? : $debugout .= "FAILED\n";
+  include_once(checkout("/lib/error-reporting.php"));
+
+
+
+
 
   $debug = $cbNewsletter["config"]["general"]["debug"];
 
@@ -39,24 +39,33 @@
   // override debug messages by cbNewsletter
   //   $debug = true;
 
-  $debugout .= str_pad("setting \$debug to ", 90);
-  $debugout .= $debug ? "true" : "false";
-  $debugout .= "\n";
-
-  $debugout .= str_pad("including /admin/lib/bootstrap.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/bootstrap.php"))) ? : $debugout .= "FAILED\n";
+  $Debugout->add(
+    "setting \$debug to ",
+    ($debug) ? "true" : "false"
+  );
 
 
-  $debugout .= str_pad("including /admin/lib/routing.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/lib/routing.php"))) ? : $debugout .= "FAILED\n";
 
 
-  $debugout .= "</pre>\n";
 
-  if ($debug) echo $HTML->infobox("<h3>debug output [ PHP ]</h3>\n<pre>" . $debugout . "</pre>", "debug");
+  include_once(checkout("/admin/lib/bootstrap.php"));
+
+
+  include_once(checkout("/admin/lib/routing.php"));
+
+
+  $Debugout->add("</pre>");
+
+  if ($debug) {
+
+    echo $HTML->infobox("<h3>PHP debug output</h3>\n<p>$Debugout</p>\n" . $Debugout->output(), "debug");
+
+  }
 
   if (isset($error)) {
+
     cbNewsletter_showErrors($error);
+
   }
 
 

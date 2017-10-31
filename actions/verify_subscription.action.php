@@ -2,10 +2,9 @@
 
 <?php
 
-  $debugout .= "<pre><b>[ verify_subscription ]</b>\n";
+  $Debugout->add("<pre><b>[ verify_subscription ]</b>");
 
-  $debugout .= str_pad("including /lib/verify.transmitted_data.php", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/verify.transmitted_data.php"))) ? : $debugout .= "FAILED\n";
+  include_once(checkout("/lib/verify.transmitted_data.php"));
 
 
 
@@ -15,30 +14,26 @@
 
     $result = $query->check_subscription($data["id"], $data["hash"]);
 
-    $debugout .= str_pad("verifying data against the database", 90);
-
     if (intval($result) === 1) {
 
-      $debugout .= "passed\n";
+      $Debugout->add("verifying data against the database", "passed");
 
-      $debugout .= str_pad("checking verification status",90);
       $already_verified = $query->check_already_verified($data["id"], $data["hash"]);
       if ($already_verified) {
 
-        echo $HTML->errorbox(gettext("This email has already been verified. No need to do it again. Aborting!") . "<br>\n");
-        $debugout .= "already verified! Aborting!\n";
+        echo $HTML->errorbox(gettext("This email has already been verified. No need to do it again.") . "<br>\n");
+        $Debugout->add("checking verification status", "already verified! Aborting!");
 
       } else {
 
-        $debugout .= "not verified yet...\n";
+        $Debugout->add("checking verification status", "not verified yet...");
 
-        $debugout .= str_pad("updating verification status", 90);
         $result = $query->verify_subscription($data["id"], $data["hash"]);
 
         if ($result) {
 
           echo $HTML->infobox(gettext("Thank you very much! Your subscription is now verified and active.") . "<br>\n");
-          $debugout .= "OK\n";
+          $Debugout->add("updating verification status", "OK");
 
         } else {
 
@@ -46,7 +41,7 @@
           $error["database"]["update_verified"]["error"] = true;
           $error["database"]["update_verified"]["data"] = $result;
 
-          $debugout .= "FAILED\n";
+          $Debugout->add("updating verification status", "FAILED");
 
         }
       }
@@ -60,7 +55,7 @@
       echo gettext("Sorry! The link seems to be broken! Please try again - and make sure you have the complete link!<br>\n");
       echo "</div>\n";
 
-      $debugout .= "FAILED\n";
+      $Debugout->add("verifying data against the database", "FAILED");
 
     }
 
@@ -70,8 +65,7 @@
 
   if (!isset($error["verification"]["error"]) or !$error["verification"]["error"]) {
 
-    $debugout .= str_pad("including /actions/manage_subscription.action.php", 90);
-    (include_once(realpath($cbNewsletter["config"]["basedir"] . "/actions/manage_subscription.action.php"))) ? : $debugout .= "FAILED\n";
+    include_once(checkout("/actions/manage_subscription.action.php"));
 
   }
 

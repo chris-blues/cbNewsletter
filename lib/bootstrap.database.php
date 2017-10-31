@@ -1,15 +1,13 @@
 <?php
 
-  $debugout .= "<pre><b>[ bootstrap.database ]</b>\n";
+  $Debugout->add("<pre><b>[ bootstrap.database ]</b>");
 
 
-
-  $debugout .= str_pad("connecting to database: ", 90);
   $connect = Connection::make($cbNewsletter["config"]["database"]);
 
   if (is_object($connect)) {
 
-    $debugout .= "OK\n";
+    $Debugout->add("connecting to database", "OK");
 
     $query = new QueryBuilder($connect);
 
@@ -17,7 +15,7 @@
 
   } else {
 
-    $debugout .= "FAILED\n";
+    $Debugout->add("connecting to database", "FAILED");
 
     echo $HTML->errorbox(gettext("Error! Could not connect to database!"));
     $error["database"]["connect"] = true;
@@ -26,6 +24,6 @@
 
 
 
-  $debugout .= "</pre>";
+  $Debugout->add("</pre>");
 
 ?>

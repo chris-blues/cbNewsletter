@@ -80,7 +80,6 @@ class Newsletter {
 
   public function send() {
 
-    $HTML = new HTML;
     $header = $this->assemble_header();
 
     $search = array(

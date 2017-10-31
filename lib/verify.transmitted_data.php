@@ -1,22 +1,23 @@
 <?php
 
-  $debugout .= "<pre><b>[ verify.transmitted_data ]</b>\n";
+  $Debugout->add("<pre><b>[ verify.transmitted_data ]</b>");
 
-  $debugout .= str_pad("including /lib/classes/Data.class.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Data.class.php"))) ? $debugout .= "OK\n" :  $debugout .= "FAILED\n";
+  include_once(checkout("/lib/classes/Data.class.php"));
 
-  $debugout .= str_pad("Reading transferred data", 90);
+
   $Data = new Data;
   $Data->populate();
 
   $data = $Data->getdata();
 
-  if (count($data) > 0) $debugout .= "OK\n";
-  else $debugout .= "FAILED\n";
+  if (count($data) > 0) $result = "OK";
+  else $result = "FAILED";
 
-  $debugout .= "extracted dataset " . print_r($data, true);
+  $Debugout->add("Reading transferred data", $result);
 
-  $debugout .= "</pre>\n";
+  $Debugout->add("extracted dataset " . print_r($data, true));
+
+  $Debugout->add("</pre>");
 
 
 

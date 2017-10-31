@@ -2,24 +2,24 @@
 
 <?php
 
-  $debugout .= "<pre><b>[ enter_subscription.action ]</b>\n";
+  $Debugout->add("<pre><b>[ enter_subscription.action ]</b>");
 
 // ==============  Honey-pot  ==============
-
-  $debugout .= str_pad("honey pot", 90);
 
   if (isset($_POST["email"]) and $_POST["email"] != "") {
 
     $honeypot = true;
-    $debugout .= "Spam detected! Aborting all processes!\n";
+    $result = "Spam detected! Aborting all processes!";
     return;
 
   } else {
 
     $honeypot = false;
-    $debugout .= "OK\n";
+    $result = "OK";
 
   }
+
+  $Debugout->add("honey pot", $result);
 
 // ==============  Honey-pot  ==============
 
@@ -29,8 +29,7 @@
 
 
 
-  $debugout .= str_pad("including /lib/verify.transmitted_data.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/verify.transmitted_data.php"))) ? :  $debugout .= "FAILED\n";
+  include_once(checkout("/lib/verify.transmitted_data.php"));
 
 
   if (!$honeypot and !isset($error["verification"]["error"])) {
@@ -38,7 +37,7 @@
 
     if ($query->check_existing($data["address"]) == 0) {
 
-      $debugout .= str_pad("\$query->check_existing(" . $data["address"] . ")", 90) . "does not exist in our database\n";
+      $Debugout->add("\$query->check_existing(" . $data["address"] . ")", "does not exist in our database");
 
 // =============  create Subscriber object  =============
 
@@ -54,8 +53,8 @@
       );
       $new_subscription->correctTypes();
 
-      $debugout .= "\$new_subscription:\n";
-      $debugout .= print_r($new_subscription, true) . "\n";
+      $Debugout->add("\$new_subscription:");
+      $Debugout->add(print_r($new_subscription, true));
 
 // =============  create Subscriber object  =============
 
@@ -67,21 +66,21 @@
 
       $optin = new Email("opt_in", $new_subscription, $cbNewsletter["config"]["general"]["locale"]);
 
-      $debugout .= str_pad("sending verification mail", 90);
-
       if (!$optin->send_mail()) {
 
         echo $HTML->errorbox(gettext("Error! Could not send verification mail!\n"));
 
-        $debugout .= "FAILED\n";
+        $result = "FAILED";
 
       } else {
 
         echo $HTML->infobox(gettext("<p>A verification mail has been sent to your inbox. Please click the link, to verify that:</p>\n<ul><li>this mailbox actually belongs to you</li>\n<li>you really want to get our newsletter</li></ul>\n<p>Thanks!</p>\n"));
 
-        $debugout .= "OK\n";
+        $result = "OK";
 
       }
+
+      $Debugout->add("sending verification mail", $result);
 
 // =============  send verification email  =============
 
@@ -89,7 +88,7 @@
 
     } else {
 
-      $debugout .= str_pad("\$query->check_existing(" . $data["address"] . ")", 90) . "already exists. Aborting...\n";
+      $Debugout->add("\$query->check_existing(" . $data["address"] . ")", "already exists. Aborting...");
 
       $error["verification"]["database"]["error"] = true;
       $error["verification"]["database"]["data"] = "This email is already subscribed.";
@@ -106,9 +105,9 @@
 // After processing failure show the subscription form again!
 
   if (isset($error)) {
-    include_once(realpath($cbNewsletter["config"]["basedir"] . "/views/subscription.form.php"));
+    include_once(checkout("/views/subscription.form.php"));
   }
 
-  $debugout .= "</pre>\n";
+  $Debugout->add("</pre>");
 
 ?>

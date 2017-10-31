@@ -7,15 +7,15 @@
   if ($text    === false) $text    = "false";
 
 
-  $debugout .= "<pre><b>[ create_newsletter.action ]</b>\n";
-  $debugout .= "findData(\"subject\") -> " . $subject . "\n";
-  $debugout .= "findData(\"text\")    -> " . $text . "\n";
-  $debugout .= "</pre>\n";
+  $Debugout->add("<pre><b>[ create_newsletter.action ]</b>");
+  $Debugout->add("findData(\"subject\") -> " . $subject);
+  $Debugout->add("findData(\"text\")    -> " . $text);
+  $Debugout->add("</pre>");
 
 
   if ($subject == "false") unset($subject);
   if ($text    == "false") unset($text);
 
-  include_once(realpath($cbNewsletter["config"]["basedir"] . "/admin/views/create_newsletter.view.php"));
+  include_once(checkout("/admin/views/create_newsletter.view.php"));
 
 ?>

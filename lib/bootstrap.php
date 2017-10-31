@@ -1,6 +1,6 @@
 <?php
 
-  $debugout .= "<pre><b>[ bootstrap ]</b>\n";
+  $Debugout->add("<pre><b>[ bootstrap ]</b>");
 
   if (isset($_GET["view"])) {
     $cbNewsletter["config"]["view"] = $_GET["view"];
@@ -8,8 +8,7 @@
 
 
   // Other classes
-  $debugout .= str_pad("including /lib/classes/Email.class.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/classes/Email.class.php"))) ? $debugout .= "OK\n" : $debugout .= "FAILED\n";
+  include_once(checkout("/lib/classes/Email.class.php"));
 
 
 
@@ -17,8 +16,7 @@
 
 
   // common bootstrap
-  $debugout .= str_pad("including /lib/classes/bootstrap.common.php ", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/bootstrap.common.php"))) ? : $debugout .= "FAILED\n";
+  include_once(checkout("/lib/bootstrap.common.php"));
 
 
 
@@ -27,6 +25,6 @@
 
 
 
-  $debugout .= "</pre>\n";
+  $Debugout->add("</pre>");
 
 ?>

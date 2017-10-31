@@ -2,41 +2,38 @@
 
 <?php
 
-  $debugout .= "<pre><b>[ manage_subscription ]</b>\n";
+  $Debugout->add("<pre><b>[ manage_subscription ]</b>");
 
-  $debugout .= str_pad("including /lib/verify.transmitted_data.php", 90);
 
-  $result = include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/verify.transmitted_data.php"));
+  $result = include_once(checkout("/lib/verify.transmitted_data.php"));
   if ($result === true) {
-    $debugout .= "already done - skipping\n";
+    $Debugout->add("including /lib/verify.transmitted_data.php", "already done - skipping");
   } elseif ($result === false) {
-    $debugout .= "FAILED\n";
+    $Debugout->add("including /lib/verify.transmitted_data.php", "FAILED");
   }
 
 
-  $debugout .= str_pad("verifying transmitted data", 90);
+
   if (isset($data["id"]) and isset($data["hash"])) {
 
-    $debugout .= "passed\n";
+    $Debugout->add("verifying transmitted data", "passed");
 
 // ===============  verify transmitted data against database  ===============
 
     $userVerification = $query->check_subscription($data["id"], $data["hash"]);
 
-    $debugout .= str_pad("verifying data against the database", 90);
-
     if ($userVerification == "0") {
 
       $userVerification = false;
       $error["verification"]["database"] = gettext("No match to this data in the database!");
-      $debugout .= "FAILED\n";
+      $Debugout->add("verifying data against the database", "FAILED");
 
     }
 
     if ($userVerification == "1") {
 
       $userVerification = true;
-      $debugout .= "passed\n";
+      $Debugout->add("verifying data against the database", "passed");
 
     }
 
@@ -44,9 +41,11 @@
 
   } else {
 
-    $debugout .= "FAILED\n";
+    $Debugout->add("verifying transmitted data", "FAILED");
 
   }
+
+
 
   if (
     (isset($userVerification) and $userVerification === false)
@@ -70,7 +69,7 @@
       "</li>\n</ul>"
     );
 
-    $debugout .= "ERROR! Transferred data did not verify!\n";
+    $Debugout->add("ERROR! Transferred data did not verify!");
 
   }
 
@@ -128,16 +127,15 @@
 	    if (isset($needUpdate["email"]) and $needUpdate["email"]) {
 
 	      $result = $query->updateSubscribersEmail($db_data["id"], $data["new_email"]);
-	      $debugout .= str_pad("updating email address", 90);
 
 	      if ($result !== false) {
 
 	        echo $HTML->infobox(gettext("Your email address has been updated."));
-	        $debugout .= "OK\n";
+	        $Debugout->add("updating email address", "OK");
 
 	      } else {
 
-	        $debugout .= "FAILED\n";
+	        $Debugout->add("updating email address", "FAILED");
 
 	      }
 
@@ -149,18 +147,16 @@
 
               $optin = new Email("opt_in", $db_data, $cbNewsletter["config"]["general"]["locale"]);
 
-              $debugout .= str_pad("sending verification email to new address", 90);
-
               if (!$optin->send_mail()) {
 
                 echo $HTML->errorbox(gettext("Error! Could not send verification mail!"));
-                $debugout .= "FAILED\n";
+                $Debugout->add("sending verification email to new address", "FAILED");
 
               } else {
 
                 echo $HTML->infobox(gettext("<p>A verification mail has been sent to your inbox. Please click the link, to verify that:</p>\n<ul><li>this mailbox actually belongs to you</li>\n<li>you really want to get our newsletter</li></ul>\n<p>Thanks!</p>"));
 
-                $debugout .= "OK\n";
+                $Debugout->add("sending verification email to new address", "OK");
 
               }
 
@@ -172,16 +168,14 @@
 
               $result = $query->updateSubscribersName($db_data["id"], $data["name"]);
 
-              $debugout .= str_pad("updating name", 90);
-
               if ($result !== false) {
 
                 echo $HTML->infobox(gettext("Your name has been updated."));
-                $debugout .= "OK\n";
+                $Debugout->add("updating name", "OK");
 
               } else {
 
-                $debugout .= "FAILED\n";
+                $Debugout->add("updating name", "FAILED");
 
               }
 
@@ -205,25 +199,24 @@
           ) {
 
             $optout = new Email("opt_out", $db_data, $cbNewsletter["config"]["general"]["locale"]);
-            $debugout .= str_pad("sending verification mail", 90);
 
             if (!$optout->send_mail()) {
 
               echo $HTML->errorbox(gettext("Error! Could not send verification mail!<br>\n"));
-              $debugout .= "FAILED\n";
+              $Debugout->add("sending verification mail", "FAILED");
 
             } else {
 
               echo $HTML->infobox(
                 gettext("A verification mail has been sent to your inbox. Please click the link, to verify that you really want to unsubscribe from our newsletters!\n")
               );
-              $debugout .= "OK\n";
+              $Debugout->add("sending verification mail", "OK");
 
             }
           } else {
 
             $error["verification"]["agreement"] = "Subscriber did not check the agree-field";
-            $debugout .= "Error! I-agree-field not checked! How did you manage that???\n";
+            $Debugout->add("Error! I-agree-field not checked! How did you manage that???");
 
           }
 
@@ -277,16 +270,14 @@
     (isset($db_data["verified"]) and $db_data["verified"] === true)
   ) {
 
-    $debugout .= str_pad("including /views/manage_subscription.php", 90);
-    $debugout .= (include_once(realpath($cbNewsletter["config"]["basedir"] . "/views/manage_subscription.php"))) ? "OK\n" : "FAILED\n";
+    include_once(checkout("/views/manage_subscription.php"));
 
   } else {
 
-    $debugout .= str_pad("including /views/subscription.form.php", 90);
-    $debugout .= (include_once(realpath($cbNewsletter["config"]["basedir"] . "/views/subscription.form.php"))) ? "OK\n" : "FAILED\n";
+    include_once(checkout("/views/subscription.form.php"));
 
   }
 
-  $debugout .= "</pre>\n";
+  $Debugout->add("</pre>");
 
 ?>

@@ -32,7 +32,7 @@ class HTML {
   public function ul($list) {
 
     if (!is_array($list)) {
-      return $this->errorbox("\$HTML->ul(): " . gettext("This is not an array!"));
+      return $this->errorbox("\$HTML->ul(): " . gettext(sprintf("Expected an array, got a %s", gettype($list))));
     } else {
 
       $result = "    <ul>\n";
@@ -54,7 +54,7 @@ class HTML {
   public function ol($list) {
 
     if (!is_array($list)) {
-      return $this->errorbox("\$HTML->ul(): " . gettext("This is not an array!"));
+      return $this->errorbox("\$HTML->ul(): " . gettext(sprintf("Expected an array, got a %s", gettype($list))));
     } else {
 
       $result = "    <ol>\n";

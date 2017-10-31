@@ -2,10 +2,9 @@
 
 <?php
 
-  $debugout .= "<pre><b>[ verify_unsubscription ]</b>\n";
+  $Debugout->add("<pre><b>[ verify_unsubscription ]</b>");
 
-  $debugout .= str_pad("including /lib/verify.transmitted_data.php", 90);
-  (include_once(realpath($cbNewsletter["config"]["basedir"] . "/lib/verify.transmitted_data.php"))) ? : $debugout .= "FAILED\n";
+  include_once(checkout("/lib/verify.transmitted_data.php"));
 
 
 
@@ -15,13 +14,11 @@
 
     $result = $query->check_subscription($data["id"], $data["hash"]);
 
-    $debugout .= str_pad("verifying data against the database", 90);
-
     if (intval($result) === 1) {
 
 // ============  verify data against database  ============
 
-      $debugout .= "passed\n";
+      $Debugout->add("verifying data against the database", "passed");
 
       $subscriber = $query->getSubscriberData($data["id"]);
       $subscriber[0]->correctTypes();
@@ -29,7 +26,6 @@
 
       $result = $query->removeSubscription($data["id"]);
 
-      $debugout .= str_pad("removing subscription for " . $db_data["email"], 90);
       if ($result) {
 
         echo $HTML->infobox(
@@ -37,7 +33,7 @@
             gettext("Removing subscription for %s"), $db_data["email"]
 	  ) . " : <span class=\"green\">✔</span>"
 	);
-	$debugout .= "OK\n";
+	$Debugout->add("removing subscription for " . $db_data["email"], "OK");
 
       } else {
 
@@ -46,7 +42,7 @@
 
         echo $HTML->errorbox(sprintf(gettext("Removing subscription for %s failed!"), $db_data["email"]) . "<br>\n" . $result);
 
-        $debugout .= "FAILED\n";
+        $Debugout->add("removing subscription for " . $db_data["email"], "FAILED");
 
       }
 
@@ -57,7 +53,7 @@
 
       echo $HTML->errorbox(gettext("Sorry! The link seems to be broken! Please try again - and make sure you have the complete link!<br>\n"));
 
-      $debugout .= "FAILED\n";
+      $Debugout->add("verifying data against the database", "FAILED");
 
     }
 
