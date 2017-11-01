@@ -1,5 +1,5 @@
 # cbNewsletter
-A simple newsletter system written in PHP &amp; SQL
+A (not so) simple (anymore) newsletter system written in PHP &amp; SQL
 
 ## Work in progress
 This still is a work in progress, slowly approaching testing stage. Don't use it yet!<br>
