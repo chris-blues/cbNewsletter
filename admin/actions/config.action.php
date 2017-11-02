@@ -49,7 +49,7 @@
           // reload config file
           unset($cbNewsletter["config"]["general"]);
 
-          $cbNewsletter["config"]["general"]  = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/config/general.php"));
+          $cbNewsletter["config"]["general"]  = include(realpath($cbNewsletter["basedir"] . "/admin/config/general.php"));
           $Debugout->add(
             "reloading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php",
             (count($cbNewsletter["config"]["general"]) > 0) ? "OK" : "FAILED"
@@ -75,7 +75,7 @@
 
 
   // load database settings
-  $cbNewsletter["config"]["database"] = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/config/dbcredentials.php"));
+  $cbNewsletter["config"]["database"] = include(realpath($cbNewsletter["basedir"] . "/admin/config/dbcredentials.php"));
   $Debugout->add(
     "loading \$cbNewsletter[\"config\"][\"database\"] from /admin/config/dbcredentials.php",
     (count($cbNewsletter["config"]["database"]) > 0) ? "OK" : "FAILED"

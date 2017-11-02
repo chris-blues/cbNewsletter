@@ -6,12 +6,17 @@
 
   $cbNewsletter["calldir"] = __DIR__;
 
-  $cbNewsletter["config"]["basedir"] = dirname(__FILE__);
+  $cbNewsletter["basedir"] = dirname(__FILE__);
 
   include_once(__DIR__ . "/lib/classes/Debugout.class.php");
   $Debugout = new Debugout;
 
-  include_once(__DIR__ . "/lib/checkout.function.php");
+  $Debugout->add(
+    "setting \$cbNewsletter[\"basedir\"] to", dirname(__FILE__),
+    $cbNewsletter["basedir"] = dirname(__FILE__)
+  );
+
+  include_once($cbNewsletter["basedir"] . "/lib/checkout.function.php");
 
 
 
@@ -36,15 +41,14 @@
 
 <?php
 
+  //load config
   $Debugout->add(
     "loading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php",
-    ($cbNewsletter["config"]["general"] = include_once(dirname(__FILE__) . "/admin/config/general.php")) ? "OK" : "FAILED"
+    ($cbNewsletter["config"]["general"] = include_once($cbNewsletter["basedir"] . "/admin/config/general.php")) ? "OK" : "FAILED"
   );
 
-  $Debugout->add(
-    "setting \$cbNewsletter[\"config\"][\"basedir\"] to", dirname(__FILE__),
-    $cbNewsletter["config"]["basedir"] = dirname(__FILE__)
-  );
+  if (count($cbNewsletter["config"]["general"]) <= 1 or !$cbNewsletter["config"]["general"])
+    $cbNewsletter["config"]["general"] = include_once(checkout("/lib/config.default.php"));
 
 
   $debug = $cbNewsletter["config"]["general"]["debug"];

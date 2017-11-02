@@ -56,7 +56,7 @@
 
   $Debugout->add("Got locale from", $result);
 
-  $directory = realpath($cbNewsletter["config"]["basedir"] . "/locale");
+  $directory = realpath($cbNewsletter["basedir"] . "/locale");
   $textdomain = "cbNewsletter";
   $cbNewsletter["config"]["general"]["locale"] = $locale;
   $localeName = $locale . ".utf8";

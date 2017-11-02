@@ -14,16 +14,18 @@
   $Debugout->add("<pre><b>[ index ]</b>");
 
   // set basedir to /path/to/newsletter/ , not /path/to/newsletter/admin
-  $Debugout->add("setting \$cbNewsletter[\"config\"][\"basedir\"] to ", realpath(dirname(__FILE__) . "/../"));
-  $cbNewsletter["config"]["basedir"] = realpath(dirname(__FILE__) . "/../");
+  $Debugout->add("setting \$cbNewsletter[\"basedir\"] to ", realpath(dirname(__FILE__) . "/../"));
+  $cbNewsletter["basedir"] = realpath(dirname(__FILE__) . "/../");
 
 
   //load config
-  $cbNewsletter["config"]["general"] = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/config/general.php"));
-  if (count($cbNewsletter["config"]["general"]) > 0)
-       $result = "OK";
-  else $result = "FAILED";
-  $Debugout->add("loading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php: ", $result);
+  $Debugout->add(
+    "loading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php",
+    ($cbNewsletter["config"]["general"] = include_once($cbNewsletter["basedir"] . "/admin/config/general.php")) ? "OK" : "FAILED"
+  );
+
+  if (count($cbNewsletter["config"]["general"]) <= 1 or !$cbNewsletter["config"]["general"])
+    $cbNewsletter["config"]["general"] = include_once(checkout("/lib/config.default.php"));
 
   include_once(checkout("/lib/error-reporting.php"));
 

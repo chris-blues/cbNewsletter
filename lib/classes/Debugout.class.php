@@ -43,11 +43,14 @@ class Debugout {
 
   }
 
-  public function output () {
+  public function output ($plaintext = false) {
 
-    return "<pre>" . $this->debug_message . "</pre>\n";
+    if ($plaintext === true) return strip_tags($this->debug_message);
+    else return "<pre>" . $this->debug_message . "</pre>\n";
+
 
   }
+
 
 }
 

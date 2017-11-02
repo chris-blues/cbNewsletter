@@ -116,7 +116,12 @@
               <label for="language">language</label>
             </td>
             <td class="input">
-              <input type="text" id="language" name="language" value="<?php echo $cbNewsletter["config"]["general"]["language"]; ?>">
+              <input
+                type="text"
+                id="language"
+                name="language"
+                value="<?php echo $cbNewsletter["config"]["general"]["language"]; ?>"
+                placeholder="<?php echo $locale; ?>">
             </td>
           </tr>
         </table>

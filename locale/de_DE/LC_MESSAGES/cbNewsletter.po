@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-10-31 22:39+0100\n"
-"PO-Revision-Date: 2017-10-31 22:39+0100\n"
+"POT-Creation-Date: 2017-11-02 11:01+0100\n"
+"PO-Revision-Date: 2017-11-02 11:03+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -283,6 +283,19 @@ msgstr "Bestätigt"
 #: admin/views/subscriptions.view.php:59
 msgid "Delete"
 msgstr "Löschen"
+
+#: lib/checkout.function.php:20
+msgid "Fatal error"
+msgstr "Schwerer Fehler"
+
+#: lib/checkout.function.php:20
+#, php-format
+msgid "%s not found. Exit..."
+msgstr "%s konnte nicht gefunden werden. Ende..."
+
+#: lib/checkout.function.php:21
+msgid "Debug output"
+msgstr "Debugausgabe"
 
 #: lib/classes/Email.class.php:50
 #, php-format

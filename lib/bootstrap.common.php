@@ -11,10 +11,10 @@
 
 
   // General functions
-  include_once(checkout("/lib/functions.php"));
-
   include_once(checkout("/lib/classes/HTML.class.php"));
   $HTML = new HTML;
+
+  include_once(checkout("/lib/functions.php"));
 
 
   // Other classes
@@ -31,7 +31,7 @@
     include_once(checkout("/lib/bootstrap.database.common.php"));
 
 
-    $subdir = str_replace($cbNewsletter["config"]["basedir"], "", $cbNewsletter["calldir"]);
+    $subdir = str_replace($cbNewsletter["basedir"], "", $cbNewsletter["calldir"]);
 
     include_once(checkout($subdir . "/lib/bootstrap.database.php"));
 

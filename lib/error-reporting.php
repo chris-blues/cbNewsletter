@@ -47,8 +47,8 @@ if (isset($cbNewsletter["config"]["general"]["debug"]) and $cbNewsletter["config
   $Debugout->add("log_errors", "ON");
   ini_set("log_errors", 1);
 
-  $Debugout->add("error_log", $cbNewsletter["config"]["basedir"] . "/php-errors.log");
-  ini_set("error_log", $cbNewsletter["config"]["basedir"] . "/php-errors.log");
+  $Debugout->add("error_log", $cbNewsletter["basedir"] . "/php-errors.log");
+  ini_set("error_log", $cbNewsletter["basedir"] . "/php-errors.log");
 
 
 // ================= php error reporting =================

@@ -3,7 +3,7 @@
   $Debugout->add("<pre><b>[ bootstrap.database.common ]</b>");
 
 
-  $cbNewsletter["config"]["database"] = include(realpath($cbNewsletter["config"]["basedir"] . "/admin/config/dbcredentials.php"));
+  $cbNewsletter["config"]["database"] = include(checkout("/admin/config/dbcredentials.php", false));
   if (count($cbNewsletter["config"]["database"]) > 0)
        $result = "OK";
   else $result = "FAILED";
