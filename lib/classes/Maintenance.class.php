@@ -23,6 +23,7 @@ class Maintenance {
 
     $timespan = time() - $this->optimized;
 
+    // 86400 = 24 * 60 * 60 = 1 day
     $timespan_needsMaintenance = 30 * 86400;
 
     if ($timespan > $timespan_needsMaintenance) return true;

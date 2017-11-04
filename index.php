@@ -6,21 +6,20 @@
 
   $cbNewsletter["calldir"] = __DIR__;
 
-  $cbNewsletter["basedir"] = dirname(__FILE__);
-
-  include_once(__DIR__ . "/lib/classes/Debugout.class.php");
+  include_once(dirname(__FILE__) . "/lib/classes/Debugout.class.php");
   $Debugout = new Debugout;
 
+  $Debugout->add("<pre><b>[ index ]</b>");
+
   $Debugout->add(
-    "setting \$cbNewsletter[\"basedir\"] to", dirname(__FILE__),
-    $cbNewsletter["basedir"] = dirname(__FILE__)
+    "setting \$cbNewsletter[\"basedir\"] to", dirname(__FILE__)
   );
+  $cbNewsletter["basedir"] = dirname(__FILE__);
 
   include_once($cbNewsletter["basedir"] . "/lib/checkout.function.php");
 
 
 
-  $Debugout->add("<pre><b>[ index ]</b>");
 
   //include HTML header, if we're called directly
   if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {

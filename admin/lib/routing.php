@@ -23,6 +23,30 @@
 
       }
 
+      case "save_template": {
+
+        $result = $query->add_template($_POST);
+        $Debugout->add(
+          "adding template " . $_POST["name"],
+          ($result) ? "OK" : "FAILED"
+        );
+
+        break;
+
+      }
+
+      case "delete_template": {
+
+        $result = $query->delete_template($_GET["id"]);
+        $Debugout->add(
+          "deleting template " . $_GET["id"],
+          ($result) ? "OK" : "FAILED"
+        );
+
+        break;
+
+      }
+
     }
 
   }

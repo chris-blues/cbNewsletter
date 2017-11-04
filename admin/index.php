@@ -27,13 +27,12 @@
   if (count($cbNewsletter["config"]["general"]) <= 1 or !$cbNewsletter["config"]["general"])
     $cbNewsletter["config"]["general"] = include_once(checkout("/lib/config.default.php"));
 
+  $debug = $cbNewsletter["config"]["general"]["debug"];
+
   include_once(checkout("/lib/error-reporting.php"));
 
 
 
-
-
-  $debug = $cbNewsletter["config"]["general"]["debug"];
 
   // override debug_level for php error messages [off|warn|full] (default: off)
   //   $cbNewsletter["config"]["general"]["debug_level"] = "full";
@@ -41,19 +40,21 @@
   // override debug messages by cbNewsletter
   //   $debug = true;
 
+
+
+
   $Debugout->add(
     "setting \$debug to ",
     ($debug) ? "true" : "false"
   );
 
-
-
-
-
   include_once(checkout("/admin/lib/bootstrap.php"));
 
-
   include_once(checkout("/admin/lib/routing.php"));
+
+
+
+
 
 
   $Debugout->add("</pre>");

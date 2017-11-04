@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-11-02 11:01+0100\n"
-"PO-Revision-Date: 2017-11-02 11:03+0100\n"
+"POT-Creation-Date: 2017-11-04 20:07+0100\n"
+"PO-Revision-Date: 2017-11-04 20:10+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -163,7 +163,7 @@ msgstr "Entfernen des Abos für %s ging schief!"
 msgid "Will be back shortly..."
 msgstr "Bin gleich zurück..."
 
-#: admin/index.php:79 index.php:101
+#: admin/index.php:82 index.php:104
 #, php-format
 msgid "processing needed %s"
 msgstr "Verarbeitung dauerte %s"
@@ -176,7 +176,7 @@ msgstr "Fehler! Konnte keine Verbindung zur Datenbank herstellen!"
 msgid "The PDO call returned an error: "
 msgstr "Der PDO Aufruf gab einen Fehler zurück: "
 
-#: admin/lib/classes/QueryBuilderAdmin.class.php:104
+#: admin/lib/classes/QueryBuilderAdmin.class.php:152
 msgid "Created database tables:"
 msgstr "Datenbanktabellen wurden erstellt:"
 
@@ -184,20 +184,29 @@ msgstr "Datenbanktabellen wurden erstellt:"
 msgid "Database settings"
 msgstr "Datenbank Einstellungen"
 
-#: admin/views/config.view.php:57 admin/views/config.view.php:127
+#: admin/views/config.view.php:57 admin/views/config.view.php:132
 #: views/subscription.form.php:30
 msgid "Reset"
 msgstr "Zurücksetzen"
 
-#: admin/views/config.view.php:58 admin/views/config.view.php:128
+#: admin/views/config.view.php:58 admin/views/config.view.php:133
 msgid "Save"
 msgstr "Speichern"
 
-#: admin/views/create_newsletter.view.php:9 admin/views/header.php:22
+#: admin/views/create_newsletter.view.php:8
+#: admin/views/create_newsletter.view.php:75
+msgid "preview"
+msgstr "Vorschau"
+
+#: admin/views/create_newsletter.view.php:9
+msgid "hide preview"
+msgstr "Vorschau schließen"
+
+#: admin/views/create_newsletter.view.php:18 admin/views/header.php:22
 msgid "Newsletter"
 msgstr "Newsletter"
 
-#: admin/views/create_newsletter.view.php:10
+#: admin/views/create_newsletter.view.php:19
 msgid ""
 "Hello %name%,\n"
 "\n"
@@ -217,35 +226,55 @@ msgstr ""
 "\n"
 "Unten befindet sich der Austragelink:\n"
 
-#: admin/views/create_newsletter.view.php:15
-#: admin/views/create_newsletter.view.php:20
+#: admin/views/create_newsletter.view.php:25 admin/views/mainmenu.view.php:17
+msgid "create newsletter"
+msgstr "Newsletter schreiben"
+
+#: admin/views/create_newsletter.view.php:29
+#: admin/views/create_newsletter.view.php:34
 msgid "subject"
 msgstr "Betreff"
 
-#: admin/views/create_newsletter.view.php:24
-#: admin/views/create_newsletter.view.php:28
+#: admin/views/create_newsletter.view.php:38
+#: admin/views/create_newsletter.view.php:48
 msgid "newsletter text"
 msgstr "Newsletter Text"
 
-#: admin/views/create_newsletter.view.php:32
+#: admin/views/create_newsletter.view.php:56 views/manage_subscription.php:32
+msgid "reset"
+msgstr "Zurücksetzen"
+
+#: admin/views/create_newsletter.view.php:60
+msgid "save template"
+msgstr "Vorlage speichern"
+
+#: admin/views/create_newsletter.view.php:65
+msgid "template name"
+msgstr "Name der Vorlage"
+
+#: admin/views/create_newsletter.view.php:68
+msgid "cancel"
+msgstr "Abbrechen"
+
+#: admin/views/create_newsletter.view.php:69 views/manage_subscription.php:58
+msgid "OK"
+msgstr "OK"
+
+#: admin/views/create_newsletter.view.php:79
 msgid "send newsletter"
 msgstr "Newsletter abschicken"
 
-#: admin/views/create_newsletter.view.php:33
-msgid "preview"
-msgstr "Vorschau"
+#: admin/views/create_newsletter.view.php:97
+msgid "templates"
+msgstr "Vorlagen"
 
-#: admin/views/create_newsletter.view.php:34 views/manage_subscription.php:32
-msgid "reset"
-msgstr "Zurücksetzen"
+#: admin/views/create_newsletter.view.php:124
+msgid "delete template"
+msgstr "Vorlage löschen"
 
 #: admin/views/mainmenu.view.php:9
 msgid "view subscriptions"
 msgstr "Abos anzeigen"
-
-#: admin/views/mainmenu.view.php:17
-msgid "create newsletter"
-msgstr "Newsletter schreiben"
 
 #: admin/views/mainmenu.view.php:25
 msgid "settings"
@@ -284,16 +313,16 @@ msgstr "Bestätigt"
 msgid "Delete"
 msgstr "Löschen"
 
-#: lib/checkout.function.php:20
+#: lib/checkout.function.php:23
 msgid "Fatal error"
 msgstr "Schwerer Fehler"
 
-#: lib/checkout.function.php:20
+#: lib/checkout.function.php:23
 #, php-format
 msgid "%s not found. Exit..."
 msgstr "%s konnte nicht gefunden werden. Ende..."
 
-#: lib/checkout.function.php:21
+#: lib/checkout.function.php:24
 msgid "Debug output"
 msgstr "Debugausgabe"
 
@@ -311,7 +340,7 @@ msgstr "Bitte bestätigen Sie Ihre Abmeldung aus unserem Newsletter @ %s"
 msgid "The PDO call returned an error"
 msgstr "Der PDO Aufruf gab einen Fehler zurück"
 
-#: lib/classes/QueryBuilder.class.php:248
+#: lib/classes/QueryBuilder.class.php:249
 #, php-format
 msgid "Database table %s has been optimized."
 msgstr "Datenbanktabelle %s wurde optimiert."
@@ -347,10 +376,6 @@ msgstr "Abmelden"
 #: views/manage_subscription.php:44
 msgid "Really unsubscribe me"
 msgstr "Wirklich abmelden"
-
-#: views/manage_subscription.php:58
-msgid "OK"
-msgstr "OK"
 
 #: views/subscription.form.php:1
 msgid "Subscribe to our newsletter:"

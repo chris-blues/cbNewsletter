@@ -67,7 +67,8 @@ class QueryBuilder {
 
     $result = $this->callExecution($statement);
 
-    return $statement->rowCount();
+    if ($result) return $statement->rowCount();
+    else return false;
 
   }
 

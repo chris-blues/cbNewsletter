@@ -9,6 +9,14 @@
   text-align: center;
 }
 
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
 .green {
   color: green;
 }
@@ -114,16 +122,95 @@ a.active {
   background-position: 5px 5px;
 }
 
-.createNewsletter {
-  width: 400px;
+.notice {
+  font-size: 0.8em;
+  font-family: sans;
+  padding-left: 50px;
+  background-color: #EEE;
+  background-image: url('notice.png');
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+}
+
+button.full {
+  width: 100%;
+  max-width: 250px;
+  margin: 5px 0px;
+  vertical-align: bottom;
+}
+
+#form_wrapper {
+  display: flex;
+  vertical-align: bottom;
+}
+
+#form_wrapper .flex {
+  margin: 0px 10px;
+  vertical-align: bottom;
+}
+
+#form_wrapper .flex.one {
+  flex: 100%;
+}
+
+#form_wrapper .flex.two {
+  flex: 300px;
+  vertical-align: bottom;
+}
+
+ul#template_files {
+  padding: 0px;
+}
+
+li.template_files {
+  list-style-type: none;
+  background-color: #EEE;
+  padding: 2px 10px;
+}
+
+li.template_files:nth-child(even) {
+  background-color: #DDD;
+}
+
+textarea.createNewsletter, input.createNewsletter {
+  width: 100%;
+  border: 1px solid #888;
+  margin: 0px;
+  padding: 3px 8px;
+  box-shadow: 0px 0px 2px 0px #888 inset;
+  border-radius: 6px;
+}
+
+.ten {
+  margin: 0px 10px;
+}
+
+label {
+  vertical-align: top;
 }
 
 textarea.createNewsletter {
-  height: 300px;
+  min-height: 300px;
+}
+
+div#preview_wrapper {
+  display: none;
 }
 
 div#preview {
-  display: none;
+  padding: 10px 50px;
+}
+
+img.button_delete_template {
+  margin: 4px 10px 2px 20px;
+}
+
+div#boxes_wrapper {
+  display: flex;
+}
+
+.flex_left {
+  flex: 1 1 auto;
 }
 
 .config {

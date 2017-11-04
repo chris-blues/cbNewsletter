@@ -73,7 +73,52 @@ class QueryBuilderAdmin extends QueryBuilder {
 
   }
 
+  public function get_templates() {
+
+    $statement = $this->Database->prepare(
+      "SELECT * FROM `cbNewsletter_templates`
+       ORDER BY `name` ;"
+    );
+
+    $result = $this->callExecution($statement);
+
+    return $statement->fetchAll(PDO::FETCH_CLASS, "Template");
+
+  }
+
+  public function add_template($data) {
+
+    $statement = $this->Database->prepare(
+      "INSERT INTO `cbNewsletter_templates`
+       (`name`, `subject`, `text`)
+       VALUES
+       (:name, :subject, :text) ;"
+    );
+
+    $statement->bindParam(':name',    $data["name"]);
+    $statement->bindParam(':subject', $data["subject"]);
+    $statement->bindParam(':text',    $data["text"]);
+
+    return $this->callExecution($statement);
+
+  }
+
+  public function delete_template($id) {
+
+    $statement = $this->Database->prepare(
+      "DELETE FROM `cbNewsletter_templates`
+       WHERE `id` = :id ;"
+    );
+
+    $statement->bindParam(':id', $id);
+
+    return $this->callExecution($statement);
+
+  }
+
   public function create_missing_tables() {
+
+    global $Debugout, $HTML;
 
     $statement = $this->Database->prepare("SHOW TABLES LIKE 'cbNewsletter_%' ;");
 
@@ -82,7 +127,7 @@ class QueryBuilderAdmin extends QueryBuilder {
     $result = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
 
 
-    $tablenames = array("cbNewsletter_subscribers", "cbNewsletter_archiv", "cbNewsletter_maintenance");
+    $tablenames = array("cbNewsletter_subscribers", "cbNewsletter_archiv", "cbNewsletter_templates", "cbNewsletter_maintenance");
 
     if (count($result) < count($tablenames)) {
 
@@ -95,13 +140,16 @@ class QueryBuilderAdmin extends QueryBuilder {
           $list[] = $name;
           $init[$name] = $this->{"init_$name"}();
 
+          $Debugout->add(
+            "created missing table " . $name,
+            ($init[$name]) ? "OK" : "FAILED"
+          );
+
         }
 
       }
 
-      $HTML = new HTML;
-
-      echo $HTML->infobox(gettext("Created database tables:") . "\n" . $HTML->ul($list));
+      echo $HTML->infobox(gettext("Created database tables:") . "\n" . $HTML->ul($list), "notice");
 
       return $init;
 
@@ -148,6 +196,30 @@ class QueryBuilderAdmin extends QueryBuilder {
     $result["createTable"] = $this->callExecution($statement);
 
     $result["populateTable"] = $this->populate_cbNewsletter_maintenance();
+
+    return $result;
+
+  }
+
+  private function init_cbNewsletter_templates() {
+
+    $statement = $this->Database->prepare(
+      "CREATE TABLE IF NOT EXISTS `cbNewsletter_templates` (
+        `id` INT UNSIGNED NULL AUTO_INCREMENT ,
+        `name` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
+        `subject` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
+        `text` TEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,
+        PRIMARY KEY (`id`)
+      )
+      ENGINE = MyISAM CHARSET=utf8mb4 COLLATE utf8mb4_general_ci ;
+
+      INSERT INTO `cbNewsletter_templates`
+      (`name`, `subject`, `text`)
+      VALUES
+      ('default', '" . $_SERVER["SERVER_NAME"] . " newsletter', 'Hello %name%,\n\nthis is a newsletter from %server% .\n\nBest regards,\nyour newsletter team\n\nYou will find an unsubscription link below:\n') ;"
+    );
+
+    $result = $this->callExecution($statement);
 
     return $result;
 

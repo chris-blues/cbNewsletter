@@ -1,0 +1,37 @@
+Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+
+Files: *
+Copyright: 2017, chris_blues <chris@musicchris.de>
+Comment: https://github.com/chris-blues/cbNewsletter
+License: GPL-3
+
+Files: admin/*.png
+Copyright: The Oxygen Icon Theme
+    Copyright (C) 2007 Nuno Pinheiro <nuno@oxygen-icons.org>
+    Copyright (C) 2007 David Vignoni <david@icon-king.com>
+    Copyright (C) 2007 David Miller <miller@oxygen-icons.org>
+    Copyright (C) 2007 Johann Ollivier Lapeyre <johann@oxygen-icons.org>
+    Copyright (C) 2007 Kenneth Wimer <kwwii@bootsplash.org>
+    Copyright (C) 2007 Riccardo Iaconelli <riccardo@oxygen-icons.org>
+    and others
+Comment: https://kde.org
+License: LGPL-3
+
+Files: cbNewsletter_thumb.png, cbNewsletter.xcf
+Copyright: 2017, chris_blues <chris@musicchris.de>
+Comment: https://musicchris.de
+License: GPL-3
+
+Files: cbNewsletter_thumb.png, cbNewsletter.xcf (background image: letter)
+Copyright: Tango Icon Theme
+    Ulisse Perusin <uli.peru@gmail.com>
+    Steven Garrity <sgarrity@silverorange.com>
+    Lapo Calamandrei <calamandrei@gmail.com>
+    Ryan Collier <rcollier@novell.com>
+    Rodney Dawes <dobey@novell.com>
+    Andreas Nilsson <nisses.mail@home.se>
+    Tuomas Kuosmanen <tigert@tigert.com>
+    Garrett LeSage <garrett@novell.com>
+    Jakub Steiner <jimmac@novell.com>
+Comment: http://tango-project.org
+License: Public Domain
