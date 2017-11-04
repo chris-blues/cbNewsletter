@@ -63,13 +63,13 @@
 
     <div class="config shadow">
 
-      <h2><?php echo gettext("Database settings"); ?></h2>
+      <h2><?php echo gettext("General settings"); ?></h2>
 
       <form action="index.php<?php echo $link; ?>" method="POST" accept-charset="utf-8">
         <table>
           <tr>
             <td>
-              <label for="debug">debug</label>
+              <label for="debug">newsletter debug</label>
             </td>
             <td class="input">
               <input
@@ -81,7 +81,7 @@
           </tr>
           <tr>
             <td>
-              <label for="debug_level">debug_level</label>
+              <label for="debug_level">PHP debug level</label>
             </td>
             <td class="input">
               <select type="text" id="debug_level" name="debug_level" size="1">
@@ -101,7 +101,7 @@
           </tr>
           <tr>
             <td>
-              <label for="show_processing_time">show_processing_time</label>
+              <label for="show_processing_time"><?php echo gettext("show processing time"); ?></label>
             </td>
             <td class="input">
               <input
@@ -113,7 +113,7 @@
           </tr>
           <tr>
             <td>
-              <label for="language">language</label>
+              <label for="language"><?php echo gettext("default language"); ?></label>
             </td>
             <td class="input">
               <input

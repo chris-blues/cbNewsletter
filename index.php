@@ -88,6 +88,15 @@
 
   $Debugout->add("</pre>");
 
+  if (isset($error)) {
+    $logTimeFormat = date("Y-m-d");
+    file_put_contents(
+      $cbNewsletter["basedir"] . "/admin/logs/debug_" . $logTimeFormat . ".log",
+      $Debugout->output(true),
+      FILE_APPEND | LOCK_EX
+    );
+  }
+
   if ($debug) {
 
     echo $HTML->infobox("<h3>PHP debug output</h3>\n<p>$Debugout</p>\n" . $Debugout->output(), "debug");

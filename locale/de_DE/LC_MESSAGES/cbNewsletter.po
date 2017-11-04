@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-11-04 20:07+0100\n"
-"PO-Revision-Date: 2017-11-04 20:10+0100\n"
+"POT-Creation-Date: 2017-11-04 22:22+0100\n"
+"PO-Revision-Date: 2017-11-04 22:23+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -180,7 +180,7 @@ msgstr "Der PDO Aufruf gab einen Fehler zurück: "
 msgid "Created database tables:"
 msgstr "Datenbanktabellen wurden erstellt:"
 
-#: admin/views/config.view.php:8 admin/views/config.view.php:66
+#: admin/views/config.view.php:8
 msgid "Database settings"
 msgstr "Datenbank Einstellungen"
 
@@ -193,12 +193,24 @@ msgstr "Zurücksetzen"
 msgid "Save"
 msgstr "Speichern"
 
+#: admin/views/config.view.php:66
+msgid "General settings"
+msgstr "Allgemeine Einstellungen"
+
+#: admin/views/config.view.php:104
+msgid "show processing time"
+msgstr "Verarbeitungsdauer anzeigen"
+
+#: admin/views/config.view.php:116
+msgid "default language"
+msgstr "Standardsprache"
+
 #: admin/views/create_newsletter.view.php:8
-#: admin/views/create_newsletter.view.php:75
+#: admin/views/create_newsletter.view.php:77
 msgid "preview"
 msgstr "Vorschau"
 
-#: admin/views/create_newsletter.view.php:9
+#: admin/views/create_newsletter.view.php:13
 msgid "hide preview"
 msgstr "Vorschau schließen"
 
@@ -226,49 +238,49 @@ msgstr ""
 "\n"
 "Unten befindet sich der Austragelink:\n"
 
-#: admin/views/create_newsletter.view.php:25 admin/views/mainmenu.view.php:17
+#: admin/views/create_newsletter.view.php:26 admin/views/mainmenu.view.php:17
 msgid "create newsletter"
 msgstr "Newsletter schreiben"
 
-#: admin/views/create_newsletter.view.php:29
-#: admin/views/create_newsletter.view.php:34
+#: admin/views/create_newsletter.view.php:30
+#: admin/views/create_newsletter.view.php:35
 msgid "subject"
 msgstr "Betreff"
 
-#: admin/views/create_newsletter.view.php:38
-#: admin/views/create_newsletter.view.php:48
+#: admin/views/create_newsletter.view.php:39
+#: admin/views/create_newsletter.view.php:49
 msgid "newsletter text"
 msgstr "Newsletter Text"
 
-#: admin/views/create_newsletter.view.php:56 views/manage_subscription.php:32
+#: admin/views/create_newsletter.view.php:58 views/manage_subscription.php:32
 msgid "reset"
 msgstr "Zurücksetzen"
 
-#: admin/views/create_newsletter.view.php:60
+#: admin/views/create_newsletter.view.php:62
 msgid "save template"
 msgstr "Vorlage speichern"
 
-#: admin/views/create_newsletter.view.php:65
+#: admin/views/create_newsletter.view.php:67
 msgid "template name"
 msgstr "Name der Vorlage"
 
-#: admin/views/create_newsletter.view.php:68
+#: admin/views/create_newsletter.view.php:70
 msgid "cancel"
 msgstr "Abbrechen"
 
-#: admin/views/create_newsletter.view.php:69 views/manage_subscription.php:58
+#: admin/views/create_newsletter.view.php:71 views/manage_subscription.php:58
 msgid "OK"
 msgstr "OK"
 
-#: admin/views/create_newsletter.view.php:79
+#: admin/views/create_newsletter.view.php:81
 msgid "send newsletter"
 msgstr "Newsletter abschicken"
 
-#: admin/views/create_newsletter.view.php:97
+#: admin/views/create_newsletter.view.php:99
 msgid "templates"
 msgstr "Vorlagen"
 
-#: admin/views/create_newsletter.view.php:124
+#: admin/views/create_newsletter.view.php:126
 msgid "delete template"
 msgstr "Vorlage löschen"
 
