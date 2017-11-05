@@ -10,6 +10,16 @@
 
 
 
+  include_once(checkout("/lib/classes/Router.class.php"));
+
+  include_once(checkout("/lib/classes/Request.class.php"));
+
+  $cbNewsletter["config"]["view"] = Request::view();
+
+  $Debugout->add("\$cbNewsletter[\"config\"][\"view\"] set to", $cbNewsletter["config"]["view"]);
+
+
+
   // General functions
   include_once(checkout("/lib/classes/HTML.class.php"));
   $HTML = new HTML;

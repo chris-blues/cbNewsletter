@@ -57,19 +57,16 @@
 
 
 
-// ================  routing  ================
+// =================== Routing ===================
 
-  if (isset($_GET["view"]) and strlen($_GET["view"]) > 1 and $_GET["view"] != "subscriptions") {
 
-    include_once(checkout("/admin/actions/" . $_GET["view"] . ".action.php"));
+  include_once(checkout(
+    Router::load("/admin/lib/routes.php")
+      ->direct($cbNewsletter["config"]["view"])
+  ));
 
-  } else {
 
-    include_once(checkout("/admin/actions/subscriptions.action.php"));
-
-  }
-
-// ================  routing  ================
+// =================== Routing ===================
 
 
 

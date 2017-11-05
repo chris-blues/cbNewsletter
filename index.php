@@ -81,7 +81,7 @@
 
 
 
-  if ($debug and isset($error)) {
+  if (isset($error)) {
     cbNewsletter_showErrors($error);
   }
 
@@ -92,7 +92,7 @@
     $logTimeFormat = date("Y-m-d");
     file_put_contents(
       $cbNewsletter["basedir"] . "/admin/logs/debug_" . $logTimeFormat . ".log",
-      $Debugout->output(true),
+      "\n\n=============================================================================================================================\n" . date("Y-m-d H:i:s") . "\n\n" . $Debugout->output(true),
       FILE_APPEND | LOCK_EX
     );
   }

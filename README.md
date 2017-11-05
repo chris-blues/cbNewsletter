@@ -9,6 +9,7 @@ You're welcome for contributing or testing though! :o)<br>
 
 
 ### ToDo:
+* archivate sent newsletters
 * admin UI:
   * protect admin dir with .htaccess/.htpasswd + add UI accordingly
     (not so sure this is practical, will be tied to Apache...)

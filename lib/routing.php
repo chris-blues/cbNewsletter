@@ -2,7 +2,6 @@
 
   $Debugout->add("<pre><b>[ routing ]</b>");
 
-// =================== Routing ===================
 
 // ================  pre display  ================
 
@@ -52,31 +51,30 @@
 
 
 
-
-  if (isset($cbNewsletter["config"]["view"]) and strlen($cbNewsletter["config"]["view"]) > 1) {
-
-    include_once(checkout("/actions/" . $_GET["view"] . ".action.php"));
-
-  } else {
-
-    include_once(checkout("/views/subscription.form.php"));
-
-  }
+// =================== Routing ===================
 
 
+  include_once(checkout(
+    Router::load("/lib/routes.php")
+      ->direct($cbNewsletter["config"]["view"])
+  ));
 
-
-
-// ===============  post display  ================
-
-
-
-
-
-
-// ===============  post display  ================
 
 // =================== Routing ===================
+
+
+
+
+// ===============  post display  ================
+
+
+
+
+
+
+// ===============  post display  ================
+
+
 
   $Debugout->add("</pre>");
 
