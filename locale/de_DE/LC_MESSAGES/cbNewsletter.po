@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-11-04 22:22+0100\n"
-"PO-Revision-Date: 2017-11-04 22:23+0100\n"
+"POT-Creation-Date: 2017-11-05 20:45+0100\n"
+"PO-Revision-Date: 2017-11-05 20:46+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -104,11 +104,11 @@ msgstr ""
 msgid "Your name has been updated."
 msgstr "Ihr neuer Name wurde eingetragen."
 
-#: actions/manage_subscription.action.php:205 lib/routing.php:25
+#: actions/manage_subscription.action.php:205 lib/routing.php:24
 msgid "Error! Could not send verification mail!<br>\n"
 msgstr "Fehler! Bestätigungsmail konnte nicht versendet werden!<br>\n"
 
-#: actions/manage_subscription.action.php:211 lib/routing.php:31
+#: actions/manage_subscription.action.php:211 lib/routing.php:30
 msgid ""
 "A verification mail has been sent to your inbox. Please click the link, to "
 "verify that you really want to unsubscribe from our newsletters!\n"
@@ -163,7 +163,7 @@ msgstr "Entfernen des Abos für %s ging schief!"
 msgid "Will be back shortly..."
 msgstr "Bin gleich zurück..."
 
-#: admin/index.php:82 index.php:104
+#: admin/index.php:90 index.php:113
 #, php-format
 msgid "processing needed %s"
 msgstr "Verarbeitung dauerte %s"
@@ -356,6 +356,19 @@ msgstr "Der PDO Aufruf gab einen Fehler zurück"
 #, php-format
 msgid "Database table %s has been optimized."
 msgstr "Datenbanktabelle %s wurde optimiert."
+
+#: views/error.view.php:2
+msgid "Error"
+msgstr "Fehler"
+
+#: views/error.view.php:4
+msgid ""
+"An error has occured. Most likely the link is broken. Please try again and "
+"make sure that you use the complete and correct link."
+msgstr ""
+"Ein Fehler ist aufgetreten. Höchst wahrscheinlich ist der Link kaputt. Bitte "
+"versuchen Sie es noch einmal und stellen Sie die Vollständigkeit und "
+"Richtigkeit des Links sicher."
 
 #: views/manage_subscription.php:3
 msgid "Change your subscription"
