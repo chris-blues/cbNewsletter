@@ -145,7 +145,7 @@
 
               // =============  send verification email  =============
 
-              $optin = new Email("opt_in", $db_data, $cbNewsletter["config"]["general"]["locale"]);
+              $optin = new Email("opt_in", $db_data, DIC::get("locale"));
 
               if (!$optin->send_mail()) {
 
@@ -198,7 +198,7 @@
             (isset($_GET["agree"]) and $_GET["agree"] == "agree")
           ) {
 
-            $optout = new Email("opt_out", $db_data, $cbNewsletter["config"]["general"]["locale"]);
+            $optout = new Email("opt_out", $db_data, DIC::get("locale"));
 
             if (!$optout->send_mail()) {
 

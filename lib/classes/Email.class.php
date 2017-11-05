@@ -110,7 +110,7 @@ class Email {
           $search,
           $replace,
           file_get_contents(
-            realpath(dirname(__FILE__) . "/../../views/mail.opt_in." . $locale . ".txt")
+            realpath(DIC::get("basedir") . "/views/mail.opt_in." . DIC::get("locale") . ".txt")
 	  )
 	);
         break;

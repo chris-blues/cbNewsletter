@@ -47,12 +47,12 @@
           $needReload = true;
 
           // reload config file
-          unset($cbNewsletter["config"]["general"]);
+          DIC::unset("general");
 
-          $cbNewsletter["config"]["general"]  = include(realpath($cbNewsletter["basedir"] . "/admin/config/general.php"));
+          DIC::add("general", include(realpath(DIC::get("basedir") . "/admin/config/general.php")));
           $Debugout->add(
-            "reloading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php",
-            (count($cbNewsletter["config"]["general"]) > 0) ? "OK" : "FAILED"
+            "reloading DIC::[\"general\"] from /admin/config/general.php",
+            (count(DIC::get("general")) > 0) ? "OK" : "FAILED"
           );
 
         }
@@ -75,10 +75,10 @@
 
 
   // load database settings
-  $cbNewsletter["config"]["database"] = include(realpath($cbNewsletter["basedir"] . "/admin/config/dbcredentials.php"));
+  DIC::add("database", include(DIC::get("basedir") . "/admin/config/dbcredentials.php"));
   $Debugout->add(
-    "loading \$cbNewsletter[\"config\"][\"database\"] from /admin/config/dbcredentials.php",
-    (count($cbNewsletter["config"]["database"]) > 0) ? "OK" : "FAILED"
+    "loading DIC::[\"database\"] from /admin/config/dbcredentials.php",
+    (count(DIC::get("database")) > 0) ? "OK" : "FAILED"
   );
 
 

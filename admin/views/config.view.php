@@ -14,7 +14,7 @@
               <label for="driver">driver</label>
             </td>
             <td class="input">
-              <input type="text" id="driver" name="driver" value="<?php echo $cbNewsletter["config"]["database"]["driver"]; ?>">
+              <input type="text" id="driver" name="driver" value="<?php echo DIC::get("database")["driver"]; ?>">
             </td>
           </tr>
           <tr>
@@ -22,7 +22,7 @@
               <label for="host">host</label>
             </td>
             <td class="input">
-              <input type="text" id="host" name="host" value="<?php echo $cbNewsletter["config"]["database"]["host"]; ?>">
+              <input type="text" id="host" name="host" value="<?php echo DIC::get("database")["host"]; ?>">
             </td>
           </tr>
           <tr>
@@ -30,7 +30,7 @@
               <label for="name">name</label>
             </td>
             <td class="input">
-              <input type="text" id="name" name="name" value="<?php echo $cbNewsletter["config"]["database"]["name"]; ?>">
+              <input type="text" id="name" name="name" value="<?php echo DIC::get("database")["name"]; ?>">
             </td>
           </tr>
           <tr>
@@ -38,7 +38,7 @@
               <label for="user">user</label>
             </td>
             <td class="input">
-              <input type="text" id="user" name="user" value="<?php echo $cbNewsletter["config"]["database"]["user"]; ?>">
+              <input type="text" id="user" name="user" value="<?php echo DIC::get("database")["user"]; ?>">
             </td>
           </tr>
           <tr>
@@ -46,7 +46,7 @@
               <label for="pass">pass</label>
             </td>
             <td class="input">
-              <input type="password" id="pass" name="pass" value="<?php echo $cbNewsletter["config"]["database"]["pass"]; ?>">
+              <input type="password" id="pass" name="pass" value="<?php echo DIC::get("database")["pass"]; ?>">
             </td>
           </tr>
         </table>
@@ -76,7 +76,7 @@
                 type="checkbox"
                 id="debug"
                 name="debug"
-                <?php if ($cbNewsletter["config"]["general"]["debug"]) echo "checked"; ?>>
+                <?php if (DIC::get("general")["debug"]) echo "checked"; ?>>
             </td>
           </tr>
           <tr>
@@ -87,10 +87,10 @@
               <select type="text" id="debug_level" name="debug_level" size="1">
 <?php
 
-  foreach ($cbNewsletter["config"]["general"]["debug_levels"] as $key => $value) {
+  foreach (DIC::get("general")["debug_levels"] as $key => $value) {
 
 ?>
-                <option value="<?php echo $key; ?>"<?php if($key == $cbNewsletter["config"]["general"]["debug_level"]) echo " selected"; ?>><?php echo $key; ?></option>
+                <option value="<?php echo $key; ?>"<?php if($key == DIC::get("general")["debug_level"]) echo " selected"; ?>><?php echo $key; ?></option>
 <?php
 
   }
@@ -108,7 +108,7 @@
                 type="checkbox"
                 id="show_processing_time"
                 name="show_processing_time"
-                <?php if ($cbNewsletter["config"]["general"]["show_processing_time"]) echo "checked"; ?>>
+                <?php if (DIC::get("general")["show_processing_time"]) echo "checked"; ?>>
             </td>
           </tr>
           <tr>
@@ -120,7 +120,7 @@
                 type="text"
                 id="language"
                 name="language"
-                value="<?php echo $cbNewsletter["config"]["general"]["language"]; ?>"
+                value="<?php echo DIC::get("general")["language"]; ?>"
                 placeholder="<?php echo $locale; ?>">
             </td>
           </tr>

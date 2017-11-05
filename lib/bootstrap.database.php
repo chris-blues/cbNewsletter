@@ -3,7 +3,7 @@
   $Debugout->add("<pre><b>[ bootstrap.database ]</b>");
 
 
-  $connect = Connection::make($cbNewsletter["config"]["database"]);
+  $connect = Connection::make(DIC::get("database"));
 
   if (is_object($connect)) {
 
@@ -11,7 +11,11 @@
 
     $query = new QueryBuilder($connect);
 
-    $cbNewsletter["config"]["database"]["tables"] = $query->get_table_names();
+
+    $tmp = DIC::get("database");
+    $tmp["tables"] = $query->get_table_names();
+    DIC::add("database", $tmp);
+    unset($tmp);
 
   } else {
 

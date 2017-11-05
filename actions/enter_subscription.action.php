@@ -64,7 +64,7 @@
 
 // =============  send verification email  =============
 
-      $optin = new Email("opt_in", $new_subscription, $cbNewsletter["config"]["general"]["locale"]);
+      $optin = new Email("opt_in", $new_subscription, DIC::get("locale"));
 
       if (!$optin->send_mail()) {
 

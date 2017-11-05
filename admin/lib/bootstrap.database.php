@@ -5,7 +5,7 @@
   include_once(checkout("/admin/lib/classes/QueryBuilderAdmin.class.php"));
 
 
-  $connect = Connection::make($cbNewsletter["config"]["database"]);
+  $connect = Connection::make(DIC::get("database"));
 
   if (is_object($connect)) {
 
@@ -15,7 +15,11 @@
 
     $initTables = $query->create_missing_tables();
 
-    $cbNewsletter["config"]["database"]["tables"] = $query->get_table_names();
+
+    $tmp = DIC::get("database");
+    $tmp["tables"] = $query->get_table_names();
+    DIC::add("database", $tmp);
+    unset($tmp);
 
   } else {
 

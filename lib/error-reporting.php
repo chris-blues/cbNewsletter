@@ -4,33 +4,14 @@
 
 // ================= php error reporting =================
 
-if (isset($_GET["debug"]) and ($_GET["debug"] == "TRUE" or $_GET["debug"] == "true")) {
-
-  $cbNewsletter["config"]["general"]["debug"] = true;
-
-}
-if (isset($_POST["debug"]) and ($_POST["debug"] == "TRUE" or $_POST["debug"] == "true")) {
-
-  $cbNewsletter["config"]["general"]["debug"] = true;
-
-}
 
 
 
-  $Debugout->add(
-    "setting \$cbNewsletter[\"config\"][\"general\"][\"error_reporting\"] to ",
-    array_search(
-      $cbNewsletter["config"]["general"]["debug_levels"][
-        $cbNewsletter["config"]["general"]["debug_level"]
-      ],
-      $cbNewsletter["config"]["general"]["debug_levels"]
-    )
-  );
-  $cbNewsletter["config"]["general"]["error_reporting"] = $cbNewsletter["config"]["general"]["debug_levels"][$cbNewsletter["config"]["general"]["debug_level"]];
 
 
 
-if (isset($cbNewsletter["config"]["general"]["debug"]) and $cbNewsletter["config"]["general"]["debug"]) {
+
+if (isset(DIC::get("general")["debug"]) and DIC::get("general")["debug"]) {
 
     $Debugout->add("display_errors", "ON");
     ini_set("display_errors", 1);
@@ -42,14 +23,14 @@ if (isset($cbNewsletter["config"]["general"]["debug"]) and $cbNewsletter["config
 
   }
 
-  error_reporting($cbNewsletter["config"]["general"]["error_reporting"]);
+  error_reporting(DIC::get("general")["debug_level"]);
 
   $Debugout->add("log_errors", "ON");
   ini_set("log_errors", 1);
 
   $logTimeFormat = date("Y-m-d");
-  $Debugout->add("error_log", $cbNewsletter["basedir"] . "/admin/logs/php-errors_" . $logTimeFormat . ".log");
-  ini_set("error_log", $cbNewsletter["basedir"] . "/admin/logs/php-errors_" . $logTimeFormat . ".log");
+  $Debugout->add("error_log", DIC::get("basedir") . "/admin/logs/php-errors_" . $logTimeFormat . ".log");
+  ini_set("error_log", DIC::get("basedir") . "/admin/logs/php-errors_" . $logTimeFormat . ".log");
 
 
 // ================= php error reporting =================

@@ -10,13 +10,14 @@
 
 
 
+
   include_once(checkout("/lib/classes/Router.class.php"));
 
   include_once(checkout("/lib/classes/Request.class.php"));
 
-  $cbNewsletter["config"]["view"] = Request::view();
+  DIC::add("view", Request::view());
 
-  $Debugout->add("\$cbNewsletter[\"config\"][\"view\"] set to", $cbNewsletter["config"]["view"]);
+  $Debugout->add("DIC::[\"view\"] set to", DIC::get("view"));
 
 
 
@@ -41,7 +42,7 @@
     include_once(checkout("/lib/bootstrap.database.common.php"));
 
 
-    $subdir = str_replace($cbNewsletter["basedir"], "", $cbNewsletter["calldir"]);
+    $subdir = str_replace(DIC::get("basedir"), "", DIC::get("calldir"));
 
     include_once(checkout($subdir . "/lib/bootstrap.database.php"));
 

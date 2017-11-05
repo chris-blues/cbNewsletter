@@ -17,7 +17,7 @@
 
           $db_data = $subscriber[0]->getdata();
 
-          $optout = new Email("opt_in", $db_data, $cbNewsletter["config"]["general"]["locale"]);
+          $optout = new Email("opt_in", $db_data, DIC::get("locale"));
 
           if (!$optout->send_mail()) {
 
@@ -56,7 +56,7 @@
 
   include_once(checkout(
     Router::load("/lib/routes.php")
-      ->direct($cbNewsletter["config"]["view"])
+      ->direct(DIC::get("view"))
   ));
 
 

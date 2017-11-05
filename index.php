@@ -1,22 +1,29 @@
 <?php
 
-  $cbNewsletter = array();
+  include_once(__DIR__ . "/lib/classes/DIC.class.php");
 
-  $cbNewsletter["startTime"] = microtime();
+  DIC::add("startTime", microtime());
 
-  $cbNewsletter["calldir"] = __DIR__;
 
-  include_once(dirname(__FILE__) . "/lib/classes/Debugout.class.php");
+  // catch possible variable collisions
+  $previous = array(
+    "debug" => $debug,
+    "lang"  => $lang,
+    "locale" => $locale,
+  );
+  DIC::add("previous_variables", $previous);
+
+
+  DIC::add("calldir", __DIR__);
+
+  include_once(DIC::get("calldir") . "/lib/classes/Debugout.class.php");
   $Debugout = new Debugout;
 
   $Debugout->add("<pre><b>[ index ]</b>");
 
-  $Debugout->add(
-    "setting \$cbNewsletter[\"basedir\"] to", dirname(__FILE__)
-  );
-  $cbNewsletter["basedir"] = dirname(__FILE__);
+  DIC::add("basedir", DIC::get("calldir"));
 
-  include_once($cbNewsletter["basedir"] . "/lib/checkout.function.php");
+  include_once(DIC::get("basedir") . "/lib/checkout.function.php");
 
 
 
@@ -41,37 +48,29 @@
 <?php
 
   //load config
-  $Debugout->add(
-    "loading \$cbNewsletter[\"config\"][\"general\"] from /admin/config/general.php",
-    ($cbNewsletter["config"]["general"] = include_once($cbNewsletter["basedir"] . "/admin/config/general.php")) ? "OK" : "FAILED"
+  DIC::add(
+    "general",
+    include_once(DIC::get("basedir") . "/admin/config/general.php")
   );
 
-  if (count($cbNewsletter["config"]["general"]) <= 1 or !$cbNewsletter["config"]["general"])
-    $cbNewsletter["config"]["general"] = include_once(checkout("/lib/config.default.php"));
+  if (count(DIC::get("general")) <= 1) {
+
+    $Debugout->add("loading general config from /admin/config/general.php", "FAILED");
+
+    DIC::add("general", include_once(checkout("/lib/config.default.php")));
+
+  } else {
+
+    $Debugout->add("loading general config from /admin/config/general.php", "OK");
+
+  }
 
 
-  $debug = $cbNewsletter["config"]["general"]["debug"];
-
-
-
-
-
-
-// override debug_level for php error messages [off|warn|full] (default: off)
-//   $cbNewsletter["config"]["debug_level"] = "full";
-
-// override debug messages by cbNewsletter
-//   $debug = true;
-
-
-
-
-
+  $debug = DIC::get("general")["debug"];
 
   $Debugout->add("setting \$debug to ", ($debug ? "true" : "false"));
 
-//   checkout("/lib/error-reporting.php");
-  include_once(checkout("/lib/error-reporting.php"));
+
 
 
 
@@ -82,19 +81,25 @@
 
 
   if (isset($error)) {
+
+    include_once(checkout("/lib/error-reporting.php"));
+
     cbNewsletter_showErrors($error);
+
   }
 
 
   $Debugout->add("</pre>");
 
   if (isset($error)) {
+
     $logTimeFormat = date("Y-m-d");
     file_put_contents(
-      $cbNewsletter["basedir"] . "/admin/logs/debug_" . $logTimeFormat . ".log",
+      DIC::get("basedir") . "/admin/logs/debug_" . $logTimeFormat . ".log",
       "\n\n=============================================================================================================================\n" . date("Y-m-d H:i:s") . "\n\n" . $Debugout->output(true),
       FILE_APPEND | LOCK_EX
     );
+
   }
 
   if ($debug) {
@@ -104,14 +109,14 @@
   }
 
 
-  if ($cbNewsletter["config"]["general"]["show_processing_time"]) {
+  if (DIC::get("general")["show_processing_time"]) {
 
-    $cbNewsletter["endTime"] = microtime();
+    DIC::add("endTime", microtime());
 
     echo $HTML->infobox(
       sprintf(
         gettext("processing needed %s"),
-        prettyTime($cbNewsletter["endTime"] - $cbNewsletter["startTime"])
+        prettyTime(DIC::get("endTime") - DIC::get("startTime"))
       ),
       "notes center"
     );
@@ -126,6 +131,12 @@
 
   if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
     echo "\n  </body>\n</html>\n";
+  }
+
+  foreach (DIC::get("previous_variables") as $key => $value) {
+
+    $$key = $value;
+
   }
 
 ?>

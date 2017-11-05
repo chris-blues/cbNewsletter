@@ -62,7 +62,7 @@
 
   include_once(checkout(
     Router::load("/admin/lib/routes.php")
-      ->direct($cbNewsletter["config"]["view"])
+      ->direct(DIC::get("view"))
   ));
 
 

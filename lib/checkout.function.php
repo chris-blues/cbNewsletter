@@ -3,13 +3,13 @@
 
 function checkout($filename, $exit = true) {
 
-  global $Debugout, $debug, $cbNewsletter, $HTML;
+  global $Debugout, $debug, $HTML;
 
   if (strncmp($filename, "/", 1) != 0) $filename = "/" . $filename;
 
   $string = "checkout " . $filename;
 
-  $realfilename = realpath($cbNewsletter["basedir"] . $filename);
+  $realfilename = realpath(DIC::get("basedir") . $filename);
 
   if ($realfilename === false) {
 

@@ -2,7 +2,7 @@
 
   return array(
 
-    "debug"                => true,
+    "debug"                => false,
     "debug_level"          => "off",
     "show_processing_time" => true,
     "language"             => "",

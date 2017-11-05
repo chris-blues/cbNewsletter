@@ -3,12 +3,12 @@
   $Debugout->add("<pre><b>[ bootstrap.database.common ]</b>");
 
 
-  $cbNewsletter["config"]["database"] = include(checkout("/admin/config/dbcredentials.php", false));
-  if (count($cbNewsletter["config"]["database"]) > 0)
+  DIC::add("database", include(checkout("/admin/config/dbcredentials.php", false)));
+  if (count(DIC::get("database")) > 0)
        $result = "OK";
   else $result = "FAILED";
 
-  $Debugout->add("loading \$cbNewsletter[\"config\"][\"database\"] from /admin/config/dbcredentials.php: ", $result);
+  $Debugout->add("loading DIC::[\"database\"] from /admin/config/dbcredentials.php: ", $result);
 
 
   include_once(checkout("/lib/classes/Connection.class.php"));
