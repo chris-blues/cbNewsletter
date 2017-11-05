@@ -9,7 +9,7 @@
 
   if (is_object($connect)) {
 
-    $Debugout->add("connecting to database",  "OK");
+    $Debugout->add("connecting to database", "OK");
 
     $query = new QueryBuilderAdmin($connect);
 

@@ -151,9 +151,69 @@ class QueryBuilderAdmin extends QueryBuilder {
 
       echo $HTML->infobox(gettext("Created database tables:") . "\n" . $HTML->ul($list), "notice");
 
+
+
+      foreach ($init as $table => $result) {
+
+        if ($table != "cbNewsletter_maintenance") {
+
+          $result = $this->insert_maintenance_data($table);
+
+          $Debugout->add(
+            "added maintenance data of table " . $table,
+            ($result) ? "OK" : "FAILED"
+          );
+
+        }
+
+      }
+
       return $init;
 
     }
+
+  }
+
+  public function insert_maintenance_data($table) {
+
+    $statement = $this->Database->prepare(
+      "SELECT * FROM `cbNewsletter_maintenance`
+       WHERE `name` = :name ;"
+    );
+
+    $statement->bindParam(':name', $table);
+
+    $result = $this->callExecution($statement);
+
+    $result = $statement->fetchAll();
+
+
+
+    if (count($result) != 0) {
+
+      $statement = $this->Database->prepare(
+        "UPDATE `cbNewsletter_maintenance`
+         SET `ctime` = :ctime, `optimized` = :ctime
+         WHERE `name` = :name ;"
+      );
+
+    } else {
+
+      $statement = $this->Database->prepare(
+        "INSERT INTO `cbNewsletter_maintenance`
+         (`name`, `ctime`, `optimized`)
+         VALUES
+         (:name, :ctime, :ctime) ;"
+      );
+
+    }
+
+    $statement->bindParam(':ctime', time());
+    $statement->bindParam(':name', $table);
+
+    $result = $this->callExecution($statement);
+
+    return $result;
 
   }
 
