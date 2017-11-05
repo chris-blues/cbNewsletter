@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-11-05 20:45+0100\n"
-"PO-Revision-Date: 2017-11-05 20:46+0100\n"
+"POT-Creation-Date: 2017-11-05 20:55+0100\n"
+"PO-Revision-Date: 2017-11-05 20:55+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -196,6 +196,10 @@ msgstr "Speichern"
 #: admin/views/config.view.php:66
 msgid "General settings"
 msgstr "Allgemeine Einstellungen"
+
+#: admin/views/config.view.php:72
+msgid "cbNewsletter debug output"
+msgstr "cbNewsletter Debug Ausgabe"
 
 #: admin/views/config.view.php:104
 msgid "show processing time"

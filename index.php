@@ -99,7 +99,7 @@
 
   if ($debug) {
 
-    echo $HTML->infobox("<h3>PHP debug output</h3>\n<p>$Debugout</p>\n" . $Debugout->output(), "debug");
+    echo $HTML->infobox("<h3>debug output</h3>\n<p>$Debugout</p>\n" . $Debugout->output(), "debug");
 
   }
 

@@ -69,7 +69,7 @@
         <table>
           <tr>
             <td>
-              <label for="debug">newsletter debug</label>
+              <label for="debug"><?php echo gettext("cbNewsletter debug output"); ?></label>
             </td>
             <td class="input">
               <input
