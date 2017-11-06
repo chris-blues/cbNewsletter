@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-11-05 20:55+0100\n"
-"PO-Revision-Date: 2017-11-05 20:55+0100\n"
+"POT-Creation-Date: 2017-11-06 00:38+0100\n"
+"PO-Revision-Date: 2017-11-06 00:38+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -163,12 +163,12 @@ msgstr "Entfernen des Abos für %s ging schief!"
 msgid "Will be back shortly..."
 msgstr "Bin gleich zurück..."
 
-#: admin/index.php:90 index.php:113
+#: admin/index.php:91 index.php:118
 #, php-format
 msgid "processing needed %s"
 msgstr "Verarbeitung dauerte %s"
 
-#: admin/lib/bootstrap.database.php:24 lib/bootstrap.database.php:20
+#: admin/lib/bootstrap.database.php:28 lib/bootstrap.database.php:24
 msgid "Error! Could not connect to database!"
 msgstr "Fehler! Konnte keine Verbindung zur Datenbank herstellen!"
 

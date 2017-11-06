@@ -116,6 +116,27 @@ class QueryBuilderAdmin extends QueryBuilder {
 
   }
 
+
+
+  public function store_newsletter($subject, $text) {
+
+    $statement = $this->Database->prepare(
+      "INSERT INTO `cbNewsletter_archiv`
+       (`date`, `subject`, `text`)
+       VALUES
+       (:date, :subject, :text) ;"
+    );
+
+    $statement->bindParam(':date',    time());
+    $statement->bindParam(':subject', $subject);
+    $statement->bindParam(':text',    $text);
+
+    return $this->callExecution($statement);
+
+  }
+
+
+
   public function create_missing_tables() {
 
     global $Debugout, $HTML;
