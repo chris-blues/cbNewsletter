@@ -19,7 +19,7 @@ class DIC {
     if (!array_key_exists($key, static::$data)) {
 
       throw new Exception(
-        $key . " not found in DIC."
+        "key '" . $key . "' not found in DIC."
       );
 
     }

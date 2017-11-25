@@ -19,6 +19,33 @@ class QueryBuilder {
     return $result;
   }
 
+
+  public function show_archive($id = null) {
+
+    if ($id == null) {
+
+      $statement = $this->Database->prepare(
+        "SELECT * FROM `cbNewsletter_archive` ORDER BY `date` DESC ;"
+      );
+
+    } else {
+
+      $statement = $this->Database->prepare(
+        "SELECT * FROM `cbNewsletter_archive`
+         WHERE `id` = :id ;"
+      );
+
+      $statement->bindParam(':id', $id);
+
+    }
+
+    $result = $this->callExecution($statement);
+
+    return $statement->fetchAll(PDO::FETCH_CLASS, "NLarchive");
+
+  }
+
+
   public function add_subscriber($subscriber) {
 
     $statement = $this->Database->prepare(

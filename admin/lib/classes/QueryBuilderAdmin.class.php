@@ -121,13 +121,14 @@ class QueryBuilderAdmin extends QueryBuilder {
   public function store_newsletter($subject, $text) {
 
     $statement = $this->Database->prepare(
-      "INSERT INTO `cbNewsletter_archiv`
+      "INSERT INTO `cbNewsletter_archive`
        (`date`, `subject`, `text`)
        VALUES
        (:date, :subject, :text) ;"
     );
 
-    $statement->bindParam(':date',    time());
+    $date = time();
+    $statement->bindParam(':date',    $date);
     $statement->bindParam(':subject', $subject);
     $statement->bindParam(':text',    $text);
 
@@ -148,7 +149,7 @@ class QueryBuilderAdmin extends QueryBuilder {
     $result = $statement->fetchAll(PDO::FETCH_COLUMN, 0);
 
 
-    $tablenames = array("cbNewsletter_subscribers", "cbNewsletter_archiv", "cbNewsletter_templates", "cbNewsletter_maintenance");
+    $tablenames = array("cbNewsletter_subscribers", "cbNewsletter_archive", "cbNewsletter_templates", "cbNewsletter_maintenance");
 
     if (count($result) < count($tablenames)) {
 
@@ -329,10 +330,10 @@ class QueryBuilderAdmin extends QueryBuilder {
 
   }
 
-  private function init_cbNewsletter_archiv () {
+  private function init_cbNewsletter_archive () {
 
     $statement = $this->Database->prepare(
-      "CREATE TABLE IF NOT EXISTS `cbNewsletter_archiv` (
+      "CREATE TABLE IF NOT EXISTS `cbNewsletter_archive` (
         `id` INT UNSIGNED NULL AUTO_INCREMENT ,
         `date` INT UNSIGNED NOT NULL ,
         `subject` TINYTEXT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ,

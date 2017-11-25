@@ -28,5 +28,9 @@
             required
           ><br>
         <button type="reset"><?php echo gettext("Reset"); ?></button>
-        <button type="submit"><?php echo gettext("Submit"); ?></button><br>
+        <button type="submit"><?php echo gettext("Submit"); ?></button>
       </form>
+
+      <hr>
+
+      <a href="<?php echo assembleGetString("string", array("view" => "show_archive")); ?>"><?php echo gettext("newsletter archive"); ?></a>

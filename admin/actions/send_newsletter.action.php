@@ -37,7 +37,7 @@
   // store this newsletter in the archive
 
   $Debugout->add(
-    "stored this newsletter into `cbNewsletter_archiv`",
+    "stored this newsletter into `cbNewsletter_archive`",
     ($query->store_newsletter($_POST["subject"], $_POST["text"])) ? "OK" : "FAILED"
   );
 

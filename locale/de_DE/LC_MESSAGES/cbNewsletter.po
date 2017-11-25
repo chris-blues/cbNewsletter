@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-11-06 00:38+0100\n"
-"PO-Revision-Date: 2017-11-06 00:38+0100\n"
+"POT-Creation-Date: 2017-11-25 18:45+0100\n"
+"PO-Revision-Date: 2017-11-25 18:45+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -124,6 +124,10 @@ msgstr ""
 "Diese Emailadresse wurde noch nicht bestätigt. Zugriff auf diese Daten wurde "
 "verweigert."
 
+#: actions/show_archive.action.php:2
+msgid "Newsletter archive"
+msgstr "Newsletterarchiv"
+
 #: actions/verify_subscription.action.php:1
 msgid "Verify subscription"
 msgstr "Abo bestätigen"
@@ -163,7 +167,7 @@ msgstr "Entfernen des Abos für %s ging schief!"
 msgid "Will be back shortly..."
 msgstr "Bin gleich zurück..."
 
-#: admin/index.php:91 index.php:118
+#: admin/index.php:91 index.php:126
 #, php-format
 msgid "processing needed %s"
 msgstr "Verarbeitung dauerte %s"
@@ -176,7 +180,7 @@ msgstr "Fehler! Konnte keine Verbindung zur Datenbank herstellen!"
 msgid "The PDO call returned an error: "
 msgstr "Der PDO Aufruf gab einen Fehler zurück: "
 
-#: admin/lib/classes/QueryBuilderAdmin.class.php:152
+#: admin/lib/classes/QueryBuilderAdmin.class.php:174
 msgid "Created database tables:"
 msgstr "Datenbanktabellen wurden erstellt:"
 
@@ -356,7 +360,7 @@ msgstr "Bitte bestätigen Sie Ihre Abmeldung aus unserem Newsletter @ %s"
 msgid "The PDO call returned an error"
 msgstr "Der PDO Aufruf gab einen Fehler zurück"
 
-#: lib/classes/QueryBuilder.class.php:249
+#: lib/classes/QueryBuilder.class.php:276
 #, php-format
 msgid "Database table %s has been optimized."
 msgstr "Datenbanktabelle %s wurde optimiert."
@@ -406,6 +410,10 @@ msgstr "Abmelden"
 msgid "Really unsubscribe me"
 msgstr "Wirklich abmelden"
 
+#: views/show_archive.view.php:49
+msgid "back"
+msgstr "Zurück"
+
 #: views/subscription.form.php:1
 msgid "Subscribe to our newsletter:"
 msgstr "Abonnieren Sie unseren Newsletter:"
@@ -413,6 +421,10 @@ msgstr "Abonnieren Sie unseren Newsletter:"
 #: views/subscription.form.php:31
 msgid "Submit"
 msgstr "Eintragen"
+
+#: views/subscription.form.php:36
+msgid "newsletter archive"
+msgstr "Newsletterarchiv"
 
 #: views/unsubscribe.view.php:3
 msgid "Or are you trying to unsubscribe or something else?"

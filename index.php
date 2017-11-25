@@ -6,12 +6,20 @@
 
 
   // catch possible variable collisions
-  $previous = array(
-    "debug" => $debug,
-    "lang"  => $lang,
-    "locale" => $locale,
-  );
-  DIC::add("previous_variables", $previous);
+  if (isset($debug))  $previous["debug"]  = $debug;
+  if (isset($lang))   $previous["lang"]   = $lang;
+  if (isset($locale)) $previous["locale"] = $locale;
+
+  if (isset($previous)) {
+
+    DIC::add("previous_variables", $previous);
+    DIC::add("previous_variables_switch", true);
+
+  } else {
+
+    DIC::add("previous_variables_switch", false);
+
+  }
 
 
   DIC::add("calldir", __DIR__);
@@ -133,9 +141,13 @@
     echo "\n  </body>\n</html>\n";
   }
 
-  foreach (DIC::get("previous_variables") as $key => $value) {
+  if (DIC::get("previous_variables_switch")) {
 
-    $$key = $value;
+    foreach (DIC::get("previous_variables") as $key => $value) {
+
+      $$key = $value;
+
+    }
 
   }
 

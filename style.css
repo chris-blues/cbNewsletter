@@ -226,3 +226,9 @@ td.input {
 td.input input {
 /*   width: 100%; */
 }
+
+#cbNewsletter_mainBox ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
