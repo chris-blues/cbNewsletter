@@ -14,7 +14,7 @@
 
   if (count($NL) < 1) {
 
-    $error["display_archive"]["data"] = "empty result";
+    $error["display_archive"]["data"] = "empty result: newsletter '" . $_GET["id"] . "' does not exist.";
 
   } else {
 
