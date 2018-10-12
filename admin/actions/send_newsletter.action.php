@@ -1,12 +1,12 @@
 <?php
 
-  $Debugout->add("<pre><b>[ send_newsletter.action ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ send_newsletter.action ]</b>");
 
-  include_once(checkout("/admin/lib/classes/Newsletter.class.php"));
+  include_once(cbNewsletter_checkout("/admin/lib/classes/Newsletter.class.php"));
 
-  $newsletters = $query->get_verified_subscribers();
+  $newsletters = $cbNewsletter_query->get_verified_subscribers();
 
-  $Debugout->add("Going to send " . count($newsletters) . " newsletters");
+  $cbNewsletter_Debugout->add("Going to send " . count($newsletters) . " newsletters");
 
   foreach ($newsletters as $key => $Subscriber) {
 
@@ -30,17 +30,17 @@
 
     }
 
-    $Debugout->add("Newsletter sent to " . $subscriberData["name"] . " &lt;" . $subscriberData["email"] . "&gt;", $result);
+    $cbNewsletter_Debugout->add("Newsletter sent to " . $subscriberData["name"] . " &lt;" . $subscriberData["email"] . "&gt;", $result);
 
   }
 
   // store this newsletter in the archive
 
-  $Debugout->add(
+  $cbNewsletter_Debugout->add(
     "stored this newsletter into `cbNewsletter_archive`",
-    ($query->store_newsletter($_POST["subject"], $_POST["text"])) ? "OK" : "FAILED"
+    ($cbNewsletter_query->store_newsletter($_POST["subject"], $_POST["text"])) ? "OK" : "FAILED"
   );
 
-  echo $HTML->infobox($HTML->ol($output));
+  echo $cbNewsletter_HTML->infobox($cbNewsletter_HTML->ol($output));
 
 ?>

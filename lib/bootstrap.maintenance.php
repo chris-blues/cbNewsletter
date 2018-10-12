@@ -1,13 +1,13 @@
 <?php
 
-  $Debugout->add("<pre><b>[ bootstrap.maintenance ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ bootstrap.maintenance ]</b>");
 
-  include_once(checkout("/lib/classes/Maintenance.class.php"));
+  include_once(cbNewsletter_checkout("/lib/classes/Maintenance.class.php"));
 
 
-  $tables_maintenance = $query->get_maintenance_data();
+  $tables_maintenance = $cbNewsletter_query->get_maintenance_data();
 
-  $Debugout->add("Checking for table maintenance cycles...");
+  $cbNewsletter_Debugout->add("Checking for table maintenance cycles...");
 
   foreach ($tables_maintenance as $key => $table) {
 
@@ -19,7 +19,7 @@
 
       $result = "Optimizing table... ";
 
-      if ($query->optimize_table($tablename)) {
+      if ($cbNewsletter_query->optimize_table($tablename)) {
 
         $result .= "OK";
 
@@ -35,7 +35,7 @@
 
     }
 
-    $Debugout->add(
+    $cbNewsletter_Debugout->add(
       " * Table " . str_pad($tablename, 25) . " is " . prettyTime($table->get_last_optimization(false)) . "  into its maintenance cycle",
       $result
     );
@@ -43,11 +43,11 @@
   }
 
 
-  $Debugout->add(
+  $cbNewsletter_Debugout->add(
     "Removing unverified subscriptions older than 30 days",
-    $query->remove_unverified_subsciptions() . " expired subscriptions deleted"
+    $cbNewsletter_query->remove_unverified_subsciptions() . " expired subscriptions deleted"
   );
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
 ?>

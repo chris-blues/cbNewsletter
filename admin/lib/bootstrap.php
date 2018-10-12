@@ -1,25 +1,25 @@
 <?php
 
-  $Debugout->add("<pre><b>[ bootstrap ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ bootstrap ]</b>");
 
 
 
 
-  include_once(checkout("/lib/bootstrap.common.php"));
+  include_once(cbNewsletter_checkout("/lib/bootstrap.common.php"));
 
 
-  include_once(checkout("/admin/lib/classes/Template.class.php"));
+  include_once(cbNewsletter_checkout("/admin/lib/classes/Template.class.php"));
 
 
 
   // HTML header
-  include_once(checkout("/admin/views/header.php"));
+  include_once(cbNewsletter_checkout("/admin/views/header.php"));
 
 
 
 
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
 
 ?>

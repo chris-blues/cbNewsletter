@@ -2,38 +2,38 @@
 
 <?php
 
-  $Debugout->add("<pre><b>[ manage_subscription ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ manage_subscription ]</b>");
 
 
-  $result = include_once(checkout("/lib/verify.transmitted_data.php"));
+  $result = include_once(cbNewsletter_checkout("/lib/verify.transmitted_data.php"));
   if ($result === true) {
-    $Debugout->add("including /lib/verify.transmitted_data.php", "already done - skipping");
+    $cbNewsletter_Debugout->add("including /lib/verify.transmitted_data.php", "already done - skipping");
   } elseif ($result === false) {
-    $Debugout->add("including /lib/verify.transmitted_data.php", "FAILED");
+    $cbNewsletter_Debugout->add("including /lib/verify.transmitted_data.php", "FAILED");
   }
 
 
 
   if (isset($data["id"]) and isset($data["hash"])) {
 
-    $Debugout->add("verifying transmitted data", "passed");
+    $cbNewsletter_Debugout->add("verifying transmitted data", "passed");
 
 // ===============  verify transmitted data against database  ===============
 
-    $userVerification = $query->check_subscription($data["id"], $data["hash"]);
+    $userVerification = $cbNewsletter_query->check_subscription($data["id"], $data["hash"]);
 
     if ($userVerification == "0") {
 
       $userVerification = false;
       $error["verification"]["database"] = gettext("No match to this data in the database!");
-      $Debugout->add("verifying data against the database", "FAILED");
+      $cbNewsletter_Debugout->add("verifying data against the database", "FAILED");
 
     }
 
     if ($userVerification == "1") {
 
       $userVerification = true;
-      $Debugout->add("verifying data against the database", "passed");
+      $cbNewsletter_Debugout->add("verifying data against the database", "passed");
 
     }
 
@@ -41,7 +41,7 @@
 
   } else {
 
-    $Debugout->add("verifying transmitted data", "FAILED");
+    $cbNewsletter_Debugout->add("verifying transmitted data", "FAILED");
 
   }
 
@@ -55,7 +55,7 @@
     !isset($data["hash"])
   ) {
 
-    echo $HTML->infobox(
+    echo $cbNewsletter_HTML->infobox(
       "<p>" .
       gettext("Sorry! This subscription cannot be found. The following possibilities may help:") . "</p>\n" .
       "<ul>\n<li>" .
@@ -69,7 +69,7 @@
       "</li>\n</ul>"
     );
 
-    $Debugout->add("ERROR! Transferred data did not verify!");
+    $cbNewsletter_Debugout->add("ERROR! Transferred data did not verify!");
 
   }
 
@@ -79,7 +79,7 @@
 
   if (isset($userVerification) and $userVerification === true) {
 
-    $subscriber = $query->getSubscriberData($data["id"]);
+    $subscriber = $cbNewsletter_query->getSubscriberData($data["id"]);
 
     $subscriber[0]->correctTypes();
 
@@ -109,7 +109,7 @@
 
 	  if (isset($data["new_email"]) and $data["new_email"] != $db_data["email"]) {
 
-            if ($query->check_existing($data["new_email"]) > 0) {
+            if ($cbNewsletter_query->check_existing($data["new_email"]) > 0) {
 
 	      $error["change_email"]["error"] = true;
 	      $error["change_email"]["data"] = $data["new_email"] . " is already in the database";
@@ -126,37 +126,37 @@
 
 	    if (isset($needUpdate["email"]) and $needUpdate["email"]) {
 
-	      $result = $query->updateSubscribersEmail($db_data["id"], $data["new_email"]);
+	      $result = $cbNewsletter_query->updateSubscribersEmail($db_data["id"], $data["new_email"]);
 
 	      if ($result !== false) {
 
-	        echo $HTML->infobox(gettext("Your email address has been updated."));
-	        $Debugout->add("updating email address", "OK");
+	        echo $cbNewsletter_HTML->infobox(gettext("Your email address has been updated."));
+	        $cbNewsletter_Debugout->add("updating email address", "OK");
 
 	      } else {
 
-	        $Debugout->add("updating email address", "FAILED");
+	        $cbNewsletter_Debugout->add("updating email address", "FAILED");
 
 	      }
 
-	      $subscriber = $query->getSubscriberData($data["id"]);
+	      $subscriber = $cbNewsletter_query->getSubscriberData($data["id"]);
 	      $subscriber[0]->correctTypes();
               $db_data = $subscriber[0]->getdata();
 
               // =============  send verification email  =============
 
-              $optin = new Email("opt_in", $db_data, DIC::get("locale"));
+              $optin = new Email("opt_in", $db_data, cbNewsletter_DIC::get("locale"));
 
               if (!$optin->send_mail()) {
 
-                echo $HTML->errorbox(gettext("Error! Could not send verification mail!"));
-                $Debugout->add("sending verification email to new address", "FAILED");
+                echo $cbNewsletter_HTML->errorbox(gettext("Error! Could not send verification mail!"));
+                $cbNewsletter_Debugout->add("sending verification email to new address", "FAILED");
 
               } else {
 
-                echo $HTML->infobox(gettext("<p>A verification mail has been sent to your inbox. Please click the link, to verify that:</p>\n<ul><li>this mailbox actually belongs to you</li>\n<li>you really want to get our newsletter</li></ul>\n<p>Thanks!</p>"));
+                echo $cbNewsletter_HTML->infobox(gettext("<p>A verification mail has been sent to your inbox. Please click the link, to verify that:</p>\n<ul><li>this mailbox actually belongs to you</li>\n<li>you really want to get our newsletter</li></ul>\n<p>Thanks!</p>"));
 
-                $Debugout->add("sending verification email to new address", "OK");
+                $cbNewsletter_Debugout->add("sending verification email to new address", "OK");
 
               }
 
@@ -166,20 +166,20 @@
 
             if (isset($needUpdate["name"]) and $needUpdate["name"]) {
 
-              $result = $query->updateSubscribersName($db_data["id"], $data["name"]);
+              $result = $cbNewsletter_query->updateSubscribersName($db_data["id"], $data["name"]);
 
               if ($result !== false) {
 
-                echo $HTML->infobox(gettext("Your name has been updated."));
-                $Debugout->add("updating name", "OK");
+                echo $cbNewsletter_HTML->infobox(gettext("Your name has been updated."));
+                $cbNewsletter_Debugout->add("updating name", "OK");
 
               } else {
 
-                $Debugout->add("updating name", "FAILED");
+                $cbNewsletter_Debugout->add("updating name", "FAILED");
 
               }
 
-              $subscriber = $query->getSubscriberData($data["id"]);
+              $subscriber = $cbNewsletter_query->getSubscriberData($data["id"]);
               $subscriber[0]->correctTypes();
               $db_data = $subscriber[0]->getdata();
 
@@ -198,26 +198,26 @@
             (isset($_GET["agree"]) and $_GET["agree"] == "agree")
           ) {
 
-            $optout = new Email("opt_out", $db_data, DIC::get("locale"));
+            $optout = new Email("opt_out", $db_data, cbNewsletter_DIC::get("locale"));
 
             if (!$optout->send_mail()) {
 
-              echo $HTML->errorbox(gettext("Error! Could not send verification mail!<br>\n"));
-              $Debugout->add("sending verification mail", "FAILED");
+              echo $cbNewsletter_HTML->errorbox(gettext("Error! Could not send verification mail!<br>\n"));
+              $cbNewsletter_Debugout->add("sending verification mail", "FAILED");
 
             } else {
 
-              echo $HTML->infobox(
+              echo $cbNewsletter_HTML->infobox(
                 gettext("A verification mail has been sent to your inbox. Please click the link, to verify that you really want to unsubscribe from our newsletters!\n")
               );
-              $Debugout->add("sending verification mail", "OK");
+              $cbNewsletter_Debugout->add("sending verification mail", "OK");
 
             }
 
           } else {
 
             $error["verification"]["agreement"] = "Subscriber did not check the agree-field";
-            $Debugout->add("Error! I-agree-field not checked! How did you manage that???");
+            $cbNewsletter_Debugout->add("Error! I-agree-field not checked! How did you manage that???");
 
           }
 
@@ -261,7 +261,7 @@
 
   if (!isset($db_data["verified"]) or $db_data["verified"] !== true) {
 
-    echo $HTML->infobox(gettext("This email has not been verified yet. Access to this data has been denied."));
+    echo $cbNewsletter_HTML->infobox(gettext("This email has not been verified yet. Access to this data has been denied."));
 
   }
 
@@ -271,14 +271,14 @@
     (isset($db_data["verified"]) and $db_data["verified"] === true)
   ) {
 
-    include_once(checkout("/views/manage_subscription.php"));
+    include_once(cbNewsletter_checkout("/views/manage_subscription.php"));
 
   } else {
 
-    include_once(checkout("/views/subscription.form.php"));
+    include_once(cbNewsletter_checkout("/views/subscription.form.php"));
 
   }
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
 ?>

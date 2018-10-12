@@ -1,6 +1,6 @@
 <?php
 
-class Debugout {
+class cbNewsletter_Debugout {
 
   protected $debug_message;
 

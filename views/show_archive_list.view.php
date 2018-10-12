@@ -3,7 +3,7 @@
 
 <?php
 
-  foreach (DIC::get("NLarchive") as $NLarchive) {
+  foreach (cbNewsletter_DIC::get("NLarchive") as $NLarchive) {
 
     $NL = $NLarchive->getdata();
 

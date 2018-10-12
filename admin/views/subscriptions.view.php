@@ -62,7 +62,7 @@
 <?php
   foreach ($subscribers as $key => $value) {
     $subscriber = $value->getdata();
-    include(realpath(DIC::get("basedir") . "/admin/views/subscriber.php"));
+    include(realpath(cbNewsletter_DIC::get("basedir") . "/admin/views/subscriber.php"));
   } ?>
 
     </table>

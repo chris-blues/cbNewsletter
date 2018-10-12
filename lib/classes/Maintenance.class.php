@@ -8,12 +8,12 @@ class Maintenance {
 
   public function get_last_optimization($pretty = false) {
 
-    global $HTML;
+    global $cbNewsletter_HTML;
 
     $timespan = time() - $this->optimized;
 
     if ($pretty === true)
-      return "Database table " . $HTML->code($this->name) . " has been optimized " . $HTML->code(prettyTime($timespan)) . " ago.<br>\n";
+      return "Database table " . $cbNewsletter_HTML->code($this->name) . " has been optimized " . $cbNewsletter_HTML->code(prettyTime($timespan)) . " ago.<br>\n";
     else
       return $timespan;
 

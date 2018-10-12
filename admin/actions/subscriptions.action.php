@@ -1,6 +1,6 @@
 <?php
 
-  $Debugout->add("<pre><b>[ subscriptions.action ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ subscriptions.action ]</b>");
 
   if (isset($_POST["search"])) {
     $search = $_POST["search"];
@@ -25,13 +25,13 @@
   );
 
 
-  $subscribers = $query->get_subscribers($search, $order);
-  $Debugout->add(
+  $subscribers = $cbNewsletter_query->get_subscribers($search, $order);
+  $cbNewsletter_Debugout->add(
     "getting subscribers",
     count($subscribers) . " subscriber(s) found"
   );
 
-  include_once(checkout("/admin/views/subscriptions.view.php"));
+  include_once(cbNewsletter_checkout("/admin/views/subscriptions.view.php"));
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 ?>

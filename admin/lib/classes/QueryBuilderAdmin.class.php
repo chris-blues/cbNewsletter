@@ -1,6 +1,6 @@
 <?php
 
-class QueryBuilderAdmin extends QueryBuilder {
+class cbNewsletter_QueryBuilderAdmin extends cbNewsletter_QueryBuilder {
 
     private function callExecution($statement) {
 
@@ -140,7 +140,7 @@ class QueryBuilderAdmin extends QueryBuilder {
 
   public function create_missing_tables() {
 
-    global $Debugout, $HTML;
+    global $cbNewsletter_Debugout, $cbNewsletter_HTML;
 
     $statement = $this->Database->prepare("SHOW TABLES LIKE 'cbNewsletter_%' ;");
 
@@ -162,7 +162,7 @@ class QueryBuilderAdmin extends QueryBuilder {
           $list[] = $name;
           $init[$name] = $this->{"init_$name"}();
 
-          $Debugout->add(
+          $cbNewsletter_Debugout->add(
             "created missing table " . $name,
             ($init[$name]) ? "OK" : "FAILED"
           );
@@ -171,7 +171,7 @@ class QueryBuilderAdmin extends QueryBuilder {
 
       }
 
-      echo $HTML->infobox(gettext("Created database tables:") . "\n" . $HTML->ul($list), "notice");
+      echo $cbNewsletter_HTML->infobox(gettext("Created database tables:") . "\n" . $cbNewsletter_HTML->ul($list), "notice");
 
 
 
@@ -181,7 +181,7 @@ class QueryBuilderAdmin extends QueryBuilder {
 
           $result = $this->insert_maintenance_data($table);
 
-          $Debugout->add(
+          $cbNewsletter_Debugout->add(
             "added maintenance data of table " . $table,
             ($result) ? "OK" : "FAILED"
           );

@@ -1,6 +1,6 @@
 <?php
 
-  $Debugout->add("<pre><b>[ routing ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ routing ]</b>");
 
 // ================  pre display  ================
 
@@ -12,9 +12,9 @@
 
         if (isset($_GET["id"])) {
 
-          $result = $query->removeSubscription($_GET["id"]);
-          $Debugout->add(
-            "\$_GET[\"job\"] => " . $_GET["job"] . " -> \$query-&gt;removeSubscription(" . $_GET["id"] . ")",
+          $result = $cbNewsletter_query->removeSubscription($_GET["id"]);
+          $cbNewsletter_Debugout->add(
+            "\$_GET[\"job\"] => " . $_GET["job"] . " -> \$cbNewsletter_query-&gt;removeSubscription(" . $_GET["id"] . ")",
             ($result) ? "OK" : "FAILED"
           );
 	}
@@ -25,8 +25,8 @@
 
       case "save_template": {
 
-        $result = $query->add_template($_POST);
-        $Debugout->add(
+        $result = $cbNewsletter_query->add_template($_POST);
+        $cbNewsletter_Debugout->add(
           "adding template " . $_POST["name"],
           ($result) ? "OK" : "FAILED"
         );
@@ -37,8 +37,8 @@
 
       case "delete_template": {
 
-        $result = $query->delete_template($_GET["id"]);
-        $Debugout->add(
+        $result = $cbNewsletter_query->delete_template($_GET["id"]);
+        $cbNewsletter_Debugout->add(
           "deleting template " . $_GET["id"],
           ($result) ? "OK" : "FAILED"
         );
@@ -60,9 +60,9 @@
 // =================== Routing ===================
 
 
-  include_once(checkout(
-    Router::load("/admin/lib/routes.php")
-      ->direct(DIC::get("view"))
+  include_once(cbNewsletter_checkout(
+    cbNewsletter_Router::load("/admin/lib/routes.php")
+      ->direct(cbNewsletter_DIC::get("view"))
   ));
 
 
@@ -78,6 +78,6 @@
 
 // ================  post display  ================
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
 ?>

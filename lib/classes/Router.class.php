@@ -1,6 +1,6 @@
 <?php
 
-class Router {
+class cbNewsletter_Router {
 
   protected $routes = array();
 
@@ -8,23 +8,23 @@ class Router {
 
   public static function load($file) {
 
-    $Router = new static;
+    $cbNewsletter_Router = new static;
 
-    $Router->routes = include_once(checkout($file));
+    $cbNewsletter_Router->routes = include_once(cbNewsletter_checkout($file));
 
-    return $Router;
+    return $cbNewsletter_Router;
 
   }
 
   public function direct($view) {
 
-    global $Debugout, $error;
+    global $cbNewsletter_Debugout, $error;
 
     if (array_key_exists($view, $this->routes)) {
 
       $route = $this->routes[$view];
 
-      $Debugout->add(
+      $cbNewsletter_Debugout->add(
         "directing known view '" . $view . "' to",
         $route
       );
@@ -37,7 +37,7 @@ class Router {
 
       $error["routing"]["invalid_route"] = $view;
 
-      $Debugout->add(
+      $cbNewsletter_Debugout->add(
         "directing unknown view '" . $view . "' to error page"
       );
 

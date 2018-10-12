@@ -1,6 +1,6 @@
 <?php
 
-class Connection { // returns database object
+class cbNewsletter_Connection { // returns database object
 
   public static function make($config) {
 

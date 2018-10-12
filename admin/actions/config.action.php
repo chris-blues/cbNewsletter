@@ -1,6 +1,6 @@
 <?php
 
-  $Debugout->add("<pre><b>[ config.action ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ config.action ]</b>");
 
   $needReload = false;
 
@@ -10,7 +10,7 @@
 
     unset($config["job"]);
 
-    include_once(checkout("/admin/lib/classes/Config.class.php"));
+    include_once(cbNewsletter_checkout("/admin/lib/classes/Config.class.php"));
 
 
     switch ($_POST["job"]) {
@@ -29,7 +29,7 @@
         }
         else $result = "FAILED";
 
-        $Debugout->add("Updating database settings...", $result);
+        $cbNewsletter_Debugout->add("Updating database settings...", $result);
 
         break;
 
@@ -43,20 +43,20 @@
 
         if ($result === true) {
 
-          $Debugout->add("Updating general settings...", "OK");
+          $cbNewsletter_Debugout->add("Updating general settings...", "OK");
           $needReload = true;
 
           // reload config file
-          DIC::unset("general");
+          cbNewsletter_DIC::unset("general");
 
-          DIC::add("general", include(realpath(DIC::get("basedir") . "/admin/config/general.php")));
-          $Debugout->add(
-            "reloading DIC::[\"general\"] from /admin/config/general.php",
-            (count(DIC::get("general")) > 0) ? "OK" : "FAILED"
+          cbNewsletter_DIC::add("general", include(realpath(cbNewsletter_DIC::get("basedir") . "/admin/config/general.php")));
+          $cbNewsletter_Debugout->add(
+            "reloading cbNewsletter_DIC::[\"general\"] from /admin/config/general.php",
+            (count(cbNewsletter_DIC::get("general")) > 0) ? "OK" : "FAILED"
           );
 
         }
-        else $Debugout->add("Updating general settings...", "FAILED");
+        else $cbNewsletter_Debugout->add("Updating general settings...", "FAILED");
 
         break;
 
@@ -67,7 +67,7 @@
     if ($result !== true) {
 
       $error["saveConfig"] = $result;
-      $Debugout->add("Errors:" . print_r($result, true));
+      $cbNewsletter_Debugout->add("Errors:" . print_r($result, true));
 
     }
 
@@ -75,10 +75,10 @@
 
 
   // load database settings
-  DIC::add("database", include(DIC::get("basedir") . "/admin/config/dbcredentials.php"));
-  $Debugout->add(
-    "loading DIC::[\"database\"] from /admin/config/dbcredentials.php",
-    (count(DIC::get("database")) > 0) ? "OK" : "FAILED"
+  cbNewsletter_DIC::add("database", include(cbNewsletter_DIC::get("basedir") . "/admin/config/dbcredentials.php"));
+  $cbNewsletter_Debugout->add(
+    "loading cbNewsletter_DIC::[\"database\"] from /admin/config/dbcredentials.php",
+    (count(cbNewsletter_DIC::get("database")) > 0) ? "OK" : "FAILED"
   );
 
 
@@ -91,8 +91,8 @@
   }
 
 
-  include_once(checkout("/admin/views/config.view.php"));
+  include_once(cbNewsletter_checkout("/admin/views/config.view.php"));
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
 ?>
