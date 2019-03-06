@@ -1,3 +1,12 @@
+<?php
+
+    if (count(cbNewsletter_DIC::get("NLarchive")) < 1) {
+
+        echo "<p>" . gettext("No newsletters have been written yet...") . "</p>\n";
+
+    } else {
+
+?>
 
       <ul>
 
@@ -22,3 +31,11 @@
 ?>
 
       </ul>
+
+<?php
+
+    }
+
+?>
+
+      <p><a href="<?php echo assembleGetString("string", array("view" => "")); ?>"><?php echo gettext("back"); ?></a></p>
