@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2019-03-06 18:47+0100\n"
-"PO-Revision-Date: 2019-03-06 18:48+0100\n"
+"POT-Creation-Date: 2019-03-06 19:20+0100\n"
+"PO-Revision-Date: 2019-03-06 19:22+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
@@ -411,6 +411,15 @@ msgstr "Eliminar suscripción"
 #: views/manage_subscription.php:44
 msgid "Really unsubscribe me"
 msgstr "Eliminar suscripción de verdad"
+
+#: views/manage_subscription.php:60
+#, fuzzy
+msgid ""
+"All your data will be unrecoverably erased. And you will not receive any "
+"newsletters in the future - unless you subscribe again."
+msgstr ""
+"Todos sus datos serán borrados irrecuperablemente. Y no recibirá ningún "
+"boletín en el futuro, a menos que se suscriba de nuevo."
 
 #: views/show_archive.view.php:43 views/show_archive_list.view.php:41
 msgid "back"
