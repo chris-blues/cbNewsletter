@@ -1,0 +1,450 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: cbNewsletter\n"
+"POT-Creation-Date: 2019-02-11 16:32+0100\n"
+"PO-Revision-Date: 2019-02-11 16:32+0100\n"
+"Last-Translator: chris_blues <chris@musicchris.de>\n"
+"Language-Team: \n"
+"Language: fr_FR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.11\n"
+"X-Poedit-Basepath: ../../..\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: locale\n"
+
+#: actions/enter_subscription.action.php:1
+msgid "manage subscription"
+msgstr "gérer l'abonnement"
+
+#: actions/enter_subscription.action.php:71
+msgid "Error! Could not send verification mail!\n"
+msgstr "Erreur! Impossible d'envoyer un courrier de vérification!\n"
+
+#: actions/enter_subscription.action.php:77
+msgid ""
+"<p>A verification mail has been sent to your inbox. Please click the link, "
+"to verify that:</p>\n"
+"<ul><li>this mailbox actually belongs to you</li>\n"
+"<li>you really want to get our newsletter</li></ul>\n"
+"<p>Thanks!</p>\n"
+msgstr ""
+"<p>Un courriel de vérification a été envoyé à votre boîte de réception. "
+"Veuillez cliquer sur le lien, pour vérifier que:</p>.\n"
+"<ul><li>cette boîte aux lettres vous appartient en fait </li>.\n"
+"<li>vous voulez vraiment recevoir notre newsletter </li></ul>.\n"
+"<p>Merci!</p>\n"
+
+#: actions/enter_subscription.action.php:96
+msgid ""
+"Sorry! This email is already subscribed. Surely you don't want to receive "
+"our newsletters twice!"
+msgstr ""
+"Désolé! Cet email est déjà inscrit. Vous ne voulez sûrement pas recevoir nos "
+"newsletters deux fois!"
+
+#: actions/manage_subscription.action.php:1
+msgid "Manage subscription"
+msgstr "Gérer l'abonnement"
+
+#: actions/manage_subscription.action.php:28
+msgid "No match to this data in the database!"
+msgstr "Aucune correspondance avec ces données dans la base de données!"
+
+#: actions/manage_subscription.action.php:60
+msgid ""
+"Sorry! This subscription cannot be found. The following possibilities may "
+"help:"
+msgstr ""
+"Désolé! Cet abonnement est introuvable. Les possibilités suivantes peuvent "
+"vous aider:"
+
+#: actions/manage_subscription.action.php:63
+msgid ""
+"<b>Your link is broken.</b> Some email-clients add line-breaks to your "
+"emails. Make sure to copy the entire link into your browser."
+msgstr ""
+"<b>Votre lien est brisé.</b> Certains clients de messagerie ajoutent des "
+"sauts de ligne à vos e-mails. Assurez-vous de copier le lien en entier dans "
+"votre navigateur."
+
+#: actions/manage_subscription.action.php:67
+msgid ""
+"<b>You have unsubscribed earlier.</b> This means your subscription has been "
+"deleted and is not retrievable. Subscribe again, if you want to receive our "
+"newsletters again!"
+msgstr ""
+"<b>Vous vous êtes désabonné plus tôt.</b> Cela signifie que votre abonnement "
+"a été supprimé et n'est pas récupérable. Inscrivez-vous à nouveau, si vous "
+"souhaitez recevoir à nouveau nos bulletins d'information!"
+
+#: actions/manage_subscription.action.php:133
+msgid "Your email address has been updated."
+msgstr "Votre adresse e-mail a été mise à jour."
+
+#: actions/manage_subscription.action.php:152
+msgid "Error! Could not send verification mail!"
+msgstr "Erreur! Impossible d'envoyer un courrier de vérification!"
+
+#: actions/manage_subscription.action.php:157
+msgid ""
+"<p>A verification mail has been sent to your inbox. Please click the link, "
+"to verify that:</p>\n"
+"<ul><li>this mailbox actually belongs to you</li>\n"
+"<li>you really want to get our newsletter</li></ul>\n"
+"<p>Thanks!</p>"
+msgstr ""
+"<p>Un courriel de vérification a été envoyé à votre boîte de réception. "
+"Veuillez cliquer sur le lien, pour vérifier que:</p>\n"
+"<ul><li>cette boîte aux lettres vous appartient en fait </li>.\n"
+"<li>vous voulez vraiment recevoir notre newsletter </li></ul>.\n"
+"<p>Merci!</p>"
+
+#: actions/manage_subscription.action.php:173
+msgid "Your name has been updated."
+msgstr "Votre nom a été mis à jour."
+
+#: actions/manage_subscription.action.php:205 lib/routing.php:24
+msgid "Error! Could not send verification mail!<br>\n"
+msgstr "Erreur! Impossible d'envoyer un e-mail de vérification!<br><br>\n"
+
+#: actions/manage_subscription.action.php:211 lib/routing.php:30
+msgid ""
+"A verification mail has been sent to your inbox. Please click the link, to "
+"verify that you really want to unsubscribe from our newsletters!\n"
+msgstr ""
+"Un courriel de vérification a été envoyé à votre boîte de réception. "
+"Veuillez cliquer sur le lien, pour vérifier que vous voulez vraiment vous "
+"désabonner de nos newsletters !\n"
+
+#: actions/manage_subscription.action.php:264
+msgid ""
+"This email has not been verified yet. Access to this data has been denied."
+msgstr ""
+"Cet email n'a pas encore été vérifié. L'accès à ces données a été refusé."
+
+#: actions/show_archive.action.php:2
+msgid "Newsletter archive"
+msgstr "Archives des bulletins d'information"
+
+#: actions/verify_subscription.action.php:1
+msgid "Verify subscription"
+msgstr "Vérifier l'abonnement"
+
+#: actions/verify_subscription.action.php:24
+msgid "This email has already been verified. No need to do it again."
+msgstr "Cet email a déjà été vérifié. Pas besoin de le refaire."
+
+#: actions/verify_subscription.action.php:35
+msgid "Thank you very much! Your subscription is now verified and active."
+msgstr "Merci beaucoup ! Votre abonnement est maintenant vérifié et actif."
+
+#: actions/verify_subscription.action.php:55
+#: actions/verify_unsubscription.action.php:54
+msgid ""
+"Sorry! The link seems to be broken! Please try again - and make sure you "
+"have the complete link!<br>\n"
+msgstr ""
+"Désolé! Le lien semble rompu! Veuillez réessayer - et assurez-vous d'avoir "
+"le lien complet!<br>\n"
+
+#: actions/verify_unsubscription.action.php:1
+msgid "verify unsubscription"
+msgstr "vérifier le désabonnement"
+
+#: actions/verify_unsubscription.action.php:33
+#, php-format
+msgid "Removing subscription for %s"
+msgstr "Suppression de l'abonnement pour %s"
+
+#: actions/verify_unsubscription.action.php:43
+#, php-format
+msgid "Removing subscription for %s failed!"
+msgstr "La suppression de l'abonnement pour %s a échoué!"
+
+#: admin/actions/config.action.php:87
+msgid "Will be back shortly..."
+msgstr "Nous serons de retour sous peu...."
+
+#: admin/index.php:91 index.php:126
+#, php-format
+msgid "processing needed %s"
+msgstr "traitement nécessaire %s"
+
+#: admin/lib/bootstrap.database.php:28 lib/bootstrap.database.php:24
+msgid "Error! Could not connect to database!"
+msgstr "Erreur! Impossible de se connecter à la base de données!"
+
+#: admin/lib/classes/QueryBuilderAdmin.class.php:11
+msgid "The PDO call returned an error: "
+msgstr "L'appel PDO renvoyait une erreur : "
+
+#: admin/lib/classes/QueryBuilderAdmin.class.php:174
+msgid "Created database tables:"
+msgstr "Création de tables de base de données :"
+
+#: admin/views/config.view.php:8
+msgid "Database settings"
+msgstr "Paramètres de la base de données"
+
+#: admin/views/config.view.php:57 admin/views/config.view.php:132
+#: views/subscription.form.php:30
+msgid "Reset"
+msgstr "Réinitialiser"
+
+#: admin/views/config.view.php:58 admin/views/config.view.php:133
+msgid "Save"
+msgstr "Sauvegarder"
+
+#: admin/views/config.view.php:66
+msgid "General settings"
+msgstr "Paramètres générales"
+
+#: admin/views/config.view.php:72
+msgid "cbNewsletter debug output"
+msgstr "cbNewsletter sortie de débogage"
+
+#: admin/views/config.view.php:104
+msgid "show processing time"
+msgstr "Afficher le temps de traitement"
+
+#: admin/views/config.view.php:116
+msgid "default language"
+msgstr "langue par défaut"
+
+#: admin/views/create_newsletter.view.php:8
+#: admin/views/create_newsletter.view.php:77
+msgid "preview"
+msgstr "aperçu"
+
+#: admin/views/create_newsletter.view.php:13
+msgid "hide preview"
+msgstr "masquer l'aperçu"
+
+#: admin/views/create_newsletter.view.php:18 admin/views/header.php:22
+msgid "Newsletter"
+msgstr "Bulletin d'information"
+
+#: admin/views/create_newsletter.view.php:19
+msgid ""
+"Hello %name%,\n"
+"\n"
+"this is a newsletter from %server% .\n"
+"\n"
+"Best regards,\n"
+"your newsletter team\n"
+"\n"
+"You will find an unsubscription link below:\n"
+msgstr ""
+"Bonjour %name%,\n"
+"\n"
+"ceci est une bulletin d'information de %server% .\n"
+"\n"
+"Meilleures salutations,\n"
+"votre équipe de newsletter\n"
+"\n"
+"Vous trouverez ci-dessous un lien de désinscription:\n"
+
+#: admin/views/create_newsletter.view.php:26 admin/views/mainmenu.view.php:17
+msgid "create newsletter"
+msgstr "créer un bulletin d'information"
+
+#: admin/views/create_newsletter.view.php:30
+#: admin/views/create_newsletter.view.php:35
+msgid "subject"
+msgstr "sujet"
+
+#: admin/views/create_newsletter.view.php:39
+#: admin/views/create_newsletter.view.php:49
+msgid "newsletter text"
+msgstr "texte du bulletin"
+
+#: admin/views/create_newsletter.view.php:58 views/manage_subscription.php:32
+msgid "reset"
+msgstr "réinitialiser"
+
+#: admin/views/create_newsletter.view.php:62
+msgid "save template"
+msgstr "Enregistrer le modèle"
+
+#: admin/views/create_newsletter.view.php:67
+msgid "template name"
+msgstr "nom du modèle"
+
+#: admin/views/create_newsletter.view.php:70
+msgid "cancel"
+msgstr "annuler"
+
+#: admin/views/create_newsletter.view.php:71 views/manage_subscription.php:58
+msgid "OK"
+msgstr "OK"
+
+#: admin/views/create_newsletter.view.php:81
+msgid "send newsletter"
+msgstr "Envoyer le bulletin d'information"
+
+#: admin/views/create_newsletter.view.php:99
+msgid "templates"
+msgstr "modèles"
+
+#: admin/views/create_newsletter.view.php:126
+msgid "delete template"
+msgstr "supprimer le modèle"
+
+#: admin/views/mainmenu.view.php:9
+msgid "view subscriptions"
+msgstr "voir les abonnements"
+
+#: admin/views/mainmenu.view.php:25
+msgid "settings"
+msgstr "paramètres"
+
+#: admin/views/subscriptions.view.php:15
+msgid "Search"
+msgstr "Rechercher"
+
+#: admin/views/subscriptions.view.php:25
+msgid "Clear search"
+msgstr "Effacer la recherche"
+
+#: admin/views/subscriptions.view.php:40
+msgid "ID"
+msgstr "ID"
+
+#: admin/views/subscriptions.view.php:47 views/subscription.form.php:10
+#: views/subscription.form.php:15
+msgid "Name"
+msgstr "Nom"
+
+#: admin/views/subscriptions.view.php:54 views/subscription.form.php:21
+msgid "Email"
+msgstr "Email"
+
+#: admin/views/subscriptions.view.php:57
+msgid "Subscribed"
+msgstr "Abonné"
+
+#: admin/views/subscriptions.view.php:58
+msgid "Verified"
+msgstr "Vérifié"
+
+#: admin/views/subscriptions.view.php:59
+msgid "Delete"
+msgstr "Supprimer"
+
+#: lib/checkout.function.php:23
+msgid "Fatal error"
+msgstr "Erreur fatale"
+
+#: lib/checkout.function.php:23
+#, php-format
+msgid "%s not found. Exit..."
+msgstr "%s non trouvés. Sortie..."
+
+#: lib/checkout.function.php:24
+msgid "Debug output"
+msgstr "Sortie de débogage"
+
+#: lib/classes/Email.class.php:50
+#, php-format
+msgid "Please verify your subscription to our newsletter @ %s"
+msgstr ""
+"Veuillez vérifier votre inscription à notre bulletin d'information @ %s"
+
+#: lib/classes/Email.class.php:55
+#, php-format
+msgid "Please verify your unsubscription to our newsletter @ %s"
+msgstr ""
+"Veuillez vérifier votre désinscription à notre bulletin d'information @ %s"
+
+#: lib/classes/QueryBuilder.class.php:15
+msgid "The PDO call returned an error"
+msgstr "L'appel PDO renvoyait une erreur"
+
+#: lib/classes/QueryBuilder.class.php:276
+#, php-format
+msgid "Database table %s has been optimized."
+msgstr "La table de base de données %s a été optimisée."
+
+#: views/error.view.php:2
+msgid "Error"
+msgstr "Erreur"
+
+#: views/error.view.php:4
+msgid ""
+"An error has occured. Most likely the link is broken. Please try again and "
+"make sure that you use the complete and correct link."
+msgstr ""
+"Une erreur s'est produite. Le lien est très probablement rompu. Veuillez "
+"réessayer et vous assurer d'utiliser le lien complet et correct."
+
+#: views/manage_subscription.php:3
+msgid "Change your subscription"
+msgstr "Modifier votre abonnement"
+
+#: views/manage_subscription.php:5
+msgid "Your name:"
+msgstr "Votre nom:"
+
+#: views/manage_subscription.php:11
+msgid "your name"
+msgstr "votre nom:"
+
+#: views/manage_subscription.php:13
+msgid "Your email address:"
+msgstr "Votre adresse e-mail:"
+
+#: views/manage_subscription.php:19 views/subscription.form.php:26
+msgid "you@example.com"
+msgstr "moi@example.com"
+
+#: views/manage_subscription.php:33
+msgid "submit"
+msgstr "se soumettre"
+
+#: views/manage_subscription.php:42
+msgid "Unsubscribe"
+msgstr "Se désabonner"
+
+#: views/manage_subscription.php:44
+msgid "Really unsubscribe me"
+msgstr "Me désabonner vraiment"
+
+#: views/show_archive.view.php:43
+msgid "back"
+msgstr "retour"
+
+#: views/subscription.form.php:1
+msgid "Subscribe to our newsletter:"
+msgstr "Abonnez-vous à notre bulletin d'information:"
+
+#: views/subscription.form.php:31
+msgid "Submit"
+msgstr "Soumettre"
+
+#: views/subscription.form.php:36
+msgid "newsletter archive"
+msgstr "archives du bulletin"
+
+#: views/unsubscribe.view.php:3
+msgid "Or are you trying to unsubscribe or something else?"
+msgstr "Ou essayez-vous de vous désabonner ou autre chose?"
+
+#: views/unsubscribe.view.php:9
+msgid "Resend verification mail"
+msgstr "Renvoyer le courrier de vérification"
+
+#~ msgid "This is not an array!"
+#~ msgstr "Dies ist kein Array!"
+
+#~ msgid "Maintenance tasks"
+#~ msgstr "Wartungsaufgaben"
+
+#~ msgid "optimize database tables"
+#~ msgstr "Datenbanktabellen optimieren"
+
+#~ msgid "unsubscribe now!"
+#~ msgstr "Jetzt abmelden!"
