@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2019-02-11 16:32+0100\n"
-"PO-Revision-Date: 2019-02-11 16:32+0100\n"
+"POT-Creation-Date: 2019-03-06 18:48+0100\n"
+"PO-Revision-Date: 2019-03-06 18:48+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -413,9 +413,14 @@ msgstr "Se désabonner"
 msgid "Really unsubscribe me"
 msgstr "Me désabonner vraiment"
 
-#: views/show_archive.view.php:43
+#: views/show_archive.view.php:43 views/show_archive_list.view.php:41
 msgid "back"
 msgstr "retour"
+
+#: views/show_archive_list.view.php:5
+#, fuzzy
+msgid "No newsletters have been written yet..."
+msgstr "Aucun bulletin d'information n'a encore été rédigé..."
 
 #: views/subscription.form.php:1
 msgid "Subscribe to our newsletter:"
