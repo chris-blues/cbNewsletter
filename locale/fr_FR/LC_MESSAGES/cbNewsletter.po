@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2019-03-06 19:20+0100\n"
-"PO-Revision-Date: 2019-03-06 19:22+0100\n"
+"POT-Creation-Date: 2019-03-08 17:41+0100\n"
+"PO-Revision-Date: 2019-03-08 17:45+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
@@ -52,7 +52,7 @@ msgstr "Gérer l'abonnement"
 
 #: actions/manage_subscription.action.php:28
 msgid "No match to this data in the database!"
-msgstr "Aucune correspondance avec ces données dans la base de données!"
+msgstr "Aucune correspondance dans la base de données!"
 
 #: actions/manage_subscription.action.php:60
 msgid ""
@@ -79,7 +79,7 @@ msgid ""
 msgstr ""
 "<b>Vous vous êtes désabonné plus tôt.</b> Cela signifie que votre abonnement "
 "a été supprimé et n'est pas récupérable. Inscrivez-vous à nouveau, si vous "
-"souhaitez recevoir à nouveau nos bulletins d'information!"
+"souhaitez recevoir à nouveau nos newsletter!"
 
 #: actions/manage_subscription.action.php:133
 msgid "Your email address has been updated."
@@ -128,7 +128,7 @@ msgstr ""
 
 #: actions/show_archive.action.php:2
 msgid "Newsletter archive"
-msgstr "Archives des bulletins d'information"
+msgstr "Archive des newsletter"
 
 #: actions/verify_subscription.action.php:1
 msgid "Verify subscription"
@@ -136,7 +136,7 @@ msgstr "Vérifier l'abonnement"
 
 #: actions/verify_subscription.action.php:24
 msgid "This email has already been verified. No need to do it again."
-msgstr "Cet email a déjà été vérifié. Pas besoin de le refaire."
+msgstr "Cet email a déjà été vérifié."
 
 #: actions/verify_subscription.action.php:35
 msgid "Thank you very much! Your subscription is now verified and active."
@@ -226,7 +226,7 @@ msgstr "masquer l'aperçu"
 
 #: admin/views/create_newsletter.view.php:18 admin/views/header.php:22
 msgid "Newsletter"
-msgstr "Bulletin d'information"
+msgstr "Newsletter"
 
 #: admin/views/create_newsletter.view.php:19
 msgid ""
@@ -241,7 +241,7 @@ msgid ""
 msgstr ""
 "Bonjour %name%,\n"
 "\n"
-"ceci est une bulletin d'information de %server% .\n"
+"ceci est une newsletter de %server% .\n"
 "\n"
 "Meilleures salutations,\n"
 "votre équipe de newsletter\n"
@@ -250,7 +250,7 @@ msgstr ""
 
 #: admin/views/create_newsletter.view.php:26 admin/views/mainmenu.view.php:17
 msgid "create newsletter"
-msgstr "créer un bulletin d'information"
+msgstr "créer un newsletter"
 
 #: admin/views/create_newsletter.view.php:30
 #: admin/views/create_newsletter.view.php:35
@@ -260,7 +260,7 @@ msgstr "sujet"
 #: admin/views/create_newsletter.view.php:39
 #: admin/views/create_newsletter.view.php:49
 msgid "newsletter text"
-msgstr "texte du bulletin"
+msgstr "texte du newsletter"
 
 #: admin/views/create_newsletter.view.php:58 views/manage_subscription.php:32
 msgid "reset"
@@ -284,7 +284,7 @@ msgstr "OK"
 
 #: admin/views/create_newsletter.view.php:81
 msgid "send newsletter"
-msgstr "Envoyer le bulletin d'information"
+msgstr "Envoyer le newsletter"
 
 #: admin/views/create_newsletter.view.php:99
 msgid "templates"
@@ -351,14 +351,12 @@ msgstr "Sortie de débogage"
 #: lib/classes/Email.class.php:50
 #, php-format
 msgid "Please verify your subscription to our newsletter @ %s"
-msgstr ""
-"Veuillez vérifier votre inscription à notre bulletin d'information @ %s"
+msgstr "Veuillez vérifier votre inscription à notre newsletter @ %s"
 
 #: lib/classes/Email.class.php:55
 #, php-format
 msgid "Please verify your unsubscription to our newsletter @ %s"
-msgstr ""
-"Veuillez vérifier votre désinscription à notre bulletin d'information @ %s"
+msgstr "Veuillez vérifier votre désinscription à notre newsletter @ %s"
 
 #: lib/classes/QueryBuilder.class.php:15
 msgid "The PDO call returned an error"
@@ -414,7 +412,6 @@ msgid "Really unsubscribe me"
 msgstr "Me désabonner vraiment"
 
 #: views/manage_subscription.php:60
-#, fuzzy
 msgid ""
 "All your data will be unrecoverably erased. And you will not receive any "
 "newsletters in the future - unless you subscribe again."
@@ -428,13 +425,12 @@ msgid "back"
 msgstr "retour"
 
 #: views/show_archive_list.view.php:5
-#, fuzzy
 msgid "No newsletters have been written yet..."
-msgstr "Aucun bulletin d'information n'a encore été rédigé..."
+msgstr "Aucun newsletter n'a encore été rédigé..."
 
 #: views/subscription.form.php:1
 msgid "Subscribe to our newsletter:"
-msgstr "Abonnez-vous à notre bulletin d'information:"
+msgstr "Abonnez-vous à notre newsletter:"
 
 #: views/subscription.form.php:31
 msgid "Submit"
@@ -442,7 +438,7 @@ msgstr "Soumettre"
 
 #: views/subscription.form.php:36
 msgid "newsletter archive"
-msgstr "archives du bulletin"
+msgstr "archive du newsletter"
 
 #: views/unsubscribe.view.php:3
 msgid "Or are you trying to unsubscribe or something else?"
