@@ -35,6 +35,14 @@
   // gettext
   include_once(cbNewsletter_checkout("/lib/initGettext.php"));
 
+  if (
+    !is_file(cbNewsletter_DIC::get("basedir")."/admin/config/dbcredentials.php")
+    and
+    strncmp($_SERVER["PHP_SELF"], "/admin/", strlen("/admin/")) == 0
+  ) {
+    $_GET["view"] = "config";
+  }
+
 
   if (!isset($_GET["view"]) or $_GET["view"] != "config") {
 
