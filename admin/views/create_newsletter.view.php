@@ -57,7 +57,7 @@
             <button type="reset" class="full">
               <img src="reset.png"><br>
               <?php echo gettext("reset"); ?>
-            </button><br>
+            </button>
             <button type="button" id="button_save_template" class="full">
               <img src="save.png"><br>
               <?php echo gettext("save template"); ?>
