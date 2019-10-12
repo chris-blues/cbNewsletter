@@ -16,7 +16,7 @@
 <?php
 
   if (!isset($subject)) $subject = $_SERVER["SERVER_NAME"] . " " . gettext("Newsletter");
-  if (!isset($text))    $text = gettext("Hello %name%,\n\nthis is a newsletter from %server% .\n\nBest regards,\nyour newsletter team\n\nYou will find an unsubscription link below:\n");
+  if (!isset($text))    $text = gettext("<p>Hello %name%<p>,\n<p>this is a newsletter from %server% .</p>\n<p>Best regards,\nyour newsletter team</p>\n<p>You will find an unsubscription link below:</p>\n");
 
 ?>
 
