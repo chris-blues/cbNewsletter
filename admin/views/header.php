@@ -13,6 +13,7 @@
     <title><?php echo $_SERVER["SERVER_NAME"]; ?> - cbNewsletter - admin-area</title>
 
     <link type="text/css" href="../style.css" rel="stylesheet">
+    <link type="text/css" href="ckeditor/contents.css" rel="stylesheet">
 
     <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
     <script type="text/javascript" src="scripts.js"></script>
