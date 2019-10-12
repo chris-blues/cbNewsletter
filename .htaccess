@@ -1,0 +1,4 @@
+Header add "disablevcache" "true"
+<IfModule mod_expires.c>
+  ExpiresActive off
+</IfModule>
