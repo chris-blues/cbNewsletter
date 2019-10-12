@@ -1,6 +1,6 @@
 <?php
 
-function findData($var) {
+function cbNewsletter_findData($var) {
 
   if (isset($_GET[$var])) {
 
@@ -19,6 +19,7 @@ function findData($var) {
 }
 
 // accepted $method is either "array" or "string". An emtpy string defaults to "string"
+if (!function_exists("assembleGetString")) {
 function assembleGetString($method = "", $newVars = array()) {
   if (isset($_GET)) {
     $counter = 0;
@@ -51,6 +52,7 @@ function assembleGetString($method = "", $newVars = array()) {
   }
 
   return $GETString;
+}
 }
 
 if (!function_exists("dump_var")) {
@@ -124,11 +126,12 @@ function cbNewsletter_showErrors($errors, $bubble = false) {
 
 }
 
+if (!function_exists("prettyTime")) {
 function prettyTime ($input) {
 
   // expects seconds (float) as input
 
-  $newTime = round($input, 9);
+  $newTime = round($input, 16);
 
   // input is less than a second
   if ($newTime < 1) {
@@ -175,6 +178,7 @@ function prettyTime ($input) {
 
     return sprintf("%5.3f s", $newTime);
   }
+}
 }
 
 ?>

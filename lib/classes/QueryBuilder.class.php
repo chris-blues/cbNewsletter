@@ -1,6 +1,6 @@
 <?php
 
-class QueryBuilder {
+class cbNewsletter_QueryBuilder {
 
   protected $Database;
 
@@ -272,8 +272,8 @@ class QueryBuilder {
 
     if ($result) $this->update_maintenance_table($name);
 
-    $HTML = new HTML;
-    $HTML->infobox(sprintf(gettext("Database table %s has been optimized."), $name));
+    $cbNewsletter_HTML = new cbNewsletter_HTML;
+    $cbNewsletter_HTML->infobox(sprintf(gettext("Database table %s has been optimized."), $name));
 
     return $result;
 
@@ -299,7 +299,9 @@ class QueryBuilder {
         WHERE `name` = :name ;"
     );
 
-    $statement->bindParam(':optimized', time());
+    $time = time();
+
+    $statement->bindParam(':optimized', $time);
     $statement->bindParam(':name', $name);
 
     $result = $this->callExecution($statement);

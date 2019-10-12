@@ -1,12 +1,12 @@
 <?php
 
-  $Debugout->add("<pre><b>[ bootstrap ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ bootstrap ]</b>");
 
 
 
 
   // Other classes
-  include_once(checkout("/lib/classes/Email.class.php"));
+  include_once(cbNewsletter_checkout("/lib/classes/Email.class.php"));
 
 
 
@@ -16,7 +16,7 @@
 
 
   // common bootstrap
-  include_once(checkout("/lib/bootstrap.common.php"));
+  include_once(cbNewsletter_checkout("/lib/bootstrap.common.php"));
 
 
 
@@ -25,6 +25,6 @@
 
 
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
 ?>

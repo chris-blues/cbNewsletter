@@ -1,13 +1,13 @@
 <?php
 
-  $Debugout->add("<pre><b>[ initGettext ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ initGettext ]</b>");
 
 
 
-  // DIC::get("general")["language"] overrides everything
-  if (DIC::get("general")["language"] != "") {
+  // cbNewsletter_DIC::get("general")["language"] overrides everything
+  if (cbNewsletter_DIC::get("general")["language"] != "") {
 
-    $locale = DIC::get("general")["language"];
+    $locale = cbNewsletter_DIC::get("general")["language"];
     $result = "/admin/config/general.php";
 
   } else {
@@ -54,11 +54,11 @@
 
   }
 
-  $Debugout->add("Got locale from", $result);
+  $cbNewsletter_Debugout->add("Got locale from", $result);
 
-  $directory = realpath(DIC::get("basedir") . "/locale");
+  $directory = realpath(cbNewsletter_DIC::get("basedir") . "/locale");
   $textdomain = "cbNewsletter";
-  DIC::add("locale", $locale);
+  cbNewsletter_DIC::add("locale", $locale);
   $localeName = $locale . ".utf8";
 
   $bindtextdomain = bindtextdomain($textdomain, $directory);
@@ -69,11 +69,11 @@
 
 
 
-  $Debugout->add("bind_textdomain", $bindtextdomain);
-  $Debugout->add("textdomain", $settextdomain);
-  $Debugout->add("locale", $localeString);
+  $cbNewsletter_Debugout->add("bind_textdomain", $bindtextdomain);
+  $cbNewsletter_Debugout->add("textdomain", $settextdomain);
+  $cbNewsletter_Debugout->add("locale", $localeString);
 
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
 ?>

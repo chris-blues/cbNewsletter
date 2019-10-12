@@ -1,6 +1,6 @@
 <?php
 
-  $Debugout->add("<pre><b>[ create_newsletter.view ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ create_newsletter.view ]</b>");
 
 ?>
 
@@ -102,8 +102,8 @@
 
 <?php
 
-      $newsletter_templates = $query->get_templates();
-      $Debugout->add("getting templates", count($newsletter_templates) . " found");
+      $newsletter_templates = $cbNewsletter_query->get_templates();
+      $cbNewsletter_Debugout->add("getting templates", count($newsletter_templates) . " found");
 
       foreach ($newsletter_templates as $key => $value) {
 
@@ -138,4 +138,4 @@
 
     </div>
 
-<?php $Debugout->add("</pre>"); ?>
+<?php $cbNewsletter_Debugout->add("</pre>"); ?>

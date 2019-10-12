@@ -1,6 +1,6 @@
 <?php
 
-  $Debugout->add("<pre><b>[ routing ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ routing ]</b>");
 
 
 // ================  pre display  ================
@@ -11,26 +11,26 @@
 
       case "resend_verification_mail": {
 
-        $subscriber = $query->getSubscriberByEmail($_POST["email"]);
+        $subscriber = $cbNewsletter_query->getSubscriberByEmail($_POST["email"]);
 
         if (count($subscriber) > 0) {
 
           $db_data = $subscriber[0]->getdata();
 
-          $optout = new Email("opt_in", $db_data, DIC::get("locale"));
+          $optout = new Email("opt_in", $db_data, cbNewsletter_DIC::get("locale"));
 
           if (!$optout->send_mail()) {
 
-            echo $HTML->errorbox(gettext("Error! Could not send verification mail!<br>\n"));
-            $Debugout->add("sending verification mail", "FAILED");
+            echo $cbNewsletter_HTML->errorbox(gettext("Error! Could not send verification mail!<br>\n"));
+            $cbNewsletter_Debugout->add("sending verification mail", "FAILED");
 
           } else {
 
-            echo $HTML->infobox(
+            echo $cbNewsletter_HTML->infobox(
               gettext("A verification mail has been sent to your inbox. Please click the link, to verify that you really want to unsubscribe from our newsletters!\n")
             );
 
-            $Debugout->add("sending verification mail", "OK");
+            $cbNewsletter_Debugout->add("sending verification mail", "OK");
 
           }
 
@@ -54,9 +54,9 @@
 // =================== Routing ===================
 
 
-  include_once(checkout(
-    Router::load("/lib/routes.php")
-      ->direct(DIC::get("view"))
+  include_once(cbNewsletter_checkout(
+    cbNewsletter_Router::load("/lib/routes.php")
+      ->direct(cbNewsletter_DIC::get("view"))
   ));
 
 
@@ -76,6 +76,6 @@
 
 
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
 ?>

@@ -2,7 +2,7 @@
 
   include_once(__DIR__ . "/lib/classes/DIC.class.php");
 
-  DIC::add("startTime", microtime());
+  cbNewsletter_DIC::add("startTime", microtime(true));
 
 
   // catch possible variable collisions
@@ -12,26 +12,26 @@
 
   if (isset($previous)) {
 
-    DIC::add("previous_variables", $previous);
-    DIC::add("previous_variables_switch", true);
+    cbNewsletter_DIC::add("previous_variables", $previous);
+    cbNewsletter_DIC::add("previous_variables_switch", true);
 
   } else {
 
-    DIC::add("previous_variables_switch", false);
+    cbNewsletter_DIC::add("previous_variables_switch", false);
 
   }
 
 
-  DIC::add("calldir", __DIR__);
+  cbNewsletter_DIC::add("calldir", __DIR__);
 
-  include_once(DIC::get("calldir") . "/lib/classes/Debugout.class.php");
-  $Debugout = new Debugout;
+  include_once(cbNewsletter_DIC::get("calldir") . "/lib/classes/Debugout.class.php");
+  $cbNewsletter_Debugout = new cbNewsletter_Debugout;
 
-  $Debugout->add("<pre><b>[ index ]</b>");
+  $cbNewsletter_Debugout->add("<pre><b>[ index ]</b>");
 
-  DIC::add("basedir", DIC::get("calldir"));
+  cbNewsletter_DIC::add("basedir", cbNewsletter_DIC::get("calldir"));
 
-  include_once(DIC::get("basedir") . "/lib/checkout.function.php");
+  include_once(cbNewsletter_DIC::get("basedir") . "/lib/checkout.function.php");
 
 
 
@@ -39,13 +39,13 @@
   //include HTML header, if we're called directly
   if ($_SERVER["SCRIPT_FILENAME"] == __FILE__) {
 
-    $Debugout->add("standalone mode?", "Yes");
+    $cbNewsletter_Debugout->add("standalone mode?", "Yes");
 
-    include_once(checkout("/views/header.php"));
+    include_once(cbNewsletter_checkout("/views/header.php"));
 
   } else {
 
-    $Debugout->add("standalone mode?", "No");
+    $cbNewsletter_Debugout->add("standalone mode?", "No");
 
   }
 
@@ -56,55 +56,55 @@
 <?php
 
   //load config
-  DIC::add(
+  cbNewsletter_DIC::add(
     "general",
-    include_once(DIC::get("basedir") . "/admin/config/general.php")
+    include_once(cbNewsletter_DIC::get("basedir") . "/admin/config/general.php")
   );
 
-  if (count(DIC::get("general")) <= 1) {
+  if (count(cbNewsletter_DIC::get("general")) <= 1) {
 
-    $Debugout->add("loading general config from /admin/config/general.php", "FAILED");
+    $cbNewsletter_Debugout->add("loading general config from /admin/config/general.php", "FAILED");
 
-    DIC::add("general", include_once(checkout("/lib/config.default.php")));
+    cbNewsletter_DIC::add("general", include_once(cbNewsletter_checkout("/lib/config.default.php")));
 
   } else {
 
-    $Debugout->add("loading general config from /admin/config/general.php", "OK");
+    $cbNewsletter_Debugout->add("loading general config from /admin/config/general.php", "OK");
 
   }
 
 
-  $debug = DIC::get("general")["debug"];
+  $debug = cbNewsletter_DIC::get("general")["debug"];
 
-  $Debugout->add("setting \$debug to ", ($debug ? "true" : "false"));
-
-
+  $cbNewsletter_Debugout->add("setting \$debug to ", ($debug ? "true" : "false"));
 
 
 
-  include_once(checkout("/lib/bootstrap.php"));
 
-  include_once(checkout("/lib/routing.php"));
+
+  include_once(cbNewsletter_checkout("/lib/bootstrap.php"));
+
+  include_once(cbNewsletter_checkout("/lib/routing.php"));
 
 
 
   if (isset($error)) {
 
-    include_once(checkout("/lib/error-reporting.php"));
+    include_once(cbNewsletter_checkout("/lib/error-reporting.php"));
 
     cbNewsletter_showErrors($error);
 
   }
 
 
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("</pre>");
 
   if (isset($error)) {
 
     $logTimeFormat = date("Y-m-d");
     file_put_contents(
-      DIC::get("basedir") . "/admin/logs/debug_" . $logTimeFormat . ".log",
-      "\n\n=============================================================================================================================\n" . date("Y-m-d H:i:s") . "\n\n" . $Debugout->output(true),
+      cbNewsletter_DIC::get("basedir") . "/admin/logs/debug_" . $logTimeFormat . ".log",
+      "\n\n=============================================================================================================================\n" . date("Y-m-d H:i:s") . "\n\n" . $cbNewsletter_Debugout->output(true),
       FILE_APPEND | LOCK_EX
     );
 
@@ -112,19 +112,19 @@
 
   if ($debug) {
 
-    echo $HTML->infobox("<h3>debug output</h3>\n<p>$Debugout</p>\n" . $Debugout->output(), "debug");
+    echo $cbNewsletter_HTML->infobox("<h3>debug output</h3>\n<p>$cbNewsletter_Debugout</p>\n" . $cbNewsletter_Debugout->output(), "debug");
 
   }
 
 
-  if (DIC::get("general")["show_processing_time"]) {
+  if (cbNewsletter_DIC::get("general")["show_processing_time"]) {
 
-    DIC::add("endTime", microtime());
+    cbNewsletter_DIC::add("endTime", microtime(true));
 
-    echo $HTML->infobox(
+    echo $cbNewsletter_HTML->infobox(
       sprintf(
         gettext("processing needed %s"),
-        prettyTime(DIC::get("endTime") - DIC::get("startTime"))
+        prettyTime(cbNewsletter_DIC::get("endTime") - cbNewsletter_DIC::get("startTime"))
       ),
       "notes center"
     );
@@ -141,9 +141,9 @@
     echo "\n  </body>\n</html>\n";
   }
 
-  if (DIC::get("previous_variables_switch")) {
+  if (cbNewsletter_DIC::get("previous_variables_switch")) {
 
-    foreach (DIC::get("previous_variables") as $key => $value) {
+    foreach (cbNewsletter_DIC::get("previous_variables") as $key => $value) {
 
       $$key = $value;
 

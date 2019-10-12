@@ -1,21 +1,21 @@
 <?php
 
-  $subject = findData("subject");
-  $text    = findData("text");
+  $subject = cbNewsletter_findData("subject");
+  $text    = cbNewsletter_findData("text");
 
   if ($subject === false) $subject = "false";
   if ($text    === false) $text    = "false";
 
 
-  $Debugout->add("<pre><b>[ create_newsletter.action ]</b>");
-  $Debugout->add("findData(\"subject\") -> " . $subject);
-  $Debugout->add("findData(\"text\")    -> " . $text);
-  $Debugout->add("</pre>");
+  $cbNewsletter_Debugout->add("<pre><b>[ create_newsletter.action ]</b>");
+  $cbNewsletter_Debugout->add("cbNewsletter_findData(\"subject\") -> " . $subject);
+  $cbNewsletter_Debugout->add("cbNewsletter_findData(\"text\")    -> " . $text);
+  $cbNewsletter_Debugout->add("</pre>");
 
 
   if ($subject == "false") unset($subject);
   if ($text    == "false") unset($text);
 
-  include_once(checkout("/admin/views/create_newsletter.view.php"));
+  include_once(cbNewsletter_checkout("/admin/views/create_newsletter.view.php"));
 
 ?>

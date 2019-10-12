@@ -23,7 +23,7 @@
 
 <?php
 
-  include_once(realpath(DIC::get("basedir") . "/admin/views/mainmenu.view.php"));
+  include_once(realpath(cbNewsletter_DIC::get("basedir") . "/admin/views/mainmenu.view.php"));
 
 ?>
 

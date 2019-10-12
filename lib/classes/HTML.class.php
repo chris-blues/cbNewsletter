@@ -1,6 +1,6 @@
 <?php
 
-class HTML {
+class cbNewsletter_HTML {
 
   public function infobox($content, $class = "") {
 
@@ -32,7 +32,7 @@ class HTML {
   public function ul($list) {
 
     if (!is_array($list)) {
-      return $this->errorbox("\$HTML->ul(): " . gettext(sprintf("Expected an array, got a %s", gettype($list))));
+      return $this->errorbox("\$cbNewsletter_HTML->ul(): " . gettext(sprintf("Expected an array, got a %s", gettype($list))));
     } else {
 
       $result = "    <ul>\n";
@@ -54,7 +54,7 @@ class HTML {
   public function ol($list) {
 
     if (!is_array($list)) {
-      return $this->errorbox("\$HTML->ul(): " . gettext(sprintf("Expected an array, got a %s", gettype($list))));
+      return $this->errorbox("\$cbNewsletter_HTML->ul(): " . gettext(sprintf("Expected an array, got a %s", gettype($list))));
     } else {
 
       $result = "    <ol>\n";

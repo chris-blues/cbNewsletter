@@ -1,10 +1,10 @@
 <?php
 
-class Request {
+class cbNewsletter_Request {
 
   public static function view() {
 
-    global $Debugout;
+    global $cbNewsletter_Debugout;
 
     if (isset($_GET["view"])) {
 

@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2017-11-25 18:45+0100\n"
-"PO-Revision-Date: 2017-11-25 18:45+0100\n"
+"POT-Creation-Date: 2017-11-25 19:08+0100\n"
+"PO-Revision-Date: 2017-11-25 19:08+0100\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -410,7 +410,7 @@ msgstr "Abmelden"
 msgid "Really unsubscribe me"
 msgstr "Wirklich abmelden"
 
-#: views/show_archive.view.php:49
+#: views/show_archive.view.php:43
 msgid "back"
 msgstr "Zurück"
 

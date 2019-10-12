@@ -2,7 +2,7 @@
 
   try {
 
-    $NL = DIC::get("NLarchive");
+    $NL = cbNewsletter_DIC::get("NLarchive");
 
   } catch (Exception $e) {
 
