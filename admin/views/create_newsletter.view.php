@@ -43,12 +43,12 @@
 
           <div class="flex one">
 
-            <textarea
+            <div
               type="text"
               name="text"
               placeholder="<?php echo gettext("newsletter text"); ?>"
               class="createNewsletter"
-              id="text"><?php if (isset($text)) echo $text; ?></textarea>
+              id="text"><?php if (isset($text)) echo $text; ?></div>
 
           </div>
 
