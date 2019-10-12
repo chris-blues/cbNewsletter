@@ -131,7 +131,7 @@ function prettyTime ($input) {
 
   // expects seconds (float) as input
 
-  $newTime = round($input, 16);
+  $newTime = round($input, 9);
 
   // input is less than a second
   if ($newTime < 1) {

@@ -57,4 +57,5 @@
 ?>
         <button type="submit"><?php echo gettext("OK"); ?></button>
       </form>
+      <p><?php echo gettext("All your data will be unrecoverably erased. And you will not receive any newsletters in the future - unless you subscribe again."); ?></p>
     </div>

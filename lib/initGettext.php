@@ -2,11 +2,19 @@
 
   $cbNewsletter_Debugout->add("<pre><b>[ initGettext ]</b>");
 
+  unset($locale);
 
+
+<<<<<<< HEAD
+  // cbNewsletter_DIC::get("general")["language"] overrides everything
+  if (cbNewsletter_DIC::get("general")["language"] != "") {
+
+=======
 
   // cbNewsletter_DIC::get("general")["language"] overrides everything
   if (cbNewsletter_DIC::get("general")["language"] != "") {
 
+>>>>>>> f88f385ffbdeb0b50878a050f1fdf694f660338d
     $locale = cbNewsletter_DIC::get("general")["language"];
     $result = "/admin/config/general.php";
 
@@ -26,10 +34,13 @@
 
         // if still nothing, try browser preference
         $lang = substr($_SERVER['HTTP_ACCEPT_LANGUAGE'], 0, 2);
+
         switch ($lang) {
 
           case "de": $locale = "de_DE"; break;
           case "en": $locale = "en_GB"; break;
+          case "fr": $locale = "fr_FR"; break;
+          case "es": $locale = "es_ES"; break;
 
         }
 
@@ -46,6 +57,12 @@
 
     case "de":    $locale = "de_DE"; break;
     case "de_DE": $locale = "de_DE"; break;
+
+    case "fr":    $locale = "fr_FR"; break;
+    case "fr_FR": $locale = "fr_FR"; break;
+
+    case "es":    $locale = "es_ES"; break;
+    case "es_ES": $locale = "es_ES"; break;
 
     case "en":    $locale = "en_GB"; break;
     case "en_GB": $locale = "en_GB"; break;
