@@ -2,7 +2,7 @@
 
   include_once(realpath(__DIR__ . "/../lib/classes/DIC.class.php"));
 
-  cbNewsletter_DIC::add("startTime", microtime());
+  cbNewsletter_DIC::add("startTime", microtime(true));
 
   cbNewsletter_DIC::add("calldir", __DIR__);
 
@@ -84,7 +84,7 @@
 
   if (cbNewsletter_DIC::get("general")["show_processing_time"]) {
 
-    cbNewsletter_DIC::add("endTime", microtime());
+    cbNewsletter_DIC::add("endTime", microtime(true));
 
     echo $cbNewsletter_HTML->infobox(
       sprintf(
