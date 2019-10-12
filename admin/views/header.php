@@ -6,7 +6,7 @@
     <meta http-equiv="Content-Style-Type" content="text/css">
     <meta name="robots" content="noindex,nofollow">
 
-    <link rel="stylesheet" href="../style.css" type="text/css">
+    <link type="text/css" href="../style.css" rel="stylesheet">
     <script type="text/javascript" src="scripts.js"></script>
     <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 
