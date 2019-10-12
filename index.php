@@ -3,7 +3,7 @@
   include_once(__DIR__ . "/lib/classes/DIC.class.php");
 
 <<<<<<< HEAD
-  cbNewsletter_DIC::add("startTime", microtime());
+  cbNewsletter_DIC::add("startTime", microtime(true));
 =======
   cbNewsletter_DIC::add("startTime", microtime());
 >>>>>>> f88f385ffbdeb0b50878a050f1fdf694f660338d
@@ -124,7 +124,7 @@
   if (cbNewsletter_DIC::get("general")["show_processing_time"]) {
 
 <<<<<<< HEAD
-    cbNewsletter_DIC::add("endTime", microtime());
+    cbNewsletter_DIC::add("endTime", microtime(true));
 =======
     cbNewsletter_DIC::add("endTime", microtime());
 >>>>>>> f88f385ffbdeb0b50878a050f1fdf694f660338d
