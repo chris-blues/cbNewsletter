@@ -50,7 +50,6 @@
               class="createNewsletter"
               id="text"><?php if (isset($text)) echo $text; ?></textarea>
 
-              <script src="ckeditor/ckeditor.js"></script>
               <script>
                 CKEDITOR.replace( 'text' );
               </script>
