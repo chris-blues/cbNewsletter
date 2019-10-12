@@ -9,34 +9,34 @@ class Config {
   public function __construct($type, $settings) {
 
     $this->type     = $type;
-    $this->filename = realpath(__DIR__ . "/../../config/" . $type . ".php");
+    $this->filename = __DIR__ . "/../../config/" . $type . ".php";
     $this->settings = $settings;
 
   }
 
   public function save_dbSettings() {
 
-    if (!isset($this->settings["driver"]) or strlen($this->settings["driver"]) < 1) {
+    if (empty($this->settings["driver"])) {
       $error["switch"] = true;
       $error["data_not_set"]["driver"] = true;
     }
 
-    if (!isset($this->settings["host"]) or strlen($this->settings["host"]) < 1) {
+    if (empty($this->settings["host"])) {
       $error["switch"] = true;
       $error["data_not_set"]["host"] = true;
     }
 
-    if (!isset($this->settings["name"]) or strlen($this->settings["name"]) < 1) {
+    if (empty($this->settings["name"])) {
       $error["switch"] = true;
       $error["data_not_set"]["name"] = true;
     }
 
-    if (!isset($this->settings["user"]) or strlen($this->settings["user"]) < 1) {
+    if (empty($this->settings["user"])) {
       $error["switch"] = true;
       $error["data_not_set"]["user"] = true;
     }
 
-    if (!isset($this->settings["pass"]) or strlen($this->settings["pass"]) < 1) {
+    if (empty($this->settings["pass"])) {
       $error["switch"] = true;
       $error["data_not_set"]["pass"] = true;
     }

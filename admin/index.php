@@ -76,7 +76,7 @@
     $logTimeFormat = date("Y-m-d");
     file_put_contents(
       cbNewsletter_DIC::get("basedir") . "/admin/logs/debug_" . $logTimeFormat . ".log",
-      "\n\n=============================================================================================================================\n" . date("Y-m-d H:i:s") . "\n\n" . $cbNewsletter_Debugout->output(true),
+      "\n\n=============================================================================================================================\n" . date("Y-m-d H:i:s") . "\n\n" . $cbNewsletter_Debugout->output(true) . "\n\n" . print_r($error, true),
       FILE_APPEND | LOCK_EX
     );
   }
