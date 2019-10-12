@@ -8,7 +8,7 @@
 
     <link rel="stylesheet" href="../style.css" type="text/css">
     <script type="text/javascript" src="scripts.js"></script>
-    <script src="ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
 
     <title><?php echo $_SERVER["SERVER_NAME"]; ?> - cbNewsletter - admin-area</title>
 
