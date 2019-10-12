@@ -40,6 +40,7 @@
     and
     strncmp($_SERVER["PHP_SELF"], "/admin/", strlen("/admin/")) == 0
   ) {
+    $cbNewsletter_Debugout->add("This seems to be the initial run. Skipping to config view...");
     $_GET["view"] = "config";
   }
 
