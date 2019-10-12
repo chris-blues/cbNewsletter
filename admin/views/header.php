@@ -6,15 +6,16 @@
     <meta http-equiv="Content-Style-Type" content="text/css">
     <meta name="robots" content="noindex,nofollow">
 
-    <link type="text/css" href="../style.css" rel="stylesheet">
-    <script type="text/javascript" src="scripts.js"></script>
-    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
-
-    <title><?php echo $_SERVER["SERVER_NAME"]; ?> - cbNewsletter - admin-area</title>
-
     <meta http-equiv="content-type" content="text/html; charset=UTF-8">
     <meta name="page-topic" content="<?php echo $_SERVER["SERVER_NAME"]; ?> - cbNewsletter - admin-area">
     <meta name="description" content="<?php echo $_SERVER["SERVER_NAME"]; ?> - cbNewsletter - admin-area">
+
+    <title><?php echo $_SERVER["SERVER_NAME"]; ?> - cbNewsletter - admin-area</title>
+
+    <link type="text/css" href="../style.css" rel="stylesheet">
+
+    <script type="text/javascript" src="ckeditor/ckeditor.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
 
   </head>
 
