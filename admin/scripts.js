@@ -8,6 +8,8 @@ document.addEventListener('DOMContentLoaded', function () {
     var textarea = document.getElementById("text");
     textarea.addEventListener('input', function() { resize_textarea(); });
 
+    if (typeof(textarea) != "undefined") CKEDITOR.replace( 'text' );
+
     document.getElementById("hide_preview").addEventListener(
       'click', function() {
         document.getElementById("preview_wrapper").style.display = "none";
