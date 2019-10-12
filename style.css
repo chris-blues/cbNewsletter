@@ -140,8 +140,8 @@ button.full {
 }
 
 #form_wrapper {
-  display: flex;
-  vertical-align: bottom;
+/*  display: flex;
+  vertical-align: bottom;*/
 }
 
 #form_wrapper .flex {
@@ -150,11 +150,11 @@ button.full {
 }
 
 #form_wrapper .flex.one {
-  flex: 100%;
+/*   flex: 100%; */
 }
 
 #form_wrapper .flex.two {
-  flex: 300px;
+/*   flex: 300px; */
   vertical-align: bottom;
 }
 

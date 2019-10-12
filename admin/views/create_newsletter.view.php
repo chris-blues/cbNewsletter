@@ -61,12 +61,12 @@
             <button type="button" id="button_save_template" class="full">
               <img src="save.png"><br>
               <?php echo gettext("save template"); ?>
-            </button><br>
+            </button>
 
             <div id="save_template" class="hidden">
 
               <label for="template_name"><?php echo gettext("template name"); ?></label><br>
-              <input type="text" name="name" value="" id="input_template_name"><br>
+              <input type="text" name="name" value="" id="input_template_name">
 
               <button type="button" id="hide_save_template"><?php echo gettext("cancel"); ?></button>
               <button type="button" id="button_save_template_action"><?php echo gettext("OK"); ?></button>
@@ -76,7 +76,7 @@
             <button type="button" id="button_preview" class="full">
               <img src="preview.png"><br>
               <?php echo gettext("preview"); ?>
-            </button><br>
+            </button>
             <button type="submit" class="full">
               <img src="send.png"><br>
               <?php echo gettext("send newsletter"); ?>
