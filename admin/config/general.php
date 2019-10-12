@@ -2,10 +2,10 @@
 
   return array(
 
-    "debug"                => false,
-    "debug_level"          => "warn",
+    "debug"                => true,
+    "debug_level"          => "full",
     "show_processing_time" => true,
-    "language"             => "de_DE",
+    "language"             => "",
     "debug_levels"         => array(
       "off"  => 0,
       "warn" => E_ALL & ~E_NOTICE,
