@@ -163,7 +163,7 @@
                     str_replace(
                         array("&amp;", "/admin"),
                         array("&", ""),
-                        "List-Unsubscribe: <https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
+                        "List-Unsubscribe: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
                             "string",
                             array(
                                 "view"  => "manage_subscription",
@@ -172,7 +172,7 @@
                                 "hash"  => $this->subscriber["hash"],
                                 "agree" => "agree"
                             )
-                        ) . ">"
+                        )
                     )
                 );
                 $mail->addCustomHeader("Errors-To: newsletter@" . $_SERVER["SERVER_NAME"]);
