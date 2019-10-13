@@ -158,11 +158,11 @@
 
                 $mail->addCustomHeader("Return-Path: <>");
                 $mail->addCustomHeader("Precedence: list");
-                $mail->addCustomHeader("List-Id: newsletter@" . $_SERVER["SERVER_NAME"] . " <https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"] . ">"));
+                $mail->addCustomHeader("List-Id: https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"]));
                 $mail->addCustomHeader(
                     str_replace(
-                        "&amp;",
-                        "&",
+                        array("&amp;", "/admin"),
+                        array("&", ""),
                         "List-Unsubscribe: <https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
                             "string",
                             array(
