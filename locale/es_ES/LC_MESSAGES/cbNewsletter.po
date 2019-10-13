@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2019-10-12 13:41+0200\n"
-"PO-Revision-Date: 2019-10-12 13:41+0200\n"
+"POT-Creation-Date: 2019-10-13 15:24+0200\n"
+"PO-Revision-Date: 2019-10-13 15:25+0200\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: es_ES\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
@@ -165,7 +165,7 @@ msgstr "Eliminando suscripción para %s"
 msgid "Removing subscription for %s failed!"
 msgstr "¡No se ha podido eliminar la suscripción para %s !"
 
-#: admin/actions/config.action.php:87
+#: admin/actions/config.action.php:90
 msgid "Will be back shortly..."
 msgstr "Volveremos enseguida..."
 
@@ -216,7 +216,7 @@ msgid "default language"
 msgstr "idioma predeterminado"
 
 #: admin/views/create_newsletter.view.php:8
-#: admin/views/create_newsletter.view.php:77
+#: admin/views/create_newsletter.view.php:78
 msgid "preview"
 msgstr "vista previa"
 
@@ -224,29 +224,24 @@ msgstr "vista previa"
 msgid "hide preview"
 msgstr "esconder vista previa"
 
-#: admin/views/create_newsletter.view.php:18 admin/views/header.php:22
+#: admin/views/create_newsletter.view.php:18 admin/views/header.php:25
 msgid "Newsletter"
 msgstr "Boletín"
 
 #: admin/views/create_newsletter.view.php:19
 msgid ""
-"Hello %name%,\n"
-"\n"
-"this is a newsletter from %server% .\n"
-"\n"
-"Best regards,\n"
-"your newsletter team\n"
-"\n"
-"You will find an unsubscription link below:\n"
+"<h1>Hello %name%,</h1>\n"
+"<p>this is a newsletter from <strong>%server%</strong>.</p>\n"
+"<p>Best regards,\n"
+"your newsletter team</p>\n"
+"<p><em>You will find an unsubscription link below:</em></p>\n"
 msgstr ""
-"Hola %nombre%,\n"
-"\n"
-"esto es el boletín de %server% .\n"
-"\n"
-"Saludos cordiales,\n"
-"El equipo del boletín\n"
-"\n"
-"Ud. encontrará abajo un enlace para eliminar la suscripción:\n"
+"<h1>Hola %name%,</h1>\n"
+"<p>esto es el boletín de <strong>%server%</strong>.</p>\n"
+"<p>Saludos cordiales,<br>\n"
+"El equipo del boletín</p>\n"
+"<p><em>Ud. encontrará abajo un enlace para eliminar la suscripción:</em></"
+"p>\n"
 
 #: admin/views/create_newsletter.view.php:26 admin/views/mainmenu.view.php:17
 msgid "create newsletter"
@@ -262,35 +257,35 @@ msgstr "asunto"
 msgid "newsletter text"
 msgstr "texto del boletín"
 
-#: admin/views/create_newsletter.view.php:58 views/manage_subscription.php:32
+#: admin/views/create_newsletter.view.php:59 views/manage_subscription.php:32
 msgid "reset"
 msgstr "restablecer"
 
-#: admin/views/create_newsletter.view.php:62
+#: admin/views/create_newsletter.view.php:63
 msgid "save template"
 msgstr "guardar plantilla"
 
-#: admin/views/create_newsletter.view.php:67
+#: admin/views/create_newsletter.view.php:68
 msgid "template name"
 msgstr "nombre de plantilla"
 
-#: admin/views/create_newsletter.view.php:70
+#: admin/views/create_newsletter.view.php:71
 msgid "cancel"
 msgstr "cancelar"
 
-#: admin/views/create_newsletter.view.php:71 views/manage_subscription.php:58
+#: admin/views/create_newsletter.view.php:72 views/manage_subscription.php:58
 msgid "OK"
 msgstr "OK"
 
-#: admin/views/create_newsletter.view.php:81
+#: admin/views/create_newsletter.view.php:82
 msgid "send newsletter"
 msgstr "enviar boletín"
 
-#: admin/views/create_newsletter.view.php:99
+#: admin/views/create_newsletter.view.php:100
 msgid "templates"
 msgstr "plantillas"
 
-#: admin/views/create_newsletter.view.php:126
+#: admin/views/create_newsletter.view.php:127
 msgid "delete template"
 msgstr "eliminar plantilla"
 
@@ -421,7 +416,7 @@ msgstr ""
 "Todos sus datos serán borrados irrecuperablemente. Y no recibirá ningún "
 "boletín en el futuro, a menos que se suscriba de nuevo."
 
-#: views/show_archive.view.php:43 views/show_archive_list.view.php:41
+#: views/show_archive.view.php:43 views/show_archive_list.view.php:43
 msgid "back"
 msgstr "volver"
 

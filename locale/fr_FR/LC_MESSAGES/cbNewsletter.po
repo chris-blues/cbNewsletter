@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2019-10-12 13:42+0200\n"
-"PO-Revision-Date: 2019-10-12 13:42+0200\n"
+"POT-Creation-Date: 2019-10-13 15:25+0200\n"
+"PO-Revision-Date: 2019-10-13 15:26+0200\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -165,7 +165,7 @@ msgstr "Suppression de l'abonnement pour %s"
 msgid "Removing subscription for %s failed!"
 msgstr "La suppression de l'abonnement pour %s a échoué!"
 
-#: admin/actions/config.action.php:87
+#: admin/actions/config.action.php:90
 msgid "Will be back shortly..."
 msgstr "Nous serons de retour sous peu...."
 
@@ -216,7 +216,7 @@ msgid "default language"
 msgstr "langue par défaut"
 
 #: admin/views/create_newsletter.view.php:8
-#: admin/views/create_newsletter.view.php:77
+#: admin/views/create_newsletter.view.php:78
 msgid "preview"
 msgstr "aperçu"
 
@@ -224,29 +224,23 @@ msgstr "aperçu"
 msgid "hide preview"
 msgstr "masquer l'aperçu"
 
-#: admin/views/create_newsletter.view.php:18 admin/views/header.php:22
+#: admin/views/create_newsletter.view.php:18 admin/views/header.php:25
 msgid "Newsletter"
 msgstr "Newsletter"
 
 #: admin/views/create_newsletter.view.php:19
 msgid ""
-"Hello %name%,\n"
-"\n"
-"this is a newsletter from %server% .\n"
-"\n"
-"Best regards,\n"
-"your newsletter team\n"
-"\n"
-"You will find an unsubscription link below:\n"
+"<h1>Hello %name%,</h1>\n"
+"<p>this is a newsletter from <strong>%server%</strong>.</p>\n"
+"<p>Best regards,\n"
+"your newsletter team</p>\n"
+"<p><em>You will find an unsubscription link below:</em></p>\n"
 msgstr ""
-"Bonjour %name%,\n"
-"\n"
-"ceci est une newsletter de %server% .\n"
-"\n"
-"Meilleures salutations,\n"
-"votre équipe de newsletter\n"
-"\n"
-"Vous trouverez ci-dessous un lien de désinscription:\n"
+"<h1>Bonjour %name%,</h1>\n"
+"<p>ceci est une newsletter de <strong>%server%</strong>.</p>\n"
+"<p>Meilleures salutations,<br>\n"
+"votre équipe de newsletter</p>\n"
+"<p><em>Vous trouverez ci-dessous un lien de désinscription:</em></p>\n"
 
 #: admin/views/create_newsletter.view.php:26 admin/views/mainmenu.view.php:17
 msgid "create newsletter"
@@ -262,35 +256,35 @@ msgstr "sujet"
 msgid "newsletter text"
 msgstr "texte du newsletter"
 
-#: admin/views/create_newsletter.view.php:58 views/manage_subscription.php:32
+#: admin/views/create_newsletter.view.php:59 views/manage_subscription.php:32
 msgid "reset"
 msgstr "réinitialiser"
 
-#: admin/views/create_newsletter.view.php:62
+#: admin/views/create_newsletter.view.php:63
 msgid "save template"
 msgstr "Enregistrer le modèle"
 
-#: admin/views/create_newsletter.view.php:67
+#: admin/views/create_newsletter.view.php:68
 msgid "template name"
 msgstr "nom du modèle"
 
-#: admin/views/create_newsletter.view.php:70
+#: admin/views/create_newsletter.view.php:71
 msgid "cancel"
 msgstr "annuler"
 
-#: admin/views/create_newsletter.view.php:71 views/manage_subscription.php:58
+#: admin/views/create_newsletter.view.php:72 views/manage_subscription.php:58
 msgid "OK"
 msgstr "OK"
 
-#: admin/views/create_newsletter.view.php:81
+#: admin/views/create_newsletter.view.php:82
 msgid "send newsletter"
 msgstr "Envoyer le newsletter"
 
-#: admin/views/create_newsletter.view.php:99
+#: admin/views/create_newsletter.view.php:100
 msgid "templates"
 msgstr "modèles"
 
-#: admin/views/create_newsletter.view.php:126
+#: admin/views/create_newsletter.view.php:127
 msgid "delete template"
 msgstr "supprimer le modèle"
 
@@ -420,7 +414,7 @@ msgstr ""
 "plus de newsletters à l'avenir - à moins que vous ne vous inscriviez à "
 "nouveau."
 
-#: views/show_archive.view.php:43 views/show_archive_list.view.php:41
+#: views/show_archive.view.php:43 views/show_archive_list.view.php:43
 msgid "back"
 msgstr "retour"
 
