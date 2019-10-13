@@ -156,14 +156,14 @@
                 $mail->CharSet = "utf-8";
                 $mail->setFrom("newsletter@" . $_SERVER["SERVER_NAME"], $_SERVER["SERVER_NAME"] . " - Newsletter");
 
-                $mail->addCustomHeader("Return-Path: <>");
-                $mail->addCustomHeader("Precedence: list");
-                $mail->addCustomHeader("List-Id: https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"]));
+                $mail->addCustomHeader("Return-Path:<>");
+                $mail->addCustomHeader("Precedence:list");
+                $mail->addCustomHeader("List-Id:https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"]));
                 $mail->addCustomHeader(
                     str_replace(
                         array("&amp;", "/admin"),
                         array("&", ""),
-                        "List-Unsubscribe: https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
+                        "List-Unsubscribe:https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
                             "string",
                             array(
                                 "view"  => "manage_subscription",
@@ -175,7 +175,7 @@
                         )
                     )
                 );
-                $mail->addCustomHeader("Errors-To: newsletter@" . $_SERVER["SERVER_NAME"]);
+                $mail->addCustomHeader("Errors-To:newsletter@" . $_SERVER["SERVER_NAME"]);
 
                 $mail->addAddress($arg["to"]["email"], $arg["to"]["name"]);
 
