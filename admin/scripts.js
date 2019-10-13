@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
       template_files[i].addEventListener('click', function() {
 
         document.getElementById("subject").value = this.getAttribute("data-subject");
-        CKEDITOR.instances.text.setData( this.getAttribute("data-text").value );
+        CKEDITOR.instances.text.setData( this.getAttribute("data-text") );
 
       });
 
