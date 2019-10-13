@@ -1,11 +1,9 @@
+<hr>
 
+<p>Newsletter @ %server%</p>
 
-----
+<p>Abonnement verwalten:<br>
+%link_manage%</p>
 
-Newsletter @ %server%
-
-Abonnement verwalten:
-%link_manage%
-
-Vom Newsletter austragen:
-%link_unsubscribe%
+<p>Vom Newsletter austragen:<br>
+%link_unsubscribe%</p>

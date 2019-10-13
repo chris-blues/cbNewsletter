@@ -1,11 +1,9 @@
+<hr>
 
+<p>Newsletter @ %server%</p>
 
-----
+<p>Manage your subscription here:<br>
+%link_manage%</p>
 
-Newsletter @ %server%
-
-Manage your subscription here:
-%link_manage%
-
-Unsubscribe from newsletter here:
-%link_unsubscribe%
+<p>Unsubscribe from newsletter here:<br>
+%link_unsubscribe%</p>
