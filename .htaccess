@@ -1,4 +1,3 @@
-Header set Content-Security-Policy "default-src *;"
 Header add "disablevcache" "true"
 <IfModule mod_expires.c>
   ExpiresActive off
