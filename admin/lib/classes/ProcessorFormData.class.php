@@ -279,10 +279,8 @@
             if (!is_array($var)) $var = trim($var);
 
             if ($type == "subject" or $type == "name") {
-                if (!empty($var)) {
-                    $this->add_data($type, $var);
-                    return true;
-                } else return false;
+                $this->add_data($type, $var);
+                return true;
             }
 
             if ($type == "text") {
