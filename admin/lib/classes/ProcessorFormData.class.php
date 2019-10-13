@@ -21,8 +21,6 @@
             $this->get_post_data();
 
             if ($this->validated == count($_POST)) {
-//                 $errors = count($this->errors, COUNT_RECURSIVE) - count($this->errors);
-//                 echo "Validated " . $this->validated . " items from POST array (" . count($_POST) . "). " . $errors . " errors occurred.<br>\n";
                 $this->validated = true;
             } else {
                 $this->validated = false;
@@ -269,7 +267,6 @@
                 $this->output[] = '<div style="background-color: #e94b4b; color: #000; padding: 30px;">'."<h1>Errors have occurred:</h1>\n".$errors."</div>\n";
             } else {
                 $this->output[] = gettext("Newsletter has been sent!");
-//                 $this->output[] = '<pre style="font-size: 0.6em;">'.print_r($this, true)."</pre>\n";
             }
 
             return "<p>" . implode("</p>\n<p>", $this->output) . "</p>\n";
