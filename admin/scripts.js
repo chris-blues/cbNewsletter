@@ -18,8 +18,13 @@ document.addEventListener('DOMContentLoaded', function () {
       template_files[i].addEventListener('click', function() {
 
         document.getElementById("subject").value = this.getAttribute("data-subject");
-        var text = this.getAttribute("data-text").value;
-        CKEDITOR.instances.text.htmlDataProcessor.toDataFormat( text );
+        CKEDITOR.instances.text.setData(
+            this.getAttribute("data-text").value, {
+                callback: function() {
+                    this.checkDirty(); // true
+                }
+            }
+        );
 
       });
 
