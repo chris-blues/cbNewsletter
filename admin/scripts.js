@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         document.getElementById("subject").value = this.getAttribute("data-subject");
         var text = this.getAttribute("data-text").value;
-        CKEDITOR.instances.text.htmlDataProcessor .toDataFormat( text );
+        CKEDITOR.instances.text.htmlDataProcessor.toDataFormat( text );
 
       });
 
