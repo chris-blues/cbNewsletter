@@ -150,6 +150,7 @@
         }
 
         private function email($arg) {
+            global $sent;
 
             $mail = new PHPMailer(true);
             try {
@@ -213,7 +214,7 @@
 
                 $mail->AltBody = $mail->html2text(str_replace("<hr>", "--------------------------", $mail->Body));
 
-//                 $mail->send();
+//                 $sent = $mail->send();
 
                 $this->output[] = "Mail has been sent!";
 

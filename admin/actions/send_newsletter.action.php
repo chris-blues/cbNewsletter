@@ -14,7 +14,7 @@
 //     $Newsletter = new Newsletter($Subscriber, $_POST["subject"], $_POST["text"]);
     $Newsletter = new Processor_formdata($Subscriber->getdata());
 
-    $sent = $Newsletter->send();
+//     $sent = $Newsletter->send();
     $subscriberData = $Subscriber->getdata();
 
 
