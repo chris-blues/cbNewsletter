@@ -278,21 +278,11 @@
             $type = trim($type);
             if (!is_array($var)) $var = trim($var);
 
-            if ($type == "email") {
+            if ($type == "subject" or $type == "name") {
                 if (!empty($var)) {
-                    $this->add_data($type, '');
+                    $this->add_data($type, $var);
                     return true;
                 } else return false;
-            }
-
-            if ($type == "name") {
-                if (!empty($var) and is_string($var)) {
-                    $this->add_data($type, filter_var(trim($var), FILTER_SANITIZE_STRING));
-                    return true;
-                } else {
-                    $this->errors["validation"][] = $var . " is not a valid " . $type;
-                    return false;
-                }
             }
 
             if ($type == "text") {
