@@ -4,7 +4,7 @@
 
     class Processor_formdata {
 
-        private $type;
+        private $subscriber;
         private $validated;
         private $data;
         private $errors;
@@ -13,8 +13,9 @@
         public function __construct($subscriber) {
 
             dump_var($subscriber);
-            exit;
+//             exit;
 
+            $this->subscriber = $subscriber;
             $this->validated = 0;
             $this->data = array();
             $this->errors = array();
@@ -154,6 +155,30 @@
             try {
                 $mail->CharSet = "utf-8";
                 $mail->setFrom("newsletter@" . $_SERVER["SERVER_NAME"], $_SERVER["SERVER_NAME"] . " - Newsletter");
+
+                $mail->addCustomHeader("Return-Path: <>");
+                $mail->addCustomHeader("Precedence: list");
+                $mail->addCustomHeader("List-Id: newsletter@" . $_SERVER["SERVER_NAME"] . " <https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"] . ">");
+                $mail->addCustomHeader(
+                    str_replace(
+                        "&amp;",
+                        "&",
+                        "List-Unsubscribe: <https://" . $_SERVER["SERVER_NAME"] . str_replace(
+                            "/admin", "", $_SERVER["PHP_SELF"] . ">" . assembleGetString(
+                                "string",
+                                array(
+                                    "view"  => "manage_subscription",
+                                    "job"   => "unsubscribe",
+                                    "id"    => $this->subscriber["id"],
+                                    "hash"  => $this->subscriber["hash"],
+                                    "agree" => "agree"
+                                )
+                            )
+                        ) . ">"
+                    )
+                );
+                $mail->addCustomHeader("Errors-To: newsletter@" . $_SERVER["SERVER_NAME"]);
+
                 $mail->addAddress($arg["to"]["email"], $arg["to"]["name"]);
                 $mail->addReplyTo("newsletter@" . $_SERVER["SERVER_NAME"]);
                 foreach ($arg["cc"] as $recepient) {
@@ -188,7 +213,7 @@
 
                 $mail->AltBody = $mail->html2text(str_replace("<hr>", "--------------------------", $mail->Body));
 
-                $mail->send();
+//                 $mail->send();
 
                 $this->output[] = "Mail has been sent!";
 
@@ -252,23 +277,63 @@
             $type = trim($type);
             if (!is_array($var)) $var = trim($var);
 
-            if ($type == "email" or $type == "dfgst") {
+            if ($type == "email") {
+                if (!empty($var)) {
+                    $this->add_data($type, '');
+                    return true;
+                } else return false;
+            }
 
-                if ($type == "dfgst") {
-                    if (!empty($var)) {
-                        $email = filter_var($var, FILTER_VALIDATE_EMAIL);
-                        if ($email !== false) {
-                            $this->add_data($type, $email);
-                            return true;
-                        } else return false;
-                    } else return false;
+            if ($type == "name") {
+                if (!empty($var) and is_string($var)) {
+                    $this->add_data($type, filter_var(trim($var), FILTER_SANITIZE_STRING));
+                    return true;
+                } else {
+                    $this->errors["validation"][] = $var . " is not a valid " . $type;
+                    return false;
                 }
-                if ($type == "email") {
-                    if (empty($var)) {
-                        $this->add_data($type, '');
-                        return true;
-                    } else return false;
+            }
+
+            if ($type == "text") {
+                if (!empty($var) and is_string($var)) {
+
+                    $search = array(
+                        "%name%",
+                        "%server%",
+                        "%link_unsubscribe%",
+                        "%link_manage%",
+                        "&amp;",
+                    );
+                    $replace = array(
+                        $this->subscriber["name"],
+                        $_SERVER["SERVER_NAME"],
+                        str_replace(
+                            "&amp;",
+                            "&",
+                            "https://" . $_SERVER["SERVER_NAME"] . str_replace(
+                                "/admin", "", $_SERVER["PHP_SELF"] . ">" . assembleGetString(
+                                    "string",
+                                    array(
+                                        "view"  => "manage_subscription",
+                                        "job"   => "unsubscribe",
+                                        "id"    => $this->subscriber["id"],
+                                        "hash"  => $this->subscriber["hash"],
+                                        "agree" => "agree"
+                                    )
+                                )
+                            )
+                        ),
+                        "https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"]),
+                        "&"
+                    );
+
+                    $this->add_data($type, str_replace($search, $replace, trim($var)));
+                    return true;
+                } else {
+                    $this->errors["validation"][] = $var . " is not a valid " . $type;
+                    return false;
                 }
+            }
 
             }
 
