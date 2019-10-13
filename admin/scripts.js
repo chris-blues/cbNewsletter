@@ -48,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function () {
     button_save_template_action.addEventListener('click', function() {
       document.getElementById("template_name").value = document.getElementById("input_template_name").value;
       document.getElementById("template_subject").value = document.getElementById("subject").value;
-      document.getElementById("template_text").value = document.getElementById("cke_1_contents").firstElementChild.innerHTML;
+      document.getElementById("template_text").value = CKEDITOR.instances.editor1.getData();
       document.getElementById("form_save_template").submit();
     });
 
