@@ -298,7 +298,7 @@ class cbNewsletter_QueryBuilderAdmin extends cbNewsletter_QueryBuilder {
       INSERT INTO `cbNewsletter_templates`
       (`name`, `subject`, `text`)
       VALUES
-      ('default', '" . $_SERVER["SERVER_NAME"] . " newsletter', 'Hello %name%,\n\nthis is a newsletter from %server% .\n\nBest regards,\nyour newsletter team\n\nYou will find an unsubscription link below:\n') ;"
+      ('default', '" . $_SERVER["SERVER_NAME"] . " newsletter', '<h1>Hello %name%,</h1>\n<p>this is a newsletter from <b>%server%</b>.</p>\n<p>Best regards,<br>\nyour newsletter team</p>\n<p><em>You will find an unsubscription link below:</em></p>\n') ;"
     );
 
     $result = $this->callExecution($statement);
