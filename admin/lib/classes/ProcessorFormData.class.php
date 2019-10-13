@@ -1,6 +1,6 @@
 <?php
 
-    require_once(dirname(__FILE__) . "/PHPMailer.class.php");
+    include_once(cbNewsletter_checkout("/admin/lib/classes/PHPMailer.class.php"));
 
     class Processor_formdata {
 
@@ -127,7 +127,7 @@
 
         private function receiveUpload() {
 
-            require_once("class_file.php");
+            include_once(cbNewsletter_checkout("/admin/lib/classes/file.class.php"));
             $error = false;
             foreach ($_FILES["anhang"]["name"] as $key => $value) {
                 $filename = dirname(__FILE__) . "/tmp/" . $_FILES["anhang"]["name"][$key];
