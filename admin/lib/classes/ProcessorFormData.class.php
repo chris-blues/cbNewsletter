@@ -13,7 +13,6 @@
         public function __construct($subscriber) {
 
             dump_var($subscriber);
-//             exit;
 
             $this->subscriber = $subscriber;
             $this->validated = 0;
