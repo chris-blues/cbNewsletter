@@ -144,6 +144,30 @@
 
         }
 
+        private function assembleHeader($type) {
+            if     ($type == "Return-Path")        $return = "<>";
+            elseif ($type == "Precedence")         $return = "list";
+            elseif ($type == "Errors-To")          $return = "newsletter@" . $_SERVER["SERVER_NAME"];
+            elseif ($type == "List-Unsubscribe") {
+                $return  = "https://" . $_SERVER["SERVER_NAME"];
+                $return .= str_replace(array("&amp;", "/admin"), array("&", ""), $_SERVER["PHP_SELF"]);
+                $return .= assembleGetString(
+                    "string",
+                    array(
+                        "view"  => "manage_subscription",
+                        "job"   => "unsubscribe",
+                        "id"    => $this->subscriber["id"],
+                        "hash"  => $this->subscriber["hash"],
+                        "agree" => "agree"
+                    )
+                );
+            }
+            elseif ($type == "List-Id") {
+                $return = "https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"]);
+            }
+            return $type . ":" . $return;
+        }
+
         private function email($arg) {
             global $sent;
 
@@ -152,26 +176,11 @@
                 $mail->CharSet = "utf-8";
                 $mail->setFrom("newsletter@" . $_SERVER["SERVER_NAME"], $_SERVER["SERVER_NAME"] . " - Newsletter");
 
-                $mail->addCustomHeader("Return-Path:<>");
-                $mail->addCustomHeader("Precedence:list");
-                $mail->addCustomHeader("List-Id:https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"]));
-                $mail->addCustomHeader(
-                    str_replace(
-                        array("&amp;", "/admin"),
-                        array("&", ""),
-                        "List-Unsubscribe:https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
-                            "string",
-                            array(
-                                "view"  => "manage_subscription",
-                                "job"   => "unsubscribe",
-                                "id"    => $this->subscriber["id"],
-                                "hash"  => $this->subscriber["hash"],
-                                "agree" => "agree"
-                            )
-                        )
-                    )
-                );
-                $mail->addCustomHeader("Errors-To:newsletter@" . $_SERVER["SERVER_NAME"]);
+                $mail->addCustomHeader( $this->assembleHeader("Return-Path") );
+                $mail->addCustomHeader( $this->assembleHeader("Precedence") );
+                $mail->addCustomHeader( $this->assembleHeader("List-Id") );
+                $mail->addCustomHeader( $this->assembleHeader("List-Unsubscribe") );
+                $mail->addCustomHeader( $this->assembleHeader("Errors-To") );
 
                 $mail->addAddress($arg["to"]["email"], $arg["to"]["name"]);
 
@@ -198,14 +207,9 @@
                     $mail->Subject = $_SERVER["SERVER_NAME"] . " - Newsletter (" . date("d.F Y") . ")";
                 }
 
-                $mail->Body = "<html>\n  <head>\n    <style>font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif;</style>\n  </head>\n  <body>";
-                if (!empty($this->data["subject"])) {
-                    $mail->Body .= "    <h1>" . $this->data["subject"] . "</h1>\n\n";
-                }
-
-                $mail->Body .= '    <div class="nachricht">' . $this->data["text"] . "</div>\n";
-
-                $mail->Body .= '  </body>'."\n".'</html>'."\n";
+                $mail->Body = "<html><head><style>font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif;</style></head><body>";
+                $mail->Body .= $this->data["text"];
+                $mail->Body .= '</body></html>';
 
                 $mail->AltBody = $mail->html2text(
                     str_replace(
