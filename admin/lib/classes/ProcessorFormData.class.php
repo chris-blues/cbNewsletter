@@ -33,8 +33,8 @@
                 $this->email(
                     array(
                         "to"  => array(
-                            "email" => $this->data["email"],
-                            "name" => ucwords($this->data["name"])
+                            "email" => $this->subscriber["email"],
+                            "name" => ucwords($this->subscriber["name"])
                         ),
                         "cc"  => array(),
                         "bcc" => array()
@@ -180,7 +180,9 @@
                 $mail->addCustomHeader("Errors-To: newsletter@" . $_SERVER["SERVER_NAME"]);
 
                 $mail->addAddress($arg["to"]["email"], $arg["to"]["name"]);
+
                 $mail->addReplyTo("newsletter@" . $_SERVER["SERVER_NAME"]);
+
                 foreach ($arg["cc"] as $recepient) {
                     $mail->addCC($recepient);
                 }
