@@ -304,27 +304,22 @@
                         "%link_unsubscribe%",
                         "%link_manage%",
                         "&amp;",
+                        "/admin"
                     );
                     $replace = array(
                         $this->subscriber["name"],
                         $_SERVER["SERVER_NAME"],
-                        str_replace(
-                            "&amp;",
-                            "&",
-                            "https://" . $_SERVER["SERVER_NAME"] . str_replace(
-                                "/admin", "", $_SERVER["PHP_SELF"] . ">" . assembleGetString(
-                                    "string",
-                                    array(
-                                        "view"  => "manage_subscription",
-                                        "job"   => "unsubscribe",
-                                        "id"    => $this->subscriber["id"],
-                                        "hash"  => $this->subscriber["hash"],
-                                        "agree" => "agree"
-                                    )
-                                )
+                        "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
+                            "string",
+                            array(
+                                "view"  => "manage_subscription",
+                                "job"   => "unsubscribe",
+                                "id"    => $this->subscriber["id"],
+                                "hash"  => $this->subscriber["hash"],
+                                "agree" => "agree"
                             )
                         ),
-                        "https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"]),
+                        "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"],
                         "&"
                     );
 
