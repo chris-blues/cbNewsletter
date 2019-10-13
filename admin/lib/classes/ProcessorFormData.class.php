@@ -149,8 +149,6 @@
         private function email($arg) {
             global $sent;
 
-            dump_var($this);
-
             $mail = new PHPMailer(true);
             try {
                 $mail->CharSet = "utf-8";
@@ -219,8 +217,7 @@
                     )
                 );
 
-//                 $sent = $mail->send();
-                dump_var($mail);
+                $sent = $mail->send();
 
                 $this->output[] = "Mail has been sent!";
 
