@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2019-10-13 15:22+0200\n"
-"PO-Revision-Date: 2019-10-13 15:23+0200\n"
+"POT-Creation-Date: 2019-10-13 18:39+0200\n"
+"PO-Revision-Date: 2019-10-13 18:39+0200\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
 "Language: de_DE\n"
@@ -177,6 +177,10 @@ msgstr "Verarbeitung dauerte %s"
 msgid "Error! Could not connect to database!"
 msgstr "Fehler! Konnte keine Verbindung zur Datenbank herstellen!"
 
+#: admin/lib/classes/ProcessorFormData.class.php:271
+msgid "Newsletter has been sent!"
+msgstr "Newsletter wurde gesendet!"
+
 #: admin/lib/classes/QueryBuilderAdmin.class.php:11
 msgid "The PDO call returned an error: "
 msgstr "Der PDO Aufruf gab einen Fehler zurück: "
@@ -229,13 +233,13 @@ msgstr "Newsletter"
 
 #: admin/views/create_newsletter.view.php:19
 msgid ""
-"<h1>Hello %name%,</h1>\n"
+"<h2>Hello %name%,</h2>\n"
 "<p>this is a newsletter from <strong>%server%</strong>.</p>\n"
 "<p>Best regards,\n"
 "your newsletter team</p>\n"
 "<p><em>You will find an unsubscription link below:</em></p>\n"
 msgstr ""
-"<h1>Hallo %name%,</h1>\n"
+"<h2>Hallo %name%,</h2>\n"
 "<p>dies ist ein Newsletter von <strong>%server%</strong>.</p>\n"
 "<p>Mit freundlichen Grüßen,<br>\n"
 "Dein Newsletter Team</p>\n"
