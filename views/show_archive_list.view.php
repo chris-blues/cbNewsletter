@@ -36,6 +36,8 @@
 
     }
 
+    $backlink = assembleGetString("string", array("view" => ""));
+
 ?>
 
-      <p><a href="<?php echo assembleGetString("string", array("view" => "")); ?>"><?php echo gettext("back"); ?></a></p>
+      <p><a href="<?php echo empty($backlink) ? "." : $backlink; ?>"><?php echo gettext("back"); ?></a></p>
