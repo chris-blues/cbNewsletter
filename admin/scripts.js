@@ -72,7 +72,7 @@ function showPreview() {
   document.getElementById("preview_wrapper").style.display = "block";
 
   var subject = document.getElementById("subject").value;
-  var text = document.getElementById("text").value.replace(/(?:\r\n|\r|\n)/g, '<br>');
+  var text = document.getElementById("cke_1_contents").firstElementChild.innerHTML;
 
   document.getElementById("preview_subject").innerHTML = subject;
   document.getElementById("preview_text").innerHTML = text;
