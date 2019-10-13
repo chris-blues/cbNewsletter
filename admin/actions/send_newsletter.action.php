@@ -3,6 +3,7 @@
   $cbNewsletter_Debugout->add("<pre><b>[ send_newsletter.action ]</b>");
 
 //   include_once(cbNewsletter_checkout("/admin/lib/classes/Newsletter.class.php"));
+  include_once(cbNewsletter_checkout("/admin/lib/classes/ProcessorFormData.class.php"));
 
   $newsletters = $cbNewsletter_query->get_verified_subscribers();
 
