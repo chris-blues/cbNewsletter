@@ -214,7 +214,7 @@
                 $mail->AltBody = $mail->html2text(
                     str_replace(
                         array("<hr>", "<br>", "</p>", "</h1>", "</ul>", "</ol>"),
-                        array("--------------------------", "\n", "\n\n", "\n\n", "\n\n", "\n\n"),
+                        array("--------------------------", "\n", "</p>\n\n", "</h1>\n\n", "</ul>\n\n", "</ol>\n\n"),
                         $mail->Body
                     )
                 );
