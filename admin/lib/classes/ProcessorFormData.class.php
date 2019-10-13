@@ -211,7 +211,13 @@
 
                 $mail->Body .= '  </body>'."\n".'</html>'."\n";
 
-                $mail->AltBody = $mail->html2text(str_replace("<hr>", "--------------------------", $mail->Body));
+                $mail->AltBody = $mail->html2text(
+                    str_replace(
+                        array("<hr>", "<br>", "</p>", "</h1>", "</ul>", "</ol>"),
+                        array("--------------------------", "\n", "\n\n", "\n\n", "\n\n", "\n\n"),
+                        $mail->Body
+                    )
+                );
 
 //                 $sent = $mail->send();
                 dump_var($mail);
