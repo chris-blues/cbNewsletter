@@ -163,16 +163,14 @@
                     str_replace(
                         "&amp;",
                         "&",
-                        "List-Unsubscribe: <https://" . $_SERVER["SERVER_NAME"] . str_replace(
-                            "/admin", "", $_SERVER["PHP_SELF"] . ">" . assembleGetString(
-                                "string",
-                                array(
-                                    "view"  => "manage_subscription",
-                                    "job"   => "unsubscribe",
-                                    "id"    => $this->subscriber["id"],
-                                    "hash"  => $this->subscriber["hash"],
-                                    "agree" => "agree"
-                                )
+                        "List-Unsubscribe: <https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
+                            "string",
+                            array(
+                                "view"  => "manage_subscription",
+                                "job"   => "unsubscribe",
+                                "id"    => $this->subscriber["id"],
+                                "hash"  => $this->subscriber["hash"],
+                                "agree" => "agree"
                             )
                         ) . ">"
                     )
