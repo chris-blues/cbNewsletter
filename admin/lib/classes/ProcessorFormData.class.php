@@ -292,6 +292,10 @@
             if ($type == "text") {
                 if (!empty($var) and is_string($var)) {
 
+                    $var .= file_get_contents(
+                        realpath(dirname(__FILE__) . "/../../views/newsletter.footer." . $this->subscriber["locale"] . ".txt")
+                    );
+
                     $search = array(
                         "%name%",
                         "%server%",
