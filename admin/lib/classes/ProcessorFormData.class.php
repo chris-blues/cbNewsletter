@@ -317,7 +317,14 @@
                                 "agree" => "agree"
                             )
                         ),
-                        "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"],
+                        "https://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"] . assembleGetString(
+                            "string",
+                            array(
+                                "view" => "manage_subscription",
+                                "id"   => $this->subscriber["id"],
+                                "hash" => $this->subscriber["hash"],
+                            )
+                        ),
                         "&"
                     );
 
