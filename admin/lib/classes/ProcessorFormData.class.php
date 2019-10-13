@@ -278,7 +278,11 @@
             $type = trim($type);
             if (!is_array($var)) $var = trim($var);
 
-            if ($type == "subject" or $type == "name") {
+            if ($type == "name") {
+                return true;
+            }
+
+            if ($type == "subject") {
                 $this->add_data($type, $var);
                 return true;
             }
