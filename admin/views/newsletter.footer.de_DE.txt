@@ -3,7 +3,7 @@
 <p>Newsletter @ %server%</p>
 
 <p>Abonnement verwalten:<br>
-%link_manage%</p>
+<a href="%link_manage%">%link_manage%</a></p>
 
 <p>Vom Newsletter austragen:<br>
-%link_unsubscribe%</p>
+<a href="%link_unsubscribe%">%link_unsubscribe%</a></p>
