@@ -26,8 +26,16 @@ document.addEventListener('DOMContentLoaded', function () {
       });
 
     // Start CKEditor
-    if (typeof(textarea) !== "undefined") CKEDITOR.replace( 'text' );
-
+      var CKEDITOR_BASEPATH = 'ckeditor/';
+      if (typeof(textarea) !== "undefined") {
+          CKEDITOR.editorConfig = function( config ) {
+              config.language = 'de';
+              config.uiColor = '#F7B42C';
+              config.height = 300;
+              config.toolbarCanCollapse = true;
+          };
+          CKEDITOR.replace( 'text' );
+      }
 
     }
 
