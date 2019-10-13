@@ -200,7 +200,7 @@
                     $mail->Subject = $_SERVER["SERVER_NAME"] . " - Newsletter (" . date("d.F Y") . ")";
                 }
 
-                $mail->Body = "<html>\n  <head>\n    <style></style>\n  </head>\n  <body>";
+                $mail->Body = "<html>\n  <head>\n    <style>font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif;</style>\n  </head>\n  <body>";
                 if (!empty($this->data["subject"])) {
                     $mail->Body .= "    <h1>" . $this->data["subject"] . "</h1>\n\n";
                 }
