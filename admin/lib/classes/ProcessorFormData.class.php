@@ -12,8 +12,6 @@
 
         public function __construct($subscriber) {
 
-            dump_var($subscriber);
-
             $this->subscriber = $subscriber;
             $this->validated = 0;
             $this->data = array();
@@ -214,6 +212,7 @@
                 $mail->AltBody = $mail->html2text(str_replace("<hr>", "--------------------------", $mail->Body));
 
 //                 $sent = $mail->send();
+                dump_var($mail);
 
                 $this->output[] = "Mail has been sent!";
 
