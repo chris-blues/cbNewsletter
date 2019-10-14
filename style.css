@@ -94,6 +94,12 @@ table, th, td {
   border: 1px solid #888;
 }
 
+input {
+  max-width: 100%;
+  box-sizing: border-box;
+  width: 100%;
+}
+
 .cbNewsletter_info {
   background-color: #EEE;
 }
