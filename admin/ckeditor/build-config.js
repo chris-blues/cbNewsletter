@@ -52,7 +52,7 @@ var CKBUILDER_CONFIG = {
 		'tests'
 	],
 	plugins : {
-		'a11ychecker' : 1,
+// 		'a11ychecker' : 1,
 		'a11yhelp' : 1,
 		'about' : 1,
 		'autogrow' : 1,
