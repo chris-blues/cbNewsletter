@@ -208,7 +208,9 @@ div#preview {
 }
 
 img.button_delete_template {
-  margin: 4px 10px 2px 20px;
+  padding: 0;
+  margin: 0;
+  outline: none;
 }
 
 div#boxes_wrapper {
