@@ -1,3 +1,4 @@
 **/php?errors.log
+admin/.htaccess
 admin/config/*
 admin/logs/*
