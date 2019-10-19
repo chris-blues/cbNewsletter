@@ -174,6 +174,8 @@
             $mail = new PHPMailer(true);
             try {
                 $mail->CharSet = "utf-8";
+                $mail->isHTML(true);
+
                 $mail->setFrom("newsletter@" . $_SERVER["SERVER_NAME"], $_SERVER["SERVER_NAME"] . " - Newsletter");
 
                 $mail->addCustomHeader( $this->assembleHeader("Return-Path") );
@@ -198,8 +200,6 @@
                         $mail->addAttachment(dirname(__FILE__)."/tmp/".$file->name, $file->name, "base64", $file->type);
                     }
                 }
-
-                $mail->isHTML(true);
 
                 if (!empty($this->data["subject"])) {
                     $mail->Subject = $this->data["subject"];
