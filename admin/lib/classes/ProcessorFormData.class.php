@@ -207,7 +207,7 @@
                     $mail->Subject = $_SERVER["SERVER_NAME"] . " - Newsletter (" . date("d.F Y") . ")";
                 }
 
-                $mail->Body = "<html><head><style>font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif;</style></head><body>";
+                $mail->Body = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=" . $mail->CharSet . "\"><style type=\"text/css\">body { direction: ltr; font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif; }</style></head><body>\n";
                 $mail->Body .= $this->data["text"];
                 $mail->Body .= '</body></html>';
 
