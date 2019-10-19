@@ -46,7 +46,7 @@ class Email {
 
             $mail->Subject = $this->subject;
 
-            $mail->Body = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style type=\"text/css\">body { direction: ltr; font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif; }</style></head><body>";
+            $mail->Body = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style type=\"text/css\">body { direction: ltr; font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif; }</style></head><body>\n";
             $mail->Body .= $this->body;
             $mail->Body .= '</body></html>';
 
