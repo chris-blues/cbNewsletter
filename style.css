@@ -100,6 +100,11 @@ input {
   width: 100%;
 }
 
+input[type="checkbox"] {
+  max-width: unset;
+  width: unset;
+}
+
 .cbNewsletter_info {
   background-color: #EEE;
 }

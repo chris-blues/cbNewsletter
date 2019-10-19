@@ -46,7 +46,7 @@ class Email {
 
             $mail->Subject = $this->subject;
 
-            $mail->Body = "<html><head><style>body { margin: 1em 5em; font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif; }</style></head><body>";
+            $mail->Body = "<html><head><style>body { padding: 0 5em; font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif; }</style></head><body>";
             $mail->Body .= $this->body;
             $mail->Body .= '</body></html>';
 
