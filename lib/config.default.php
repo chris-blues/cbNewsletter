@@ -2,8 +2,8 @@
 
   return array(
 
-    "debug"                => false,
-    "debug_level"          => "off",
+    "debug"                => true,
+    "debug_level"          => "full",
     "show_processing_time" => true,
     "language"             => "",
     "debug_levels"         => array(

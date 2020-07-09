@@ -1,160 +1,211 @@
 <?php
 
+include_once(cbNewsletter_checkout("/admin/lib/classes/PHPMailer.class.php"));
+
 class Email {
 
-  protected $name;
-  protected $to;
-  protected $from;
-  protected $header;
-  protected $subject;
-  protected $body;
+    protected $name;
+    protected $to;
+    protected $from;
+    protected $header;
+    protected $subject;
+    protected $body;
+    protected $alt_body;
 
-  public function __construct($job, $data, $locale) {
+    public function __construct($job, $data, $locale) {
 
-    if(is_object($data)) $subscriber = $data->getdata();
-    elseif(is_array($data)) $subscriber = $data;
+        if(is_object($data)) $subscriber = $data->getdata();
+        elseif(is_array($data)) $subscriber = $data;
 
-    $this->name    = $subscriber["name"];
-    $this->to      = $subscriber["email"];
-    $this->from    = "newsletter@" . $_SERVER["SERVER_NAME"];
+        $this->name    = $subscriber["name"];
+        $this->to      = $subscriber["email"];
+        $this->from    = "newsletter@" . $_SERVER["SERVER_NAME"];
 
-    $this->subject = $this->assemble_subject($job);
-    $this->header  = $this->assemble_header();
-    $this->body    = $this->assemble_body($job, $subscriber, $locale);
-
-  }
-
-  public function send_mail() {
-
-    if (!mail($this->to, $this->subject, $this->body, $this->header)) {
-      return false;
-    } else { return true; }
-
-  }
-
-  private function assemble_header() {
-
-    $header  = "Content-Type: text/plain; charset = \"UTF-8\";\r\n";
-    $header .= "Content-Transfer-Encoding: 8bit\r\n";
-    $header .= "From: " . $this->from . "\r\n";
-    $header .= "Date: " . date(DATE_RFC2822) . "\r\n";
-    $header .= "\r\n";
-    return $header;
-  }
-
-  private function assemble_subject($job) {
-
-    switch($job) {
-
-      case "opt_in": {
-        return sprintf(gettext("Please verify your subscription to our newsletter @ %s"), $_SERVER["SERVER_NAME"]);
-        break;
-      }
-
-      case "opt_out": {
-        return sprintf(gettext("Please verify your unsubscription to our newsletter @ %s"), $_SERVER["SERVER_NAME"]);
-        break;
-      }
+        $this->subject = $this->assemble_subject($job);
+//         $this->header  = $this->assemble_header();
+        $this->assemble_body($job, $subscriber, $locale);
 
     }
 
-  }
+    public function send_mail() {
 
-  private function assemble_body($job, $subscriber, $locale) {
+        $mail = new PHPMailer(true);
+        try {
+            $mail->CharSet = "utf-8";
+            $mail->isHTML(true);
 
-    $link_url = "";
-    if ($_SERVER["HTTPS"] == "on") $link_url .= "https://";
-    else                           $link_url .= "http://";
-    $link_url .= $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"];
+            $mail->setFrom($this->from);
 
-    $link_manage = $link_url;
-    $link_manage .= assembleGetString(
-      "string",
-      array(
-	"view" => "manage_subscription",
-	"id" => $subscriber["id"],
-	"hash" => $subscriber["hash"],
-	"standalone" => "",
-	"job" => "",
-      )
-    );
-    $link_manage .= "#cbNewsletter_mainBox";
-    $link_manage = str_replace("&amp;", "&", $link_manage);
+            $mail->addCustomHeader( $this->assembleHeader("Return-Path") );
+            $mail->addCustomHeader( $this->assembleHeader("Precedence") );
+            $mail->addCustomHeader( $this->assembleHeader("List-Id") );
+            $mail->addCustomHeader( $this->assembleHeader("List-Unsubscribe") );
+            $mail->addCustomHeader( $this->assembleHeader("Errors-To") );
 
+            $mail->addAddress($this->to);
 
+            $mail->Subject = $this->subject;
 
-    $search = array("%name%", "%server%");
-    $replace = array($this->name, $_SERVER["SERVER_NAME"]);
+            $mail->Body = "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><style type=\"text/css\">body { direction: ltr; font-family: Open-Sans, Ubuntu, Verdana, Arial, sans-serif; }</style></head><body>\n";
+            $mail->Body .= $this->body;
+            $mail->Body .= '</body></html>';
 
+            $mail->AltBody = $this->alt_body;
 
+            if ($mail->send()) return true;
+            else               return false;
 
-    switch($job) {
-
-      case "opt_in": {
-
-        $link_process = $link_url;
-        $link_process .= assembleGetString(
-	  "string",
-	  array(
-	    "view" => "verify_subscription",
-	    "id" => $subscriber["id"],
-	    "hash" => $subscriber["hash"],
-	    "standalone" => "",
-	    "job" => "",
-	  )
-	);
-	$link_process .= "#cbNewsletter_mainBox";
-        $link_process = str_replace("&amp;", "&", $link_process);
-
-        $body = str_replace(
-          $search,
-          $replace,
-          file_get_contents(
-            realpath(cbNewsletter_DIC::get("basedir") . "/views/mail.opt_in." . cbNewsletter_DIC::get("locale") . ".txt")
-	  )
-	);
-        break;
-      }
-
-      case "opt_out": {
-
-        $link_process = $link_url;
-        $link_process .= assembleGetString(
-	  "string",
-	  array(
-	    "view" => "verify_unsubscription",
-	    "id" => $subscriber["id"],
-	    "hash" => $subscriber["hash"],
-	    "standalone" => "",
-	    "job" => "",
-	  )
-	);
-	$link_process .= "#cbNewsletter_mainBox";
-        $link_process = str_replace("&amp;", "&", $link_process);
-
-        $body = str_replace(
-          $search,
-          $replace,
-          file_get_contents(
-            realpath(dirname(__FILE__) . "/../../views/mail.opt_out." . $locale . ".txt")
-	  )
-	);
-        break;
-      }
+        } catch (Exception $e) {
+            echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+        }
 
     }
 
+    private function assembleHeader($type) {
+        if     ($type == "Return-Path")        $return = "<>";
+        elseif ($type == "Precedence")         $return = "list";
+        elseif ($type == "Errors-To")          $return = "newsletter@" . $_SERVER["SERVER_NAME"];
+        elseif ($type == "List-Unsubscribe") {
+            $return  = "https://" . $_SERVER["SERVER_NAME"];
+            $return .= str_replace(array("&amp;", "/admin"), array("&", ""), $_SERVER["PHP_SELF"]);
+            $return .= assembleGetString(
+                "string",
+                array(
+                    "view"  => "manage_subscription",
+                    "job"   => "unsubscribe",
+                    "id"    => $this->subscriber["id"],
+                    "hash"  => $this->subscriber["hash"],
+                    "agree" => "agree"
+                )
+            );
+        } elseif ($type == "List-Id") {
+            $return = "https://" . $_SERVER["SERVER_NAME"] . str_replace("/admin", "", $_SERVER["PHP_SELF"]);
+        }
+        return $type . ":" . $return;
+    }
+
+    private function assemble_subject($job) {
+
+        switch($job) {
+
+            case "opt_in": {
+                return sprintf(gettext("Please verify your subscription to our newsletter @ %s"), $_SERVER["SERVER_NAME"]);
+                break;
+            }
+
+            case "opt_out": {
+                return sprintf(gettext("Please verify your unsubscription to our newsletter @ %s"), $_SERVER["SERVER_NAME"]);
+                break;
+            }
+
+        }
+
+    }
+
+    private function assemble_body($job, $subscriber, $locale) {
+
+        $link_url = "";
+        if ($_SERVER["HTTPS"] == "on") $link_url .= "https://";
+        else                           $link_url .= "http://";
+        $link_url .= $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"];
+
+        $link_manage = $link_url;
+        $link_manage .= assembleGetString(
+            "string",
+            array(
+                "view" => "manage_subscription",
+                "id" => $subscriber["id"],
+                "hash" => $subscriber["hash"],
+                "standalone" => "",
+                "job" => "",
+            )
+        );
+        $link_manage .= "#cbNewsletter_mainBox";
+        $link_manage = str_replace("&amp;", "&", $link_manage);
 
 
-    $body = wordwrap($body, 70);
+        $search = array("%name%", "%server%", "%server_url%");
+        $replace = array($this->name, $_SERVER["SERVER_NAME"], str_replace($_SERVER["PHP_SELF"], "", $link_url));
 
-    $search = array("%link_process%", "%link_manage%");
-    $replace = array($link_process, $link_manage);
-    $body = str_replace($search, $replace, $body);
+        switch($job) {
 
-    return $body;
+            case "opt_in": {
 
-  }
+                $link_process = $link_url;
+                $link_process .= assembleGetString(
+                    "string",
+                    array(
+                        "view" => "verify_subscription",
+                        "id" => $subscriber["id"],
+                        "hash" => $subscriber["hash"],
+                        "standalone" => "",
+                        "job" => "",
+                    )
+                );
+                $link_process .= "#cbNewsletter_mainBox";
+                $link_process = str_replace("&amp;", "&", $link_process);
+
+                $alt_body = str_replace(
+                    $search,
+                    $replace,
+                    file_get_contents(
+                        realpath(cbNewsletter_DIC::get("basedir") . "/views/mail.opt_in." . cbNewsletter_DIC::get("locale") . ".txt")
+                    )
+                );
+                $body = str_replace(
+                    $search,
+                    $replace,
+                    file_get_contents(
+                        realpath(cbNewsletter_DIC::get("basedir") . "/views/mail.opt_in." . cbNewsletter_DIC::get("locale") . ".html")
+                    )
+                );
+                break;
+            }
+
+            case "opt_out": {
+
+                $link_process = $link_url;
+                $link_process .= assembleGetString(
+                    "string",
+                    array(
+                        "view" => "verify_unsubscription",
+                        "id" => $subscriber["id"],
+                        "hash" => $subscriber["hash"],
+                        "standalone" => "",
+                        "job" => "",
+                    )
+                );
+                $link_process .= "#cbNewsletter_mainBox";
+                $link_process = str_replace("&amp;", "&", $link_process);
+
+                $alt_body = str_replace(
+                    $search,
+                    $replace,
+                    file_get_contents(
+                        realpath(dirname(__FILE__) . "/../../views/mail.opt_out." . $locale . ".txt")
+                    )
+                );
+                $body = str_replace(
+                    $search,
+                    $replace,
+                    file_get_contents(
+                        realpath(dirname(__FILE__) . "/../../views/mail.opt_out." . $locale . ".html")
+                    )
+                );
+                break;
+            }
+        }
+
+//     $body = wordwrap($body, 70);
+
+        $search = array("%link_process%", "%link_manage%");
+        $replace = array($link_process, $link_manage);
+        $this->body = str_replace($search, $replace, $body);
+        $this->alt_body = str_replace($search, $replace, $alt_body);
+
+        return $body;
+
+    }
 
 }
 

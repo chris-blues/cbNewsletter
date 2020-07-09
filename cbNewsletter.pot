@@ -1,7 +1,8 @@
+#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: cbNewsletter\n"
-"POT-Creation-Date: 2018-10-07 23:17+0200\n"
+"POT-Creation-Date: 2019-10-13 15:22+0200\n"
 "PO-Revision-Date: 2018-10-07 23:18+0200\n"
 "Last-Translator: chris_blues <chris@musicchris.de>\n"
 "Language-Team: \n"
@@ -9,21 +10,21 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.8.11\n"
+"X-Generator: Poedit 2.2.1\n"
 "X-Poedit-Basepath: ../../..\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SearchPath-0: .\n"
 "X-Poedit-SearchPathExcluded-0: locale\n"
 
-#: actions/enter_subscription.action.php:1
+#: chris/webseiten/cbNewsletter/actions/enter_subscription.action.php:1
 msgid "manage subscription"
-msgstr "Abo verwalten"
+msgstr ""
 
-#: actions/enter_subscription.action.php:71
+#: chris/webseiten/cbNewsletter/actions/enter_subscription.action.php:71
 msgid "Error! Could not send verification mail!\n"
-msgstr "Fehler! Bestätigungsmail konnte nicht versendet werden!\n"
+msgstr ""
 
-#: actions/enter_subscription.action.php:77
+#: chris/webseiten/cbNewsletter/actions/enter_subscription.action.php:77
 msgid ""
 "<p>A verification mail has been sent to your inbox. Please click the link, "
 "to verify that:</p>\n"
@@ -31,63 +32,49 @@ msgid ""
 "<li>you really want to get our newsletter</li></ul>\n"
 "<p>Thanks!</p>\n"
 msgstr ""
-"<p>Es wurde eine Bestätigungsmail an ihre Emailadresse gesendet. Bitte "
-"klicken Sie auf den Link um sicherzustellen, daß:</p>\n"
-"<ul><li>diese Adresse tatsächlich Ihnen gehört</li>\n"
-"<li>Sie wirklich unseren Newsletter bekommen wollen</li></ul>\n"
-"<p>Vielen Dank!</p>\n"
 
-#: actions/enter_subscription.action.php:96
+#: chris/webseiten/cbNewsletter/actions/enter_subscription.action.php:96
 msgid ""
 "Sorry! This email is already subscribed. Surely you don't want to receive "
 "our newsletters twice!"
 msgstr ""
-"Entschuldigung! Diese Adresse ist bereits abonniert. Sie wollen doch "
-"sicherlich unsere Newsletter nicht doppelt erhalten!"
 
-#: actions/manage_subscription.action.php:1
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:1
 msgid "Manage subscription"
-msgstr "Abo verwalten"
+msgstr ""
 
-#: actions/manage_subscription.action.php:28
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:28
 msgid "No match to this data in the database!"
-msgstr "Diese Daten sind nicht in der Datenbank zu finden!"
+msgstr ""
 
-#: actions/manage_subscription.action.php:60
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:60
 msgid ""
 "Sorry! This subscription cannot be found. The following possibilities may "
 "help:"
 msgstr ""
-"Entschuldigung! Dieses Abo konnte nicht gefunden werden. Die folgenden "
-"Möglichkeiten könnten helfen:"
 
-#: actions/manage_subscription.action.php:63
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:63
 msgid ""
 "<b>Your link is broken.</b> Some email-clients add line-breaks to your "
 "emails. Make sure to copy the entire link into your browser."
 msgstr ""
-"<b>Der Link ist kaputt.</b> Manche Emailprogramme brechen lange Zeilen um. "
-"Stellen Sie sicher, daß der gesamte Link in den Browser kopiert wird."
 
-#: actions/manage_subscription.action.php:67
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:67
 msgid ""
 "<b>You have unsubscribed earlier.</b> This means your subscription has been "
 "deleted and is not retrievable. Subscribe again, if you want to receive our "
 "newsletters again!"
 msgstr ""
-"<b>Sie haben sich schon ausgetragen.</b> Das bedeutet, daß ihr Abo "
-"unwiderruflich gelöscht ist. Wenn Sie unseren Newsletter wieder erhalten "
-"wollen, tragen Sie sich einfach wieder ein!"
 
-#: actions/manage_subscription.action.php:133
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:133
 msgid "Your email address has been updated."
-msgstr "Ihre neue Emailadresse wurde eingetragen."
+msgstr ""
 
-#: actions/manage_subscription.action.php:152
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:152
 msgid "Error! Could not send verification mail!"
-msgstr "Fehler! Bestätigungsmail konnte nicht versendet werden!"
+msgstr ""
 
-#: actions/manage_subscription.action.php:157
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:157
 msgid ""
 "<p>A verification mail has been sent to your inbox. Please click the link, "
 "to verify that:</p>\n"
@@ -95,345 +82,343 @@ msgid ""
 "<li>you really want to get our newsletter</li></ul>\n"
 "<p>Thanks!</p>"
 msgstr ""
-"<p>Es wurde eine Bestätigungsmail an ihre Emailadresse gesendet. Bitte "
-"klicken Sie auf den Link, um sicherzustellen daß:</p>\n"
-"<ul><li>diese Adresse tatsächlich Ihnen gehört</li>\n"
-"<li>Sie wirklich unseren Newsletter bekommen wollen</li></ul>\n"
-"<p>Vielen Dank!</p>"
 
-#: actions/manage_subscription.action.php:173
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:173
 msgid "Your name has been updated."
-msgstr "Ihr neuer Name wurde eingetragen."
+msgstr ""
 
-#: actions/manage_subscription.action.php:205 lib/routing.php:24
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:205
+#: chris/webseiten/cbNewsletter/lib/routing.php:24
 msgid "Error! Could not send verification mail!<br>\n"
-msgstr "Fehler! Bestätigungsmail konnte nicht versendet werden!<br>\n"
+msgstr ""
 
-#: actions/manage_subscription.action.php:211 lib/routing.php:30
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:211
+#: chris/webseiten/cbNewsletter/lib/routing.php:30
 msgid ""
 "A verification mail has been sent to your inbox. Please click the link, to "
 "verify that you really want to unsubscribe from our newsletters!\n"
 msgstr ""
-"Es wurde eine Bestätigungsmail an Ihre Adresse geschickt. Bitte klicken Sie "
-"auf den Link um sicherzustellen, daß Sie sich wirklich aus unserem "
-"Newsletter austragen wollen!\n"
 
-#: actions/manage_subscription.action.php:264
+#: chris/webseiten/cbNewsletter/actions/manage_subscription.action.php:264
 msgid ""
 "This email has not been verified yet. Access to this data has been denied."
 msgstr ""
-"Diese Emailadresse wurde noch nicht bestätigt. Zugriff auf diese Daten wurde "
-"verweigert."
 
-#: actions/show_archive.action.php:2
+#: chris/webseiten/cbNewsletter/actions/show_archive.action.php:2
 msgid "Newsletter archive"
-msgstr "Newsletterarchiv"
+msgstr ""
 
-#: actions/verify_subscription.action.php:1
+#: chris/webseiten/cbNewsletter/actions/verify_subscription.action.php:1
 msgid "Verify subscription"
-msgstr "Abo bestätigen"
+msgstr ""
 
-#: actions/verify_subscription.action.php:24
+#: chris/webseiten/cbNewsletter/actions/verify_subscription.action.php:24
 msgid "This email has already been verified. No need to do it again."
-msgstr "Diese Adresse wurde bereits bestätigt. Einmal reicht."
+msgstr ""
 
-#: actions/verify_subscription.action.php:35
+#: chris/webseiten/cbNewsletter/actions/verify_subscription.action.php:35
 msgid "Thank you very much! Your subscription is now verified and active."
-msgstr "Vielen Dank! Ihr Abo ist nun bestätigt und aktiv."
+msgstr ""
 
-#: actions/verify_subscription.action.php:55
-#: actions/verify_unsubscription.action.php:54
+#: chris/webseiten/cbNewsletter/actions/verify_subscription.action.php:55
+#: chris/webseiten/cbNewsletter/actions/verify_unsubscription.action.php:54
 msgid ""
 "Sorry! The link seems to be broken! Please try again - and make sure you "
 "have the complete link!<br>\n"
 msgstr ""
-"Entschuldigung! Der Link scheint kaputt zu sein! Bitte versuchen Sie es noch "
-"einmal - und stellen Sie die Vollständigkeit des Links sicher!<br>\n"
 
-#: actions/verify_unsubscription.action.php:1
+#: chris/webseiten/cbNewsletter/actions/verify_unsubscription.action.php:1
 msgid "verify unsubscription"
-msgstr "Abmeldung bestätigen"
+msgstr ""
 
-#: actions/verify_unsubscription.action.php:33
+#: chris/webseiten/cbNewsletter/actions/verify_unsubscription.action.php:33
 #, php-format
 msgid "Removing subscription for %s"
-msgstr "Entferne Abo für %s"
+msgstr ""
 
-#: actions/verify_unsubscription.action.php:43
+#: chris/webseiten/cbNewsletter/actions/verify_unsubscription.action.php:43
 #, php-format
 msgid "Removing subscription for %s failed!"
-msgstr "Entfernen des Abos für %s ging schief!"
+msgstr ""
 
-#: admin/actions/config.action.php:87
+#: chris/webseiten/cbNewsletter/admin/actions/config.action.php:90
 msgid "Will be back shortly..."
-msgstr "Bin gleich zurück..."
+msgstr ""
 
-#: admin/index.php:91 index.php:126
+#: chris/webseiten/cbNewsletter/admin/index.php:91
+#: chris/webseiten/cbNewsletter/index.php:126
 #, php-format
 msgid "processing needed %s"
-msgstr "Verarbeitung dauerte %s"
-
-#: admin/lib/bootstrap.database.php:28 lib/bootstrap.database.php:24
-msgid "Error! Could not connect to database!"
-msgstr "Fehler! Konnte keine Verbindung zur Datenbank herstellen!"
-
-#: admin/lib/classes/QueryBuilderAdmin.class.php:11
-msgid "The PDO call returned an error: "
-msgstr "Der PDO Aufruf gab einen Fehler zurück: "
-
-#: admin/lib/classes/QueryBuilderAdmin.class.php:174
-msgid "Created database tables:"
-msgstr "Datenbanktabellen wurden erstellt:"
-
-#: admin/views/config.view.php:8
-msgid "Database settings"
-msgstr "Datenbank Einstellungen"
-
-#: admin/views/config.view.php:57 admin/views/config.view.php:132
-#: views/subscription.form.php:30
-msgid "Reset"
-msgstr "Zurücksetzen"
-
-#: admin/views/config.view.php:58 admin/views/config.view.php:133
-msgid "Save"
-msgstr "Speichern"
-
-#: admin/views/config.view.php:66
-msgid "General settings"
-msgstr "Allgemeine Einstellungen"
-
-#: admin/views/config.view.php:72
-msgid "cbNewsletter debug output"
-msgstr "cbNewsletter Debug Ausgabe"
-
-#: admin/views/config.view.php:104
-msgid "show processing time"
-msgstr "Verarbeitungsdauer anzeigen"
-
-#: admin/views/config.view.php:116
-msgid "default language"
-msgstr "Standardsprache"
-
-#: admin/views/create_newsletter.view.php:8
-#: admin/views/create_newsletter.view.php:77
-msgid "preview"
-msgstr "Vorschau"
-
-#: admin/views/create_newsletter.view.php:13
-msgid "hide preview"
-msgstr "Vorschau schließen"
-
-#: admin/views/create_newsletter.view.php:18 admin/views/header.php:22
-msgid "Newsletter"
-msgstr "Newsletter"
-
-#: admin/views/create_newsletter.view.php:19
-msgid ""
-"Hello %name%,\n"
-"\n"
-"this is a newsletter from %server% .\n"
-"\n"
-"Best regards,\n"
-"your newsletter team\n"
-"\n"
-"You will find an unsubscription link below:\n"
 msgstr ""
-"Hallo %name%,\n"
-"\n"
-"dies ist ein Newsletter von %server% .\n"
-"\n"
-"Mit freundlichen Grüßen,\n"
-"Dein Newsletter Team\n"
-"\n"
-"Unten befindet sich der Austragelink:\n"
 
-#: admin/views/create_newsletter.view.php:26 admin/views/mainmenu.view.php:17
+#: chris/webseiten/cbNewsletter/admin/lib/bootstrap.database.php:28
+#: chris/webseiten/cbNewsletter/lib/bootstrap.database.php:24
+msgid "Error! Could not connect to database!"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/lib/classes/QueryBuilderAdmin.class.php:11
+msgid "The PDO call returned an error: "
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/lib/classes/QueryBuilderAdmin.class.php:174
+msgid "Created database tables:"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:8
+msgid "Database settings"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:57
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:132
+#: chris/webseiten/cbNewsletter/views/subscription.form.php:30
+msgid "Reset"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:58
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:133
+msgid "Save"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:66
+msgid "General settings"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:72
+msgid "cbNewsletter debug output"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:104
+msgid "show processing time"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/config.view.php:116
+msgid "default language"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:8
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:78
+msgid "preview"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:13
+msgid "hide preview"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:18
+#: chris/webseiten/cbNewsletter/admin/views/header.php:25
+msgid "Newsletter"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:19
+msgid ""
+"<h1>Hello %name%,</h1>\n"
+"<p>this is a newsletter from <strong>%server%</strong>.</p>\n"
+"<p>Best regards,\n"
+"your newsletter team</p>\n"
+"<p><em>You will find an unsubscription link below:</em></p>\n"
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:26
+#: chris/webseiten/cbNewsletter/admin/views/mainmenu.view.php:17
 msgid "create newsletter"
-msgstr "Newsletter schreiben"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:30
-#: admin/views/create_newsletter.view.php:35
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:30
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:35
 msgid "subject"
-msgstr "Betreff"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:39
-#: admin/views/create_newsletter.view.php:49
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:39
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:49
 msgid "newsletter text"
-msgstr "Newsletter Text"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:58 views/manage_subscription.php:32
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:59
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:32
 msgid "reset"
-msgstr "Zurücksetzen"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:62
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:63
 msgid "save template"
-msgstr "Vorlage speichern"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:67
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:68
 msgid "template name"
-msgstr "Name der Vorlage"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:70
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:71
 msgid "cancel"
-msgstr "Abbrechen"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:71 views/manage_subscription.php:58
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:72
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:58
 msgid "OK"
-msgstr "OK"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:81
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:82
 msgid "send newsletter"
-msgstr "Newsletter abschicken"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:99
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:100
 msgid "templates"
-msgstr "Vorlagen"
+msgstr ""
 
-#: admin/views/create_newsletter.view.php:126
+#: chris/webseiten/cbNewsletter/admin/views/create_newsletter.view.php:127
 msgid "delete template"
-msgstr "Vorlage löschen"
+msgstr ""
 
-#: admin/views/mainmenu.view.php:9
+#: chris/webseiten/cbNewsletter/admin/views/mainmenu.view.php:9
 msgid "view subscriptions"
-msgstr "Abos anzeigen"
+msgstr ""
 
-#: admin/views/mainmenu.view.php:25
+#: chris/webseiten/cbNewsletter/admin/views/mainmenu.view.php:25
 msgid "settings"
-msgstr "Einstellungen"
+msgstr ""
 
-#: admin/views/subscriptions.view.php:15
+#: chris/webseiten/cbNewsletter/admin/views/subscriptions.view.php:15
 msgid "Search"
-msgstr "Suchen"
+msgstr ""
 
-#: admin/views/subscriptions.view.php:25
+#: chris/webseiten/cbNewsletter/admin/views/subscriptions.view.php:25
 msgid "Clear search"
-msgstr "Suche leeren"
+msgstr ""
 
-#: admin/views/subscriptions.view.php:40
+#: chris/webseiten/cbNewsletter/admin/views/subscriptions.view.php:40
 msgid "ID"
-msgstr "ID"
+msgstr ""
 
-#: admin/views/subscriptions.view.php:47 views/subscription.form.php:10
-#: views/subscription.form.php:15
+#: chris/webseiten/cbNewsletter/admin/views/subscriptions.view.php:47
+#: chris/webseiten/cbNewsletter/views/subscription.form.php:10
+#: chris/webseiten/cbNewsletter/views/subscription.form.php:15
 msgid "Name"
-msgstr "Name"
+msgstr ""
 
-#: admin/views/subscriptions.view.php:54 views/subscription.form.php:21
+#: chris/webseiten/cbNewsletter/admin/views/subscriptions.view.php:54
+#: chris/webseiten/cbNewsletter/views/subscription.form.php:21
 msgid "Email"
-msgstr "Email"
+msgstr ""
 
-#: admin/views/subscriptions.view.php:57
+#: chris/webseiten/cbNewsletter/admin/views/subscriptions.view.php:57
 msgid "Subscribed"
-msgstr "Angemeldet"
+msgstr ""
 
-#: admin/views/subscriptions.view.php:58
+#: chris/webseiten/cbNewsletter/admin/views/subscriptions.view.php:58
 msgid "Verified"
-msgstr "Bestätigt"
+msgstr ""
 
-#: admin/views/subscriptions.view.php:59
+#: chris/webseiten/cbNewsletter/admin/views/subscriptions.view.php:59
 msgid "Delete"
-msgstr "Löschen"
+msgstr ""
 
-#: lib/checkout.function.php:23
+#: chris/webseiten/cbNewsletter/lib/checkout.function.php:23
 msgid "Fatal error"
-msgstr "Schwerer Fehler"
+msgstr ""
 
-#: lib/checkout.function.php:23
+#: chris/webseiten/cbNewsletter/lib/checkout.function.php:23
 #, php-format
 msgid "%s not found. Exit..."
-msgstr "%s konnte nicht gefunden werden. Ende..."
+msgstr ""
 
-#: lib/checkout.function.php:24
+#: chris/webseiten/cbNewsletter/lib/checkout.function.php:24
 msgid "Debug output"
-msgstr "Debugausgabe"
+msgstr ""
 
-#: lib/classes/Email.class.php:50
+#: chris/webseiten/cbNewsletter/lib/classes/Email.class.php:50
 #, php-format
 msgid "Please verify your subscription to our newsletter @ %s"
-msgstr "Bitte bestätigen Sie Ihr Abo für unseren Newsletter @ %s"
+msgstr ""
 
-#: lib/classes/Email.class.php:55
+#: chris/webseiten/cbNewsletter/lib/classes/Email.class.php:55
 #, php-format
 msgid "Please verify your unsubscription to our newsletter @ %s"
-msgstr "Bitte bestätigen Sie Ihre Abmeldung aus unserem Newsletter @ %s"
+msgstr ""
 
-#: lib/classes/QueryBuilder.class.php:15
+#: chris/webseiten/cbNewsletter/lib/classes/QueryBuilder.class.php:15
 msgid "The PDO call returned an error"
-msgstr "Der PDO Aufruf gab einen Fehler zurück"
+msgstr ""
 
-#: lib/classes/QueryBuilder.class.php:276
+#: chris/webseiten/cbNewsletter/lib/classes/QueryBuilder.class.php:276
 #, php-format
 msgid "Database table %s has been optimized."
-msgstr "Datenbanktabelle %s wurde optimiert."
+msgstr ""
 
-#: views/error.view.php:2
+#: chris/webseiten/cbNewsletter/views/error.view.php:2
 msgid "Error"
-msgstr "Fehler"
+msgstr ""
 
-#: views/error.view.php:4
+#: chris/webseiten/cbNewsletter/views/error.view.php:4
 msgid ""
 "An error has occured. Most likely the link is broken. Please try again and "
 "make sure that you use the complete and correct link."
 msgstr ""
-"Ein Fehler ist aufgetreten. Höchst wahrscheinlich ist der Link kaputt. Bitte "
-"versuchen Sie es noch einmal und stellen Sie die Vollständigkeit und "
-"Richtigkeit des Links sicher."
 
-#: views/manage_subscription.php:3
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:3
 msgid "Change your subscription"
-msgstr "Abo bearbeiten"
+msgstr ""
 
-#: views/manage_subscription.php:5
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:5
 msgid "Your name:"
-msgstr "Ihr Name:"
+msgstr ""
 
-#: views/manage_subscription.php:11
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:11
 msgid "your name"
-msgstr "Ihr Name"
+msgstr ""
 
-#: views/manage_subscription.php:13
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:13
 msgid "Your email address:"
-msgstr "Ihre Emailadresse:"
+msgstr ""
 
-#: views/manage_subscription.php:19 views/subscription.form.php:26
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:19
+#: chris/webseiten/cbNewsletter/views/subscription.form.php:26
 msgid "you@example.com"
-msgstr "ich@example.com"
+msgstr ""
 
-#: views/manage_subscription.php:33
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:33
 msgid "submit"
-msgstr "abschicken"
+msgstr ""
 
-#: views/manage_subscription.php:42
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:42
 msgid "Unsubscribe"
-msgstr "Abmelden"
+msgstr ""
 
-#: views/manage_subscription.php:44
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:44
 msgid "Really unsubscribe me"
-msgstr "Wirklich abmelden"
+msgstr ""
 
-#: views/show_archive.view.php:43
+#: chris/webseiten/cbNewsletter/views/manage_subscription.php:60
+msgid ""
+"All your data will be unrecoverably erased. And you will not receive any "
+"newsletters in the future - unless you subscribe again."
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/views/show_archive.view.php:43
+#: chris/webseiten/cbNewsletter/views/show_archive_list.view.php:43
 msgid "back"
-msgstr "Zurück"
+msgstr ""
 
-#: views/subscription.form.php:1
+#: chris/webseiten/cbNewsletter/views/show_archive_list.view.php:5
+msgid "No newsletters have been written yet..."
+msgstr ""
+
+#: chris/webseiten/cbNewsletter/views/subscription.form.php:1
 msgid "Subscribe to our newsletter:"
-msgstr "Abonnieren Sie unseren Newsletter:"
+msgstr ""
 
-#: views/subscription.form.php:31
+#: chris/webseiten/cbNewsletter/views/subscription.form.php:31
 msgid "Submit"
-msgstr "Eintragen"
+msgstr ""
 
-#: views/subscription.form.php:36
+#: chris/webseiten/cbNewsletter/views/subscription.form.php:36
 msgid "newsletter archive"
-msgstr "Newsletterarchiv"
+msgstr ""
 
-#: views/unsubscribe.view.php:3
+#: chris/webseiten/cbNewsletter/views/unsubscribe.view.php:3
 msgid "Or are you trying to unsubscribe or something else?"
-msgstr "Oder versuchen Sie, sich auszutragen, oder etwas anderes?"
+msgstr ""
 
-#: views/unsubscribe.view.php:9
+#: chris/webseiten/cbNewsletter/views/unsubscribe.view.php:9
 msgid "Resend verification mail"
-msgstr "Bestätigungsmail nochmal schicken"
+msgstr ""
 
 #~ msgid "This is not an array!"
 #~ msgstr "Dies ist kein Array!"

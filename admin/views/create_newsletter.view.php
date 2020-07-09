@@ -16,7 +16,7 @@
 <?php
 
   if (!isset($subject)) $subject = $_SERVER["SERVER_NAME"] . " " . gettext("Newsletter");
-  if (!isset($text))    $text = gettext("Hello %name%,\n\nthis is a newsletter from %server% .\n\nBest regards,\nyour newsletter team\n\nYou will find an unsubscription link below:\n");
+  if (!isset($text))    $text = gettext("<h2>Hello %name%,</h2>\n<p>this is a newsletter from <strong>%server%</strong>.</p>\n<p>Best regards,\nyour newsletter team</p>\n<p><em>You will find an unsubscription link below:</em></p>\n");
 
 ?>
 
@@ -49,6 +49,7 @@
               placeholder="<?php echo gettext("newsletter text"); ?>"
               class="createNewsletter"
               id="text"><?php if (isset($text)) echo $text; ?></textarea>
+
           </div>
 
           <div class="flex two">
@@ -56,16 +57,16 @@
             <button type="reset" class="full">
               <img src="reset.png"><br>
               <?php echo gettext("reset"); ?>
-            </button><br>
+            </button>
             <button type="button" id="button_save_template" class="full">
               <img src="save.png"><br>
               <?php echo gettext("save template"); ?>
-            </button><br>
+            </button>
 
             <div id="save_template" class="hidden">
 
               <label for="template_name"><?php echo gettext("template name"); ?></label><br>
-              <input type="text" name="name" value="" id="input_template_name"><br>
+              <input type="text" name="name" value="" id="input_template_name">
 
               <button type="button" id="hide_save_template"><?php echo gettext("cancel"); ?></button>
               <button type="button" id="button_save_template_action"><?php echo gettext("OK"); ?></button>
@@ -75,7 +76,7 @@
             <button type="button" id="button_preview" class="full">
               <img src="preview.png"><br>
               <?php echo gettext("preview"); ?>
-            </button><br>
+            </button>
             <button type="submit" class="full">
               <img src="send.png"><br>
               <?php echo gettext("send newsletter"); ?>

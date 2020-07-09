@@ -2,7 +2,7 @@
 
   include_once(__DIR__ . "/lib/classes/DIC.class.php");
 
-  cbNewsletter_DIC::add("startTime", microtime());
+  cbNewsletter_DIC::add("startTime", microtime(true));
 
 
   // catch possible variable collisions
@@ -104,7 +104,7 @@
     $logTimeFormat = date("Y-m-d");
     file_put_contents(
       cbNewsletter_DIC::get("basedir") . "/admin/logs/debug_" . $logTimeFormat . ".log",
-      "\n\n=============================================================================================================================\n" . date("Y-m-d H:i:s") . "\n\n" . $cbNewsletter_Debugout->output(true),
+      "\n\n=============================================================================================================================\n" . date("Y-m-d H:i:s") . "\n\n" . $cbNewsletter_Debugout->output(true) . "\n\n" . print_r($error, true),
       FILE_APPEND | LOCK_EX
     );
 
@@ -119,7 +119,7 @@
 
   if (cbNewsletter_DIC::get("general")["show_processing_time"]) {
 
-    cbNewsletter_DIC::add("endTime", microtime());
+    cbNewsletter_DIC::add("endTime", microtime(true));
 
     echo $cbNewsletter_HTML->infobox(
       sprintf(

@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', function () {
     button_preview.addEventListener('click', function() { showPreview(); });
 
     var textarea = document.getElementById("text");
-    textarea.addEventListener('input', function() { resize_textarea(); });
 
     document.getElementById("hide_preview").addEventListener(
       'click', function() {
@@ -19,13 +18,21 @@ document.addEventListener('DOMContentLoaded', function () {
       template_files[i].addEventListener('click', function() {
 
         document.getElementById("subject").value = this.getAttribute("data-subject");
-        document.getElementById("text").value = this.getAttribute("data-text");
-
-        resize_textarea();
+        CKEDITOR.instances.text.setData( this.getAttribute("data-text") );
 
       });
 
     }
+
+    // Start CKEditor
+    var CKEDITOR_BASEPATH = 'ckeditor/';
+    CKEDITOR.editorConfig = function( config ) {
+        config.language = 'de';
+        config.uiColor = '#F7B42C';
+        config.height = 300;
+        config.toolbarCanCollapse = true;
+    };
+    CKEDITOR.replace( 'text' );
 
     var button_save_template = document.getElementById("button_save_template");
     button_save_template.addEventListener('click', function() {
@@ -41,11 +48,9 @@ document.addEventListener('DOMContentLoaded', function () {
     button_save_template_action.addEventListener('click', function() {
       document.getElementById("template_name").value = document.getElementById("input_template_name").value;
       document.getElementById("template_subject").value = document.getElementById("subject").value;
-      document.getElementById("template_text").value = document.getElementById("text").value;
+      document.getElementById("template_text").value = CKEDITOR.instances.text.getData();
       document.getElementById("form_save_template").submit();
     });
-
-    resize_textarea();
 
   }
 
@@ -62,22 +67,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-function resize_textarea() {
-
-  var textarea = document.getElementById("text");
-
-  textarea.style.height = "10px";
-  textarea.style.height = (textarea.scrollHeight + 10) + "px";
-
-}
-
-
 function showPreview() {
 
   document.getElementById("preview_wrapper").style.display = "block";
 
   var subject = document.getElementById("subject").value;
-  var text = document.getElementById("text").value.replace(/(?:\r\n|\r|\n)/g, '<br>');
+  var text = document.getElementById("cke_1_contents").firstElementChild.innerHTML;
 
   document.getElementById("preview_subject").innerHTML = subject;
   document.getElementById("preview_text").innerHTML = text;

@@ -15,6 +15,17 @@
 
   include_once(cbNewsletter_checkout("/lib/classes/Request.class.php"));
 
+  // first run, which means DB config is not there yet!
+  if (
+    !is_file(cbNewsletter_DIC::get("basedir")."/admin/config/dbcredentials.php")
+    and
+    strncmp(str_replace(cbNewsletter_DIC::get("basedir"), "", cbNewsletter_DIC::get("calldir")), "/admin", strlen("/admin")) == 0
+  ) {
+    $cbNewsletter_Debugout->add("This seems to be the initial run. Routing to config view...");
+    $_GET["view"] = "config";
+  }
+
+
   cbNewsletter_DIC::add("view", cbNewsletter_Request::view());
 
   $cbNewsletter_Debugout->add("cbNewsletter_DIC::[\"view\"] set to", cbNewsletter_DIC::get("view"));
@@ -34,7 +45,6 @@
 
   // gettext
   include_once(cbNewsletter_checkout("/lib/initGettext.php"));
-
 
   if (!isset($_GET["view"]) or $_GET["view"] != "config") {
 

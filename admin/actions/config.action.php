@@ -27,7 +27,10 @@
           $needReload = true;
 
         }
-        else $result = "FAILED";
+        else {
+            $error["save_dbSettings"] = $result;
+            $result = "FAILED";
+        }
 
         $cbNewsletter_Debugout->add("Updating database settings...", $result);
 
@@ -78,7 +81,7 @@
   cbNewsletter_DIC::add("database", include(cbNewsletter_DIC::get("basedir") . "/admin/config/dbcredentials.php"));
   $cbNewsletter_Debugout->add(
     "loading cbNewsletter_DIC::[\"database\"] from /admin/config/dbcredentials.php",
-    (count(cbNewsletter_DIC::get("database")) > 0) ? "OK" : "FAILED"
+    (!empty(cbNewsletter_DIC::get("database"))) ? "OK" : "FAILED"
   );
 
 

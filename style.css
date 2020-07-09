@@ -94,6 +94,17 @@ table, th, td {
   border: 1px solid #888;
 }
 
+input {
+  max-width: 100%;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+input[type="checkbox"] {
+  max-width: unset;
+  width: unset;
+}
+
 .cbNewsletter_info {
   background-color: #EEE;
 }
@@ -140,8 +151,8 @@ button.full {
 }
 
 #form_wrapper {
-  display: flex;
-  vertical-align: bottom;
+/*  display: flex;
+  vertical-align: bottom;*/
 }
 
 #form_wrapper .flex {
@@ -150,11 +161,11 @@ button.full {
 }
 
 #form_wrapper .flex.one {
-  flex: 100%;
+/*   flex: 100%; */
 }
 
 #form_wrapper .flex.two {
-  flex: 300px;
+/*   flex: 300px; */
   vertical-align: bottom;
 }
 
@@ -202,7 +213,9 @@ div#preview {
 }
 
 img.button_delete_template {
-  margin: 4px 10px 2px 20px;
+  padding: 0;
+  margin: 0;
+  outline: none;
 }
 
 div#boxes_wrapper {
@@ -228,7 +241,7 @@ td.input input {
 }
 
 #cbNewsletter_mainBox ul {
-  list-style-type: none;
+/*   list-style-type: none; */
   margin: 0;
-  padding: 0;
+/*   padding: 0; */
 }

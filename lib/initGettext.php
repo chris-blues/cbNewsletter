@@ -4,11 +4,8 @@
 
   unset($locale);
 
-
-
   // cbNewsletter_DIC::get("general")["language"] overrides everything
   if (cbNewsletter_DIC::get("general")["language"] != "") {
-
     $locale = cbNewsletter_DIC::get("general")["language"];
     $result = "/admin/config/general.php";
 
